@@ -8,17 +8,9 @@ body,
 
 @layer base {
   body {
-    @apply text-slate-900 bg-white antialiased dark:bg-[#0b0f19] dark:text-slate-100;
+    @apply text-slate-900 bg-white antialiased;
   }
-  /* Force overrides when user chooses theme explicitly */
-  html[data-theme='dark'] body {
-    background-color: #0b0f19 !important;
-    color: #f1f5f9 !important;
-  }
-  html[data-theme='light'] body {
-    background-color: #ffffff !important;
-    color: #0f172a !important; /* slate-900 */
-  }
+
   /* Hide native search clear buttons across browsers */
   input[type="search"]::-webkit-search-decoration,
   input[type="search"]::-webkit-search-cancel-button,
@@ -35,6 +27,41 @@ body,
     width: 0;
     height: 0;
   }
+}
+
+@layer base {
+  :root {
+    --text-color: #0f172a;        /* light */
+    --title-hover-color: #f5f5f5;
+    --body-bg: #ffffff;
+    --nav-bg: rgba(255,255,255,0.8);
+    --nav-border: #e5e7eb;
+    --muted: #6b7280;
+    --placeholder: #6b7280;
+    --border: #e5e7eb;
+    --border-blue: #016bde;
+    --bg-blue: #007bff1d;
+    --x-hover: #717171;
+    --text-500: #6b7280;
+    --bg-slate-50: #f5f5f5;
+  }
+  .dark {
+    --text-color: #f3f5f9;        /* dark */
+    --title-hover-color: #313131;
+    --body-bg: #000000;
+    --nav-bg: rgba(0,0,0,0.8);
+    --nav-border: #242930;
+    --muted: #94a3b8;
+    --placeholder: #c2ccda;
+    --border: #334155;
+    --border-blue: #66b0ff;
+    --bg-blue: #0057b33a;
+    --x-hover: #b1b1b1;
+    --text-500: #c2ccda;
+    --bg-slate-50: #232323;
+  }
+
+  body { background: var(--body-bg); color: var(--title-color); }
 }
 
 @layer utilities {

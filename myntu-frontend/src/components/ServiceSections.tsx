@@ -23,12 +23,12 @@ function ServiceCard({ item, lang }: { item: ServiceItem; lang: Lang }) {
       href={href}
       target="_blank"
       rel="noreferrer noopener"
-      className="h-25 flex items-center border-0 border-[#e5e7eb] rounded-[20px] gap-3 bg-transparent px-4 py-4 hover:bg-slate-50 max-[900px]:px-2 max-[900px]:py-1 max-[900px]:h-auto"
+      className="h-25 flex items-center border-0 border-[#e5e7eb] rounded-[20px] gap-3 bg-transparent px-4 py-4 hover:bg-[var(--bg-slate-50)] max-[900px]:px-2 max-[900px]:py-1 max-[900px]:h-auto"
     >
-      <img src={item.icon} alt="icon" className="h-12 w-12 rounded-lg shadow-sm border border-[#e5e7eb] max-[600px]:h-10 max-[600px]:w-10" />
+      <img src={item.icon} alt="icon" className="h-12 w-12 rounded-lg shadow-sm border border-[var(--nav-border)] max-[600px]:h-10 max-[600px]:w-10" />
       <div className="text-left">
-        <div className="text-lg line-clamp-2 leading-tight font-medium text-slate-900 max-[600px]:text-[17px]">{localizedName}</div>
-        <div className="text-sm line-clamp-2 leading-tight mt-1 font-light text-slate-500 max-[600px]:text-xs max-[600px]:mt-0">{localizedDesc}</div>
+        <div className="text-lg line-clamp-2 leading-tight font-medium text-[var(--text-color)] max-[600px]:text-[17px]">{localizedName}</div>
+        <div className="text-sm line-clamp-2 leading-tight mt-1 font-light text-[var(--text-500)] max-[600px]:text-xs max-[600px]:mt-0">{localizedDesc}</div>
       </div>
     </a>
   )
@@ -58,9 +58,9 @@ export default function ServiceSections(props: ServiceSectionsProps) {
     <div className="mx-auto my-8 w-full max-w-screen-xl px-0 space-y-6">
       {isSearching && searchTerm ? (
         <section className="w-full">
-          <div className="mb-2 text-left font-semibold text-[#6b7280] px-3 max-[600px]:text-sm max-[600px]:mb-4">{resultTitle}</div>
+          <div className="mb-2 text-left font-semibold text-[var(--muted)] px-3 max-[600px]:text-sm max-[600px]:mb-4">{resultTitle}</div>
           {listForSearch.length === 0 ? (
-            <div className="px-3 py-10 text-center text-lg max-[600px]:text-base text-slate-500">{emptySearchText}</div>
+            <div className="px-3 py-10 text-center text-lg max-[600px]:text-base text-[var(--text-500)]">{emptySearchText}</div>
           ) : (
             <div className="grid grid-cols-3 gap-2 max-[600px]:px-1 max-[1200px]:grid-cols-2 max-[900px]:grid-cols-1">
               {listForSearch.map((s) => (
@@ -71,7 +71,7 @@ export default function ServiceSections(props: ServiceSectionsProps) {
         </section>
       ) : (!selectedCategory ? (
         <section className="w-full">
-          <div className="mb-2 text-left font-semibold text-[#6b7280] px-3 max-[600px]:text-sm max-[600px]:mb-4">{hotTitle}</div>
+          <div className="mb-2 text-left font-semibold text-[var(--muted)] px-3 max-[600px]:text-sm max-[600px]:mb-4">{hotTitle}</div>
           <div className="grid grid-cols-3 gap-2 max-[600px]:px-1 max-[1200px]:grid-cols-2 max-[900px]:grid-cols-1">
             {visibleServices.map((s) => (
               <ServiceCard key={s.id} item={s} lang={lang} />
@@ -81,7 +81,7 @@ export default function ServiceSections(props: ServiceSectionsProps) {
       ) : (
         Array.from(groups.entries()).map(([subLabel, items]) => (
           <section key={subLabel} className="w-full">
-            <div className="mb-2 text-left font-semibold text-[#6b7280] px-3 max-[600px]:text-sm max-[600px]:mb-4">{subLabel}</div>
+            <div className="mb-2 text-left font-semibold text-[var(--muted)] px-3 max-[600px]:text-sm max-[600px]:mb-4">{subLabel}</div>
             <div className="grid grid-cols-3 gap-2 max-[600px]:px-1 max-[1200px]:grid-cols-2 max-[900px]:grid-cols-1">
               {items.map((s) => (
                 <ServiceCard key={s.id} item={s} lang={lang} />

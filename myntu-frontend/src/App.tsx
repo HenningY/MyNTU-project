@@ -185,8 +185,8 @@ function App() {
   return (
       <div>
       <nav className="mx-auto max-w-screen-2xl fixed inset-x-0 top-0 z-[80] h-16 flex items-center bg-transparent">
-        <div className={`mx-5 mt-10 rounded-lg border ${menuOpen ? 'border-transparent' : 'border-[#e5e7eb]'}  flex h-16 w-full items-center justify-between px-3 bg-[rgba(255,255,255,0.8)] backdrop-blur-xs max-[900px]:px-1.5 max-[900px]:mt-3 max-[900px]:mx-4 max-[900px]:h-12`}>
-          <a className="inline-flex items-center gap-2 font-bold text-lg text-slate-900" href="#home" aria-label="logo" onClick={(e) => { e.preventDefault(); setIsSearching(false); setCommittedQuery(''); setSelectedCategory(null); setSearchOpen(false); setMenuOpen(false); (window as any)?.scrollTo?.({ top: 0, behavior: 'smooth' }) }}>
+        <div className={`mx-5 mt-10 rounded-lg border ${menuOpen ? 'border-transparent' : 'border-[var(--nav-border)]'}  flex h-16 w-full items-center justify-between px-3 bg-[var(--nav-bg)] backdrop-blur-xs max-[900px]:px-1.5 max-[900px]:mt-1 max-[900px]:mx-4 max-[900px]:h-12`}>
+          <a className="inline-flex items-center gap-2 font-bold text-lg text-[var(--text-color)]" href="#home" aria-label="logo" onClick={(e) => { e.preventDefault(); setIsSearching(false); setCommittedQuery(''); setSelectedCategory(null); setSearchOpen(false); setMenuOpen(false); (window as any)?.scrollTo?.({ top: 0, behavior: 'smooth' }) }}>
             <img src={logo} alt="logo" className="h-12 w-12 max-[900px]:h-9 max-[900px]:w-9" />
             {/* {t.logo} */}
           </a>
@@ -197,7 +197,7 @@ function App() {
                   <button
                     key="lang-toggle-desktop"
                     type="button"
-                    className="font-medium text-lg text-slate-900 cursor-pointer hover:bg-[#f5f5f5] rounded-md px-3 py-1"
+                    className="font-medium text-lg text-[var(--text-color)] cursor-pointer hover:bg-[var(--title-hover-color)] rounded-md px-3 py-1"
                     onClick={() => setLang((prev) => (prev === 'zh' ? 'en' : 'zh'))}
                   >
                     {l.label}
@@ -205,7 +205,7 @@ function App() {
                 ) : (
                   <a
                     key={l.label}
-                    className="font-medium text-lg text-slate-900 cursor-pointer hover:bg-[#f5f5f5] rounded-md px-3 py-1"
+                    className="font-medium text-lg text-[var(--text-color)] cursor-pointer hover:bg-[var(--title-hover-color)] rounded-md px-3 py-1"
                     href={l.href}
                     target="_blank"
                     rel="noreferrer noopener"
@@ -223,7 +223,7 @@ function App() {
                 className="bg-transparent items-center justify-center rounded-md p-2 fixed right-11 top-1.5 z-[90] max-[900px]:flex"
                 onClick={() => { setSearchOpen(true); setMenuOpen(false) }}
               >
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-5 w-5 text-slate-900">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-5 w-5 text-[var(--text-color)]">
                   <circle cx="11" cy="11" r="7" />
                   <line x1="22" y1="22" x2="16.65" y2="16.65" />
                 </svg>
@@ -239,13 +239,13 @@ function App() {
             >
               <div className="relative h-4 w-6">
                 <span
-                  className={`absolute left-0 top-0 block h-[2px] w-5 bg-slate-900 transition-transform duration-200 ${menuOpen ? 'translate-y-[7px] rotate-45' : ''}`}
+                  className={`absolute left-0 top-0 block h-[2px] w-5 bg-[var(--text-color)] transition-transform duration-200 ${menuOpen ? 'translate-y-[7px] rotate-45' : ''}`}
                 />
                 <span
-                  className={`absolute left-0 top-1/2 block h-[2px] w-5 -translate-y-1/2 bg-slate-900 transition-opacity duration-200 ${menuOpen ? 'opacity-0' : 'opacity-100'}`}
+                  className={`absolute left-0 top-1/2 block h-[2px] w-5 -translate-y-1/2 bg-[var(--text-color)] transition-opacity duration-200 ${menuOpen ? 'opacity-0' : 'opacity-100'}`}
                 />
                 <span
-                  className={`absolute bottom-0 left-0 block h-[2px] w-5 bg-slate-900 transition-transform duration-200 ${menuOpen ? '-translate-y-[7px] -rotate-45' : ''}`}
+                  className={`absolute bottom-0 left-0 block h-[2px] w-5 bg-[var(--text-color)] transition-transform duration-200 ${menuOpen ? '-translate-y-[7px] -rotate-45' : ''}`}
                 />
               </div>
             </button>
@@ -254,7 +254,7 @@ function App() {
       </nav>
 
       {menuOpen && (
-        <div className="fixed inset-0 z-[60] bg-white/95 backdrop-blur-sm">
+        <div className="fixed inset-0 z-[60] bg-[var(--body-bg)] backdrop-blur-sm">
           {/* Keep a translucent bar at top to visually preserve navbar with logo and burger */}
           <div className="pointer-events-none fixed inset-x-0 top-0 h-16 bg-transparent" />
           <div className="flex flex-col h-full w-full items-start justify-center">
@@ -268,7 +268,7 @@ function App() {
                       setLang((prev) => (prev === 'zh' ? 'en' : 'zh'))
                       setMenuOpen(false)
                     }}
-                    className="text-2xl font-semibold text-slate-900 hover:text-blue-600"
+                    className="text-2xl font-semibold text-[var(--text-color)] hover:text-blue-600"
                   >
                     {l.label}
                   </button>
@@ -279,7 +279,7 @@ function App() {
                     target="_blank"
                     rel="noreferrer noopener"
                     onClick={() => setMenuOpen(false)}
-                    className="text-2xl font-semibold text-slate-900 hover:text-blue-600"
+                    className="text-2xl font-semibold text-[var(--text-color)] hover:text-blue-600"
                   >
                     {l.label}
                   </a>
@@ -291,7 +291,7 @@ function App() {
       )}
 
       {searchOpen && (
-        <div className="fixed inset-0 z-[100] bg-white">
+        <div className="fixed inset-0 z-[100] bg-[var(--body-bg)]">
           <form
             className="mx-auto w-full max-w-screen-sm px-3 pt-16 max-[900px]:pt-6"
             onSubmit={(e) => { e.preventDefault(); setCommittedQuery(query); setIsSearching(Boolean(query.trim())); setQuery(''); setSearchOpen(false); setMenuOpen(false); (window as any)?.scrollTo?.({ top: 0, behavior: 'smooth' }); (document.activeElement as HTMLElement | null)?.blur() }}
@@ -303,7 +303,7 @@ function App() {
                 type="button"
                 aria-label="back"
                 onClick={() => setSearchOpen(false)}
-                className="shrink-0 rounded-md p-2 text-slate-900"
+                className="shrink-0 rounded-md p-2 text-[var(--text-color)]"
               >
                 {/* Left arrow */}
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h- w-5">
@@ -320,14 +320,14 @@ function App() {
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder={t.search}
-                className="w-full h-10 rounded-none border-b border-[#e5e7eb] px-2 text-lg outline-none"
+                className="w-full h-10 rounded-none border-b border-[var(--nav-border)] px-2 text-[var(--text-color)] text-lg outline-none placeholder:text-[var(--placeholder)]"
               />
               {query ? (
                 <button
                   type="button"
                   aria-label="clear"
                   onClick={() => setQuery('')}
-                  className="shrink-0 rounded-md p-2 text-slate-500"
+                  className="shrink-0 rounded-md p-2 text-[var(--text-color)]"
                 >
                   {/* Close (x) */}
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-5 w-5">
@@ -341,10 +341,10 @@ function App() {
         </div>
       )}
 
-      <header className="relative flex flex-col min-h-screen items-center pt-40 bg-[#ffffff] text-center max-[600px]:pt-25">
+      <header className="relative flex flex-col min-h-screen items-center pt-40 bg-[var(--body-bg)] text-center max-[600px]:pt-25">
         <div className="mx-auto px-6 w-full max-[600px]:mx-0 max-[600px]:px-1.5">
-          <h1 className="m-0 text-[40px] font-medium font-sans leading-tight text-slate-900 max-[600px]:text-[24px]">{t.title}</h1>
-          <p className="mb-8 text-lg text-[#6b7280] max-[600px]:text-sm max-[600px]:mb-4">{t.subtitle}</p>
+          <h1 className="m-0 text-[40px] font-medium font-sans leading-tight text-[var(--text-color)] max-[600px]:text-[24px]">{t.title}</h1>
+          <p className="mb-8 text-lg text-[var(--muted)] max-[600px]:text-sm max-[600px]:mb-4">{t.subtitle}</p>
           <div className="relative mx-auto mt-6 max-w-[600px]">
             <div className="flex flex-wrap items-center justify-center gap-x-1 gap-y-1.5 px-0 max-[600px]:flex-nowrap max-[600px]:overflow-x-auto max-[600px]:overflow-y-hidden max-[600px]:justify-start max-[600px]:gap-y-0 max-[600px]:px-6 scrollbar-none">
               {t.buttons.map((name) => (
@@ -353,8 +353,8 @@ function App() {
                   type="button"
                   className={`rounded-full border px-3 py-1 text-lg font-base shadow-xs cursor-pointer transition-colors max-[600px]:text-base max-[600px]:flex-none max-[600px]:whitespace-nowrap max-[600px]:rounded-lg ${
                     selectedCategory === name
-                      ? 'border-blue-600 bg-blue-50 text-blue-700'
-                      : 'border-[#e5e7eb] bg-white text-slate-900 hover:bg-slate-50'
+                      ? 'border-[var(--border-blue)] bg-[var(--bg-blue)] text-[var(--border-blue)]'
+                      : 'border-[var(--border)] bg-[var(--body-bg)] text-[var(--text-color)] hover:bg-[var(--title-hover-color)]'
                   }`}
                   aria-pressed={selectedCategory === name}
                   onClick={() => { setSelectedCategory((prev) => (prev === name ? null : name)); setIsSearching(false); setCommittedQuery(''); setSearchOpen(false) }}
@@ -363,8 +363,8 @@ function App() {
                 </button>
               ))}
             </div>
-            <div className="pointer-events-none absolute inset-y-0 left-0 z-[1] hidden w-6 bg-gradient-to-r from-white to-transparent max-[600px]:block" />
-            <div className="pointer-events-none absolute inset-y-0 right-0 z-[1] hidden w-6 bg-gradient-to-l from-white to-transparent max-[600px]:block" />
+            <div className="pointer-events-none absolute inset-y-0 left-0 z-[1] hidden w-6 bg-gradient-to-r from-[var(--body-bg)] to-transparent max-[600px]:block" />
+            <div className="pointer-events-none absolute inset-y-0 right-0 z-[1] hidden w-6 bg-gradient-to-l from-[var(--body-bg)] to-transparent max-[600px]:block" />
       </div>
           {!isMobile && (
             <form
@@ -373,20 +373,20 @@ function App() {
               role="search"
               aria-label="site search"
             >
-              <label className="relative flex items-center gap-3 rounded-[14px] h-full border border-[#e5e7eb] bg-[#f5f5f5] px-1 py-2 inset-shadow-sm">
+              <label className="relative flex items-center gap-3 rounded-[14px] h-full border border-[var(--nav-border)] bg-[var(--title-hover-color)] px-1 py-2 inset-shadow-sm">
                 <input
                   type="search"
                   placeholder={t.search}
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
-                  className="w-full h-10 rounded-md px-3 pr-10 text-lg outline-none bg-transparent transition-[box-shadow,border-color] placeholder:text-[#6b7280]"
+                  className="w-full h-10 rounded-md px-3 pr-10 text-[var(--text-color)] text-lg outline-none bg-transparent transition-[box-shadow,border-color] placeholder:text-[var(--placeholder)]"
                 />
                 {query ? (
                   <button
                     type="button"
                     aria-label="clear"
                     onClick={() => setQuery('')}
-                    className="absolute right-2 top-1/2 -translate-y-1/2 rounded-md p-2 text-slate-500 hover:text-slate-700"
+                    className="absolute right-2 top-1/2 -translate-y-1/2 rounded-md p-2 text-[var(--text-color)] hover:text-[var(--x-hover)]"
                   >
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-6 w-6">
                       <line x1="18" y1="6" x2="6" y2="18" />
@@ -411,7 +411,7 @@ function App() {
           
         </div>
       </header>
-      <footer className="mx-auto w-full max-w-screen-2xl px-10 py-18 text-sm text-slate-500 max-[600px]:px-5 max-[600px]:py-6">
+      <footer className="mx-auto w-full max-w-screen-2xl px-10 py-30 text-sm text-[var(--text-500)] max-[600px]:px-5 max-[600px]:pb-6 max-[600px]:pt-15">
         <div className="grid grid-cols-2 gap-y-4">
           <div className="justify-self-start self-start">
             Not affiliated with NTU; only links to public services from my.ntu.edu.tw.
@@ -419,18 +419,18 @@ function App() {
           <div className="justify-self-end self-start">
             <button
               type="button"
-              className="rounded-md border border-[#e5e7eb] px-3 py-1 text-slate-700 hover:bg-slate-50"
+              className="cursor-pointer rounded-md border border-[var(--nav-border)] px-3 py-1 text-[var(--text-500)] hover:bg-[var(--title-hover-color)]"
               onClick={() => setLang((prev) => (prev === 'zh' ? 'en' : 'zh'))}
             >
               {lang === 'zh' ? 'English' : '中文'}
             </button>
           </div>
-          <div className="justify-self-start self-end col-span-2 sm:col-span-1">
+          <div className="justify-self-start self-end">
             henning9098@gmail.com <br /> @2025 Made by HenningY
           </div>
           <div className="justify-self-end self-end">
-            <div className="flex items-center gap-2">
-              <button
+            <div className="flex items-center gap-1">
+              {/* <button
                 type="button"
                 aria-label="Use system theme"
                 className={`rounded-md border px-2.5 py-1.5 text-slate-700 hover:bg-slate-50 dark:text-slate-200 dark:border-slate-700 dark:hover:bg-slate-800 ${theme==='system' ? 'bg-slate-100 dark:bg-slate-800' : 'border-[#e5e7eb] dark:border-slate-700'}`}
@@ -441,11 +441,11 @@ function App() {
                   <rect x="3" y="4" width="18" height="12" rx="2" ry="2" />
                   <line x1="8" y1="20" x2="16" y2="20" />
                 </svg>
-              </button>
+              </button> */}
               <button
                 type="button"
                 aria-label="Use light theme"
-                className={`rounded-md border px-2.5 py-1.5 text-slate-700 hover:bg-slate-50 dark:text-slate-200 dark:border-slate-700 dark:hover:bg-slate-800 ${theme==='light' ? 'bg-slate-100 dark:bg-slate-800' : 'border-[#e5e7eb] dark:border-slate-700'}`}
+                className={`cursor-pointer rounded-md border px-2.5 py-1.5 text-slate-700 ${theme==='light' ? 'bg-slate-0' : 'border-[#333333] hover:text-slate-300'}`}
                 onClick={() => setTheme('light')}
                 title={lang==='zh' ? '淺色' : 'Light'}
               >
@@ -464,7 +464,7 @@ function App() {
               <button
                 type="button"
                 aria-label="Use dark theme"
-                className={`rounded-md border px-2.5 py-1.5 text-slate-700 hover:bg-slate-50 dark:text-slate-200 dark:border-slate-700 dark:hover:bg-slate-800 ${theme==='dark' ? 'bg-slate-100 dark:bg-slate-800' : 'border-[#e5e7eb] dark:border-slate-700'}`}
+                className={`cursor-pointer rounded-md border px-2.5 py-1.5 text-slate-400 ${theme==='light' ? 'bg-slate-100 hover:text-slate-700' : 'border-[#333333]'}`}
                 onClick={() => setTheme('dark')}
                 title={lang==='zh' ? '深色' : 'Dark'}
               >
