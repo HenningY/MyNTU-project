@@ -8,6 +8,41 @@ body,
 
 @layer base {
   body {
-    @apply text-slate-900 bg-white antialiased;
+    @apply text-slate-900 bg-white antialiased dark:bg-[#0b0f19] dark:text-slate-100;
+  }
+  /* Force overrides when user chooses theme explicitly */
+  html[data-theme='dark'] body {
+    background-color: #0b0f19 !important;
+    color: #f1f5f9 !important;
+  }
+  html[data-theme='light'] body {
+    background-color: #ffffff !important;
+    color: #0f172a !important; /* slate-900 */
+  }
+  /* Hide native search clear buttons across browsers */
+  input[type="search"]::-webkit-search-decoration,
+  input[type="search"]::-webkit-search-cancel-button,
+  input[type="search"]::-webkit-search-results-button,
+  input[type="search"]::-webkit-search-results-decoration {
+    -webkit-appearance: none;
+    display: none;
+  }
+  input[type="search"] {
+    -webkit-appearance: none;
+  }
+  input[type="search"]::-ms-clear { /* Legacy IE/Edge */
+    display: none;
+    width: 0;
+    height: 0;
+  }
+}
+
+@layer utilities {
+  .scrollbar-none {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+  .scrollbar-none::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
   }
 }
