@@ -33,6 +33,7 @@ import InternationalMentorship from './InternationalMentorship.png'
 import generalMap from './generalMap.png'
 import MentorshipProgram from './MentorshipProgram.png'
 import restleave from './restleave.png'
+import youbike from './youbike.png'
 
 
 export const services: ServiceItem[] = [
@@ -518,7 +519,7 @@ export const services: ServiceItem[] = [
     category: { zh: '學生專區', en: 'Students' },
   },  {
     id: '61',
-    icon: logo,
+    icon: youbike,
     name: { zh: 'YouBike2.0補助', en: 'YouBike2.0 Subsidy' },
     url: { zh: 'https://my.ntu.edu.tw/yb2sub/', en: 'https://my.ntu.edu.tw/yb2sub/' },
     description: { zh: '', en: '' },
