@@ -72,7 +72,7 @@ function App() {
   // const hotSet = new Set(hotIds)
 
   const [hasScrolled, setHasScrolled] = useState<boolean>(false)
-  const [isSmallScreen, setIsSmallScreen] = useState<boolean>(() => (typeof window !== 'undefined' ? window.innerWidth < 600 : false))
+  // const [isSmallScreen, setIsSmallScreen] = useState<boolean>(() => (typeof window !== 'undefined' ? window.innerWidth < 600 : false))
 
   const navLinks = lang === 'zh'
     ? [
@@ -115,14 +115,14 @@ function App() {
 
   useEffect(() => {
     const onScroll = () => setHasScrolled(window.scrollY > 0)
-    const onResize = () => setIsSmallScreen(window.innerWidth < 600)
+    // const onResize = () => setIsSmallScreen(window.innerWidth < 600)
     onScroll()
-    onResize()
+    // onResize()
     window.addEventListener('scroll', onScroll, { passive: true } as any)
-    window.addEventListener('resize', onResize)
+    // window.addEventListener('resize', onResize)
     return () => {
       window.removeEventListener('scroll', onScroll)
-      window.removeEventListener('resize', onResize)
+      // window.removeEventListener('resize', onResize)
     }
   }, [])
 
@@ -202,7 +202,7 @@ function App() {
   return (
       <div>
       <nav className="mx-auto max-w-screen-2xl fixed inset-x-0 top-0 z-[80] h-14 flex items-center bg-transparent">
-        <div className={`mx-5 mt-10 rounded-lg border ${isSmallScreen ? (menuOpen ? 'border-transparent' : 'border-[var(--nav-border)]') : (hasScrolled ? 'border-[var(--nav-border)]' : 'border-transparent')} transition-all duration-300 flex h-14 w-full items-center justify-between px-3 bg-[var(--nav-bg)] backdrop-blur-xs max-[900px]:px-1.5 max-[900px]:mt-3 max-[900px]:mx-4 max-[900px]:h-12 max-[600px]:mt-1`}>
+        <div className={`mx-5 mt-10 rounded-lg border ${isMobile ? (menuOpen ? 'border-transparent' : 'border-[var(--nav-border)]') : (hasScrolled ? (menuOpen ? 'border-transparent' : 'border-[var(--nav-border)]') : 'border-transparent')} transition-all duration-300 flex h-14 w-full items-center justify-between px-3 bg-[var(--nav-bg)] backdrop-blur-xs max-[900px]:px-1.5 max-[900px]:mt-3 max-[900px]:mx-4 max-[900px]:h-12 max-[600px]:mt-1`}>
           <a className="inline-flex items-center gap-2 font-bold text-lg text-[var(--text-color)]" href="#home" aria-label="logo" onClick={(e) => { e.preventDefault(); setIsSearching(false); setCommittedQuery(''); setSelectedCategory(null); setSearchOpen(false); setMenuOpen(false); (window as any)?.scrollTo?.({ top: 0, behavior: 'smooth' }) }}>
             <img src={theme === 'dark' ? logo_night : logo} alt="logo" className="h-10 w-10 rounded-md max-[900px]:h-9 max-[900px]:w-9" />
             {/* {t.logo} */}
@@ -233,7 +233,7 @@ function App() {
               ))}
             </div>
             {/* Mobile search icon based on device detection, placed left to burger */}
-            {isSmallScreen && (
+            {isMobile && (
               <button
                 type="button"
                 aria-label="open search"
@@ -363,12 +363,12 @@ function App() {
           <h1 className="m-0 text-[36px] font-medium font-sans leading-tight text-[var(--text-color)] max-[900px]:text-[32px] max-[600px]:text-[24px]">{t.title}</h1>
           <p className="mb-8 text-lg text-[var(--muted)] max-[900px]:text-base max-[600px]:text-sm max-[600px]:mb-4">{t.subtitle}</p>
           <div className="relative mx-auto mt-6 max-w-[600px]">
-            <div className="flex flex-wrap items-center justify-center gap-x-1 gap-y-1.5 px-0 max-[600px]:flex-nowrap max-[600px]:overflow-x-auto max-[600px]:overflow-y-hidden max-[600px]:justify-start max-[600px]:gap-y-0 max-[600px]:px-6 scrollbar-none">
+            <div className={`flex items-center gap-x-1 scrollbar-none ${isMobile ? 'flex-nowrap overflow-x-auto overflow-y-hidden justify-start gap-y-0 px-6' : 'flex-wrap justify-center gap-y-1.5 px-0'}`}>
               {t.buttons.map((name) => (
                 <button
                   key={name}
                   type="button"
-                  className={`rounded-full border px-3 py-1 text-base font-base shadow-xs cursor-pointer transition-colors max-[600px]:text-base max-[600px]:flex-none max-[600px]:whitespace-nowrap max-[600px]:rounded-lg ${
+                  className={`border px-3 py-1 text-base font-base shadow-xs cursor-pointer transition-colors ${isMobile ? 'flex-none whitespace-nowrap rounded-lg' : 'rounded-full'} ${
                     selectedCategory === name
                       ? 'border-[var(--border-blue)] bg-[var(--bg-blue)] text-[var(--border-blue)]'
                       : 'border-[var(--border)] bg-[var(--body-bg)] text-[var(--text-color)] hover:bg-[var(--title-hover-color)]'
@@ -383,20 +383,20 @@ function App() {
             <div className="pointer-events-none absolute inset-y-0 left-0 z-[1] hidden w-6 bg-gradient-to-r from-[var(--body-bg)] to-transparent max-[600px]:block" />
             <div className="pointer-events-none absolute inset-y-0 right-0 z-[1] hidden w-6 bg-gradient-to-l from-[var(--body-bg)] to-transparent max-[600px]:block" />
       </div>
-          {!isSmallScreen && (
+          {!isMobile && (
             <form
-              className="mx-auto mt-6 w-full max-w-3xl h-14 mb-16 max-[900px]:h-12"
+              className="mx-auto mt-6 w-full px-3 max-w-3xl h-14 mb-16 max-[900px]:h-12"
               onSubmit={(e) => { e.preventDefault(); setCommittedQuery(query); setIsSearching(Boolean(query.trim())); setSelectedCategory(null); setQuery(''); (window as any)?.scrollTo?.({ top: 0, behavior: 'smooth' }) }}
               role="search"
               aria-label="site search"
             >
-              <label className="relative flex items-center gap-3 rounded-[14px] h-full border border-[var(--nav-border)] bg-[var(--title-hover-color)] px-1 py-2 inset-shadow-sm">
+              <label className="relative flex items-center gap-3 rounded-[14px] max-[600px]:rounded-[10px] h-full border border-[var(--nav-border)] bg-[var(--title-hover-color)] px-1 py-2 inset-shadow-sm">
                 <input
                   type="search"
                   placeholder={t.search}
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
-                  className="w-full h-10 rounded-md px-3 pr-10 text-[var(--text-color)] text-lg outline-none bg-transparent transition-[box-shadow,border-color] placeholder:text-[var(--placeholder)]"
+                  className="w-full h-10 rounded-md px-3 pr-10 text-[var(--text-color)] text-lg max-[900px]:text-base outline-none bg-transparent transition-[box-shadow,border-color] placeholder:text-[var(--placeholder)]"
                 />
                 {query ? (
                   <button
