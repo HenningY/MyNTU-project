@@ -23,7 +23,7 @@ function ServiceCard({ item, lang }: { item: ServiceItem; lang: Lang }) {
       href={href}
       target="_blank"
       rel="noreferrer noopener"
-      className="h-25 flex items-center border-0 border-[#e5e7eb] rounded-[20px] gap-3 bg-transparent px-4 py-4 hover:bg-[var(--bg-slate-50)] max-[900px]:px-2 max-[900px]:py-1 max-[900px]:h-auto"
+      className="h-25 flex items-center border-0 border-[#e5e7eb] rounded-[20px] gap-3 bg-transparent px-4 py-4 transition-all duration-200 hover:bg-[var(--bg-slate-50)] max-[900px]:px-2 max-[900px]:py-1 max-[900px]:h-auto"
     >
       <img src={item.icon} alt="icon" className="h-12 w-12 rounded-lg shadow-sm border border-[var(--nav-border)] max-[600px]:h-10 max-[600px]:w-10" />
       <div className="text-left">

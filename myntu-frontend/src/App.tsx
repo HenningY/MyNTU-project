@@ -2,7 +2,8 @@ import { useEffect, useState } from 'react'
 import './index.css'
 import { services, type ServiceItem } from './data/services'
 import ServiceSections from './components/ServiceSections'
-import logo from './data/logo.svg'
+import logo from './data/logo.png'
+import logo_night from './data/logo_night.png'
 
 type Lang = 'zh' | 'en'
 
@@ -70,6 +71,9 @@ function App() {
   const hotIds: string[] = ['30','22','186','10','12','11','206','76','84','77']
   const hotSet = new Set(hotIds)
 
+  const [hasScrolled, setHasScrolled] = useState<boolean>(false)
+  const [isSmallScreen, setIsSmallScreen] = useState<boolean>(() => (typeof window !== 'undefined' ? window.innerWidth <= 600 : false))
+
   const navLinks = lang === 'zh'
     ? [
         { label: '聯絡資訊', href: 'https://www.ntu.edu.tw/contact.html' },
@@ -106,6 +110,19 @@ function App() {
       setIsMobile(Boolean(uaDataMobile ?? uaMobile))
     } catch {
       setIsMobile(false)
+    }
+  }, [])
+
+  useEffect(() => {
+    const onScroll = () => setHasScrolled(window.scrollY > 0)
+    const onResize = () => setIsSmallScreen(window.innerWidth <= 600)
+    onScroll()
+    onResize()
+    window.addEventListener('scroll', onScroll, { passive: true } as any)
+    window.addEventListener('resize', onResize)
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+      window.removeEventListener('resize', onResize)
     }
   }, [])
 
@@ -185,13 +202,13 @@ function App() {
   return (
       <div>
       <nav className="mx-auto max-w-screen-2xl fixed inset-x-0 top-0 z-[80] h-16 flex items-center bg-transparent">
-        <div className={`mx-5 mt-10 rounded-lg border ${menuOpen ? 'border-transparent' : 'border-[var(--nav-border)]'}  flex h-16 w-full items-center justify-between px-3 bg-[var(--nav-bg)] backdrop-blur-xs max-[900px]:px-1.5 max-[900px]:mt-1 max-[900px]:mx-4 max-[900px]:h-12`}>
+        <div className={`mx-5 mt-10 rounded-lg border ${isSmallScreen ? 'border-[var(--nav-border)]' : (hasScrolled ? 'border-[var(--nav-border)]' : 'border-transparent')} transition-all duration-300 flex h-16 w-full items-center justify-between px-3 bg-[var(--nav-bg)] backdrop-blur-xs max-[900px]:px-1.5 max-[900px]:mt-1 max-[900px]:mx-4 max-[900px]:h-12`}>
           <a className="inline-flex items-center gap-2 font-bold text-lg text-[var(--text-color)]" href="#home" aria-label="logo" onClick={(e) => { e.preventDefault(); setIsSearching(false); setCommittedQuery(''); setSelectedCategory(null); setSearchOpen(false); setMenuOpen(false); (window as any)?.scrollTo?.({ top: 0, behavior: 'smooth' }) }}>
-            <img src={logo} alt="logo" className="h-12 w-12 max-[900px]:h-9 max-[900px]:w-9" />
+            <img src={theme === 'dark' ? logo_night : logo} alt="logo" className="h-12 w-12 rounded-md max-[900px]:h-9 max-[900px]:w-9" />
             {/* {t.logo} */}
           </a>
           <div className="flex items-center gap-2">
-            <div className="items-center gap-2 max-[900px]:hidden flex">
+            <div className="items-center gap-1 max-[900px]:hidden flex">
               {menuItems.map((l) => (
                 l.isToggle ? (
                   <button
@@ -294,7 +311,7 @@ function App() {
         <div className="fixed inset-0 z-[100] bg-[var(--body-bg)]">
           <form
             className="mx-auto w-full max-w-screen-sm px-3 pt-16 max-[900px]:pt-6"
-            onSubmit={(e) => { e.preventDefault(); setCommittedQuery(query); setIsSearching(Boolean(query.trim())); setQuery(''); setSearchOpen(false); setMenuOpen(false); (window as any)?.scrollTo?.({ top: 0, behavior: 'smooth' }); (document.activeElement as HTMLElement | null)?.blur() }}
+            onSubmit={(e) => { e.preventDefault(); setCommittedQuery(query); setIsSearching(Boolean(query.trim())); setSelectedCategory(null); setQuery(''); setSearchOpen(false); setMenuOpen(false); (window as any)?.scrollTo?.({ top: 0, behavior: 'smooth' }); (document.activeElement as HTMLElement | null)?.blur() }}
             role="search"
             aria-label="site search"
           >
@@ -369,7 +386,7 @@ function App() {
           {!isMobile && (
             <form
               className="mx-auto mt-6 w-full max-w-3xl h-14 mb-16"
-              onSubmit={(e) => { e.preventDefault(); setCommittedQuery(query); setIsSearching(Boolean(query.trim())); setQuery(''); (window as any)?.scrollTo?.({ top: 0, behavior: 'smooth' }) }}
+              onSubmit={(e) => { e.preventDefault(); setCommittedQuery(query); setIsSearching(Boolean(query.trim())); setSelectedCategory(null); setQuery(''); (window as any)?.scrollTo?.({ top: 0, behavior: 'smooth' }) }}
               role="search"
               aria-label="site search"
             >
@@ -411,15 +428,15 @@ function App() {
           
         </div>
       </header>
-      <footer className="mx-auto w-full max-w-screen-2xl px-10 py-30 text-sm text-[var(--text-500)] max-[600px]:px-5 max-[600px]:pb-6 max-[600px]:pt-15">
-        <div className="grid grid-cols-2 gap-y-4">
+      <footer className="mx-auto w-full max-w-screen-2xl px-10 pt-30 pb-15 text-sm text-[var(--text-500)] max-[600px]:px-5 max-[600px]:pb-6 max-[600px]:pt-15">
+        <div className="grid grid-cols-2 gap-y-10 max-[600px]:gap-y-5">
           <div className="justify-self-start self-start">
             Not affiliated with NTU; only links to public services from my.ntu.edu.tw.
           </div>
           <div className="justify-self-end self-start">
             <button
               type="button"
-              className="cursor-pointer rounded-md border border-[var(--nav-border)] px-3 py-1 text-[var(--text-500)] hover:bg-[var(--title-hover-color)]"
+              className="cursor-pointer rounded-lg border border-[var(--nav-border)] px-3 py-1 text-[var(--text-500)] hover:bg-[var(--title-hover-color)]"
               onClick={() => setLang((prev) => (prev === 'zh' ? 'en' : 'zh'))}
             >
               {lang === 'zh' ? 'English' : '中文'}
@@ -445,7 +462,7 @@ function App() {
               <button
                 type="button"
                 aria-label="Use light theme"
-                className={`cursor-pointer rounded-md border px-2.5 py-1.5 text-slate-700 ${theme==='light' ? 'bg-slate-0' : 'border-[#333333] hover:text-slate-300'}`}
+                className={`cursor-pointer rounded-lg border px-2 py-1 text-slate-700 ${theme==='light' ? 'bg-slate-0' : 'border-[#333333] hover:text-slate-300'}`}
                 onClick={() => setTheme('light')}
                 title={lang==='zh' ? '淺色' : 'Light'}
               >
@@ -464,7 +481,7 @@ function App() {
               <button
                 type="button"
                 aria-label="Use dark theme"
-                className={`cursor-pointer rounded-md border px-2.5 py-1.5 text-slate-400 ${theme==='light' ? 'bg-slate-100 hover:text-slate-700' : 'border-[#333333]'}`}
+                className={`cursor-pointer rounded-lg border px-2 py-1 text-slate-400 ${theme==='light' ? 'bg-slate-100 hover:text-slate-700' : 'border-[#333333]'}`}
                 onClick={() => setTheme('dark')}
                 title={lang==='zh' ? '深色' : 'Dark'}
               >

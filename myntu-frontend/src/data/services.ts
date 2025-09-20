@@ -14,7 +14,7 @@ export type ServiceItem = {
   imgSrc?: string
 }
 
-import logo from './logo.svg'
+import logo from './logo.png'
 import ntucool from './ntucool.png'
 import ntumail from './ntumail.png'
 import score from './score.png'
@@ -22,6 +22,7 @@ import course from './course.png'
 import epo from './epo.png'
 import confirmWhoami from './confirmWhoami.png'
 import tuition from './tuition.png'
+import tuition2 from './tuition2.png'
 import payment from './payment.png'
 import ntucourse from './ntucourse.png'
 import ntucourseneo from './ntucourseneo.png'
@@ -94,7 +95,7 @@ export const services: ServiceItem[] = [
     category: { zh: '學生專區', en: 'Students' },
   },  {
     id: '9',
-    icon: logo,
+    icon: tuition2,
     name: { zh: '學雜(分)費專區', en: 'Tuition and Fees Payment' },
     url: { zh: 'https://my.ntu.edu.tw/schooling/', en: 'https://my.ntu.edu.tw/schooling/eng.html' },
     description: { zh: '', en: '' },
@@ -265,7 +266,7 @@ export const services: ServiceItem[] = [
     icon: course,
     name: { zh: '網路選課1', en: 'Online Course Selection System I' },
     url: { zh: 'https://if192.aca.ntu.edu.tw/', en: 'https://if192.aca.ntu.edu.tw/default.asp?lang=en' },
-    description: { zh: '初選和加退選', en: 'pre-registration selection and add/drop selection' },
+    description: { zh: '初選和加退選', en: 'Pre-registration selection and add/drop selection' },
     subcategory: { zh: '課務資訊', en: 'Courses' },
     category: { zh: '學生專區', en: 'Students' },
   },  {
@@ -273,7 +274,7 @@ export const services: ServiceItem[] = [
     icon: course,
     name: { zh: '網路選課2', en: 'Online Course Selection System II' },
     url: { zh: 'https://if177.aca.ntu.edu.tw/', en: 'https://if177.aca.ntu.edu.tw/default.asp?lang=en' },
-    description: { zh: '初選和加退選', en: 'pre-registration selection and add/drop selection' },
+    description: { zh: '初選和加退選', en: 'Pre-registration selection and add/drop selection' },
     subcategory: { zh: '課務資訊', en: 'Courses' },
     category: { zh: '學生專區', en: 'Students' },
   },  {
@@ -433,7 +434,7 @@ export const services: ServiceItem[] = [
     icon: logo,
     name: { zh: '學生請假(學生)', en: 'Student Leave (student)' },
     url: { zh: 'https://my.ntu.edu.tw/stuLeaveManagement/login.aspx', en: 'https://my.ntu.edu.tw/stuLeaveManagement/login.aspx' },
-    description: { zh: '', en: '' },
+    description: { zh: '學生可選擇以紙本或是使用本系統進行線上請假', en: 'Students may choose to apply for leave either in paper form or online' },
     subcategory: { zh: '生活資訊', en: 'NTU Life' },
     category: { zh: '學生專區', en: 'Students' },
   },  {
@@ -633,7 +634,7 @@ export const services: ServiceItem[] = [
     icon: ntucourseneo,
     name: { zh: '臺大新課程網', en: 'NTU Course Neo' },
     url: { zh: 'https://course.ntu.edu.tw/', en: 'https://course.ntu.edu.tw/' },
-    description: { zh: '課程網可查詢全校課程、課程大綱等相關資訊', en: 'browse all university courses, view course syllabi, and access related information' },
+    description: { zh: '課程網可查詢全校課程、課程大綱等相關資訊', en: 'Browse all university courses, view course syllabi, and access related information' },
     subcategory: { zh: '課程學習', en: 'Courses' },
     category: { zh: '課程學習', en: 'Courses' },
   },  {
@@ -657,15 +658,15 @@ export const services: ServiceItem[] = [
     icon: ntucourse,
     name: { zh: '臺大課程網', en: 'Online Course Information' },
     url: { zh: 'https://nol.ntu.edu.tw/nol/guest/index.php', en: 'https://nol.ntu.edu.tw/nol/guest/index_foreng.php' },
-    description: { zh: '', en: '' },
+    description: { zh: '課程網可查詢全校課程、課程大綱等相關資訊', en: 'Browse all university courses, view course syllabi, and access related information' },
     subcategory: { zh: '課程學習', en: 'Courses' },
     category: { zh: '課程學習', en: 'Courses' },
   },  {
     id: '80',
     icon: ntucourse,
     name: { zh: '臺大課程網2', en: 'Online Course Information 2' },
-    url: { zh: 'https://course.ntu.edu.tw', en: 'https://course.ntu.edu.tw/en' },
-    description: { zh: '課程網可查詢全校課程、課程大綱等相關資訊', en: 'browse all university courses, view course syllabi, and access related information' },
+    url: { zh: 'https://nol2.aca.ntu.edu.tw/nol/guest/index.php', en: 'https://nol2.aca.ntu.edu.tw/nol/guest/index.php' },
+    description: { zh: '課程網可查詢全校課程、課程大綱等相關資訊', en: 'Browse all university courses, view course syllabi, and access related information' },
     subcategory: { zh: '課程學習', en: 'Courses' },
     category: { zh: '課程學習', en: 'Courses' },
   },  {
@@ -681,7 +682,7 @@ export const services: ServiceItem[] = [
     icon: course,
     name: { zh: '網路選課1', en: 'Online Course Selection System I' },
     url: { zh: 'https://if192.aca.ntu.edu.tw/', en: 'https://if192.aca.ntu.edu.tw/default.asp?lang=en' },
-    description: { zh: '初選和加退選', en: 'pre-registration selection and add/drop selection' },
+    description: { zh: '初選和加退選', en: 'Pre-registration selection and add/drop selection' },
     subcategory: { zh: '課程學習', en: 'Courses' },
     category: { zh: '課程學習', en: 'Courses' },
   },  {
@@ -689,7 +690,7 @@ export const services: ServiceItem[] = [
     icon: course,
     name: { zh: '網路選課2', en: 'Online Course Selection System II' },
     url: { zh: 'https://if177.aca.ntu.edu.tw/', en: 'https://if177.aca.ntu.edu.tw/default.asp?lang=en' },
-    description: { zh: '初選和加退選', en: 'pre-registration selection and add/drop selection' },
+    description: { zh: '初選和加退選', en: 'Pre-registration selection and add/drop selection' },
     subcategory: { zh: '課程學習', en: 'Courses' },
     category: { zh: '課程學習', en: 'Courses' },
   },  {
