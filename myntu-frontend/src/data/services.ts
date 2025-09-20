@@ -28,6 +28,10 @@ import ntucourse from './ntucourse.png'
 import ntucourseneo from './ntucourseneo.png'
 import courseresult from './courseresult.png'
 import mooc from './mooc.png'
+import OverseasInternship from './OverseasInternship.png'
+import InternationalMentorship from './InternationalMentorship.png'
+import generalMap from './generalMap.png'
+import MentorshipProgram from './MentorshipProgram.png'
 
 
 export const services: ServiceItem[] = [
@@ -161,7 +165,7 @@ export const services: ServiceItem[] = [
     category: { zh: '學生專區', en: 'Students' },
   },  {
     id: '17',
-    icon: logo,
+    icon: generalMap,
     name: { zh: '通識課程地圖', en: '' },
     url: { zh: 'https://cge.ntu.edu.tw/cl_n_195217.html', en: '' },
     description: { zh: '', en: '' },
@@ -169,7 +173,7 @@ export const services: ServiceItem[] = [
     category: { zh: '學生專區', en: 'Students' },
   },  {
     id: '18',
-    icon: logo,
+    icon: MentorshipProgram,
     name: { zh: '跨領域實習 - 臺灣引路人計畫', en: 'Interdisciplinary Internship - Mentorship Program(Chinese ver.)' },
     url: { zh: 'https://ntucace.ntu.edu.tw/ ', en: 'https://ntucace.ntu.edu.tw/ ' },
     description: { zh: '', en: '' },
@@ -345,7 +349,7 @@ export const services: ServiceItem[] = [
     category: { zh: '學生專區', en: 'Students' },
   },  {
     id: '40',
-    icon: logo,
+    icon: InternationalMentorship,
     name: { zh: '臺大國際引路人計畫', en: 'NTU International Mentorship Program' },
     url: { zh: 'https://oiainternship.ntu.edu.tw/', en: 'https://oiainternship.ntu.edu.tw/' },
     description: { zh: '', en: '' },
@@ -353,7 +357,7 @@ export const services: ServiceItem[] = [
     category: { zh: '學生專區', en: 'Students' },
   },  {
     id: '41',
-    icon: logo,
+    icon: OverseasInternship,
     name: { zh: '臺大國際引水人計畫', en: 'NTU Overseas Internship Program' },
     url: { zh: 'https://internshipabroad.ntu.edu.tw/', en: 'https://internshipabroad.ntu.edu.tw/' },
     description: { zh: '', en: '' },
@@ -609,7 +613,7 @@ export const services: ServiceItem[] = [
     category: { zh: '學生專區', en: 'Students' },
   },  {
     id: '73',
-    icon: logo,
+    icon: generalMap,
     name: { zh: '通識課程地圖', en: '' },
     url: { zh: 'https://cge.ntu.edu.tw/cl_n_195217.html', en: '' },
     description: { zh: '', en: '' },
@@ -617,7 +621,7 @@ export const services: ServiceItem[] = [
     category: { zh: '課程學習', en: 'Courses' },
   },  {
     id: '74',
-    icon: logo,
+    icon: MentorshipProgram,
     name: { zh: '跨領域實習 - 臺灣引路人計畫', en: 'Interdisciplinary Internship - Mentorship Program(Chinese ver.)' },
     url: { zh: 'https://ntucace.ntu.edu.tw/ ', en: 'https://ntucace.ntu.edu.tw/ ' },
     description: { zh: '', en: '' },
@@ -721,7 +725,7 @@ export const services: ServiceItem[] = [
     category: { zh: '課程學習', en: 'Courses' },
   },  {
     id: '87',
-    icon: logo,
+    icon: OverseasInternship,
     name: { zh: '臺大國際引水人計畫', en: 'NTU Overseas Internship Program' },
     url: { zh: 'https://internshipabroad.ntu.edu.tw/', en: 'https://internshipabroad.ntu.edu.tw/' },
     description: { zh: '', en: '' },
@@ -729,7 +733,7 @@ export const services: ServiceItem[] = [
     category: { zh: '課程學習', en: 'Courses' },
   },  {
     id: '88',
-    icon: logo,
+    icon: InternationalMentorship,
     name: { zh: '臺大國際引路人計畫', en: 'NTU International Mentorship Program' },
     url: { zh: 'https://oiainternship.ntu.edu.tw/', en: 'https://oiainternship.ntu.edu.tw/' },
     description: { zh: '', en: '' },
@@ -1289,7 +1293,7 @@ export const services: ServiceItem[] = [
     category: { zh: '教職申辦', en: 'Faculty & Staff' },
   },  {
     id: '158',
-    icon: logo,
+    icon: generalMap,
     name: { zh: '通識課程地圖', en: '' },
     url: { zh: 'https://cge.ntu.edu.tw/cl_n_195217.html', en: '' },
     description: { zh: '', en: '' },
@@ -1817,7 +1821,7 @@ export const services: ServiceItem[] = [
     category: { zh: '場館交通', en: 'Facilities' },
   },  {
     id: '224',
-    icon: logo,
+    icon: generalMap,
     name: { zh: '通識課程地圖', en: '' },
     url: { zh: 'https://cge.ntu.edu.tw/cl_n_195217.html', en: '' },
     description: { zh: '', en: '' },
