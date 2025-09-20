@@ -69,7 +69,7 @@ function App() {
   })
   // Placeholder hot IDs after renumbering; adjust as you like
   const hotIds: string[] = ['30','22','186','10','12','11','206','76','84','77']
-  const hotSet = new Set(hotIds)
+  // const hotSet = new Set(hotIds)
 
   const [hasScrolled, setHasScrolled] = useState<boolean>(false)
   const [isSmallScreen, setIsSmallScreen] = useState<boolean>(() => (typeof window !== 'undefined' ? window.innerWidth <= 600 : false))
@@ -99,7 +99,7 @@ function App() {
     setCommittedQuery('')
   }, [lang])
 
-  const cancelLabel = lang === 'zh' ? '取消' : 'Cancel'
+  // const cancelLabel = lang === 'zh' ? '取消' : 'Cancel'
 
   useEffect(() => {
     try {
@@ -210,7 +210,7 @@ function App() {
           <div className="flex items-center gap-2">
             <div className="items-center gap-1 max-[900px]:hidden flex">
               {menuItems.map((l) => (
-                l.isToggle ? (
+                ('isToggle' in l) ? (
                   <button
                     key="lang-toggle-desktop"
                     type="button"
@@ -222,8 +222,8 @@ function App() {
                 ) : (
                   <a
                     key={l.label}
-                    className="font-medium text-lg text-[var(--text-color)] cursor-pointer hover:bg-[var(--title-hover-color)] rounded-md px-3 py-1"
                     href={l.href}
+                    className="font-medium text-lg text-[var(--text-color)] cursor-pointer hover:bg-[var(--title-hover-color)] rounded-md px-3 py-1"
                     target="_blank"
                     rel="noreferrer noopener"
                   >
@@ -277,7 +277,7 @@ function App() {
           <div className="flex flex-col h-full w-full items-start justify-center">
             <div className="flex flex-col items-start gap-6 px-6">
               {menuItems.map((l) => (
-                l.isToggle ? (
+                ('isToggle' in l) ? (
                   <button
                     key="lang-toggle-mobile"
                     type="button"
