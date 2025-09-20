@@ -126,6 +126,17 @@ function App() {
     }
   }, [])
 
+  useEffect(() => {
+    const handleResizeCloseMenu = () => {
+      if (window.innerWidth >= 900) {
+        setMenuOpen(false)
+      }
+    }
+    handleResizeCloseMenu()
+    window.addEventListener('resize', handleResizeCloseMenu)
+    return () => window.removeEventListener('resize', handleResizeCloseMenu)
+  }, [])
+
   // Apply theme to html root and persist (system = rely on media query)
   useEffect(() => {
     const root = document.documentElement
@@ -368,7 +379,7 @@ function App() {
                 <button
                   key={name}
                   type="button"
-                  className={`border px-3 py-1 text-base font-base shadow-xs cursor-pointer transition-colors ${isMobile ? 'flex-none whitespace-nowrap rounded-lg' : 'rounded-full'} ${
+                  className={`border px-3 py-1 text-base font-base shadow-xs cursor-pointer transition-colors ${isMobile ? 'flex-none whitespace-nowrap rounded-lg' : 'rounded-full max-[600px]:text-sm max-[600px]:px-2.5'} ${
                     selectedCategory === name
                       ? 'border-[var(--border-blue)] bg-[var(--bg-blue)] text-[var(--border-blue)]'
                       : 'border-[var(--border)] bg-[var(--body-bg)] text-[var(--text-color)] hover:bg-[var(--title-hover-color)]'

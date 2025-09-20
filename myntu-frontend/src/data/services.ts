@@ -27,6 +27,8 @@ import payment from './payment.png'
 import ntucourse from './ntucourse.png'
 import ntucourseneo from './ntucourseneo.png'
 import courseresult from './courseresult.png'
+import mooc from './mooc.png'
+
 
 export const services: ServiceItem[] = [
      {
@@ -647,10 +649,10 @@ export const services: ServiceItem[] = [
     category: { zh: '課程學習', en: 'Courses' },
   },  {
     id: '78',
-    icon: logo,
+    icon: mooc,
     name: { zh: '臺大慕課 X Coursera', en: 'NTU MOOC' },
     url: { zh: 'https://www.dlc.ntu.edu.tw/ntu-mooc-x-coursera/', en: 'https://www.coursera.org/taiwan' },
-    description: { zh: '', en: '' },
+    description: { zh: '透過 Coursera 推出頂尖特色課程', en: 'offers top-notch featured courses on Coursera' },
     subcategory: { zh: '課程學習', en: 'Courses' },
     category: { zh: '課程學習', en: 'Courses' },
   },  {
@@ -1335,10 +1337,10 @@ export const services: ServiceItem[] = [
     category: { zh: '教學', en: 'Teaching' },
   },  {
     id: '164',
-    icon: logo,
+    icon: mooc,
     name: { zh: '臺大慕課 X Coursera', en: 'NTU MOOC' },
     url: { zh: 'https://www.dlc.ntu.edu.tw/ntu-mooc-x-coursera/', en: 'https://www.coursera.org/taiwan' },
-    description: { zh: '', en: '' },
+    description: { zh: '透過 Coursera 推出頂尖特色課程', en: 'Offers top-notch featured courses on Coursera' },
     subcategory: { zh: '教學', en: 'Teaching' },
     category: { zh: '教學', en: 'Teaching' },
   },  {
