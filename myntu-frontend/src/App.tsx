@@ -68,7 +68,7 @@ function App() {
     return prefersDark ? 'dark' : 'light'
   })
   // Placeholder hot IDs after renumbering; adjust as you like
-  const hotIds: string[] = ['30','22','186','10','12','11','206','76','84','77']
+  const hotIds: string[] = ['76','22','30','84','186','12','11','77','10','206']
   // const hotSet = new Set(hotIds)
 
   const [hasScrolled, setHasScrolled] = useState<boolean>(false)

@@ -32,6 +32,7 @@ import OverseasInternship from './OverseasInternship.png'
 import InternationalMentorship from './InternationalMentorship.png'
 import generalMap from './generalMap.png'
 import MentorshipProgram from './MentorshipProgram.png'
+import restleave from './restleave.png'
 
 
 export const services: ServiceItem[] = [
@@ -176,7 +177,7 @@ export const services: ServiceItem[] = [
     icon: MentorshipProgram,
     name: { zh: '跨領域實習 - 臺灣引路人計畫', en: 'Interdisciplinary Internship - Mentorship Program(Chinese ver.)' },
     url: { zh: 'https://ntucace.ntu.edu.tw/ ', en: 'https://ntucace.ntu.edu.tw/ ' },
-    description: { zh: '', en: '' },
+    description: { zh: '職涯中心攜手企業共育未來人才，與企業合作，由企業提供不限科系實習職缺，並邀請企業主管擔任實習導師', en: 'Launched by the NTU Career Center, aimed at cultivating future talent. Through this program, companies offer internship positions open to students from all academic backgrounds and assign experienced professionals to serve as mentors' },
     subcategory: { zh: '課務資訊', en: 'Courses' },
     category: { zh: '學生專區', en: 'Students' },
   },  {
@@ -461,7 +462,7 @@ export const services: ServiceItem[] = [
     category: { zh: '學生專區', en: 'Students' },
   },  {
     id: '54',
-    icon: logo,
+    icon: restleave,
     name: { zh: '休學申請', en: 'Request for Leave of Absence(Chinese ver.)' },
     url: { zh: 'https://my.ntu.edu.tw/restleave/login.aspx', en: 'https://my.ntu.edu.tw/restleave/login.aspx' },
     description: { zh: '', en: '' },
@@ -624,7 +625,7 @@ export const services: ServiceItem[] = [
     icon: MentorshipProgram,
     name: { zh: '跨領域實習 - 臺灣引路人計畫', en: 'Interdisciplinary Internship - Mentorship Program(Chinese ver.)' },
     url: { zh: 'https://ntucace.ntu.edu.tw/ ', en: 'https://ntucace.ntu.edu.tw/ ' },
-    description: { zh: '', en: '' },
+    description: { zh: '職涯中心攜手企業共育未來人才，與企業合作，由企業提供不限科系實習職缺，並邀請企業主管擔任實習導師', en: 'Launched by the NTU Career Center, aimed at cultivating future talent. Through this program, companies offer internship positions open to students from all academic backgrounds and assign experienced professionals to serve as mentors' },
     subcategory: { zh: '課程學習', en: 'Courses' },
     category: { zh: '課程學習', en: 'Courses' },
   },  {
@@ -656,7 +657,7 @@ export const services: ServiceItem[] = [
     icon: mooc,
     name: { zh: '臺大慕課 X Coursera', en: 'NTU MOOC' },
     url: { zh: 'https://www.dlc.ntu.edu.tw/ntu-mooc-x-coursera/', en: 'https://www.coursera.org/taiwan' },
-    description: { zh: '透過 Coursera 推出頂尖特色課程', en: 'offers top-notch featured courses on Coursera' },
+    description: { zh: '透過 Coursera 推出頂尖特色課程', en: 'Offers top-notch featured courses on Coursera' },
     subcategory: { zh: '課程學習', en: 'Courses' },
     category: { zh: '課程學習', en: 'Courses' },
   },  {
