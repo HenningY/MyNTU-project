@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import './index.css'
 import { services, type ServiceItem } from './data/services'
 import ServiceSections from './components/ServiceSections'
+import Calendar from './components/Calendar'
 import logo from './data/logo.png'
 import logo_night from './data/logo_night.png'
 
@@ -73,6 +74,7 @@ function App() {
 
   const [hasScrolled, setHasScrolled] = useState<boolean>(false)
   // const [isSmallScreen, setIsSmallScreen] = useState<boolean>(() => (typeof window !== 'undefined' ? window.innerWidth < 600 : false))
+  const [view, setView] = useState<'home' | 'calendar'>('home')
 
   const navLinks = lang === 'zh'
     ? [
@@ -88,10 +90,26 @@ function App() {
         { label: 'C&INC Website', href: 'https://www.cc.ntu.edu.tw/english/index.asp' },
       ]
 
+  const calendarLabel = view === 'home' ? (lang === 'zh' ? '行事曆' : 'Calendar') : (lang === 'zh' ? '首頁' : 'Home')
   const menuItems = [
+    { label: calendarLabel, isViewToggle: true } as { label: string; isViewToggle: true },
     ...navLinks,
     { label: t.toggle, isToggle: true } as { label: string; isToggle: true }
   ]
+
+  const goToView = (next: 'home' | 'calendar', replace = false) => {
+    setView(next)
+    try {
+      const url = next === 'calendar' ? '/calendar' : '/'
+      if (replace) {
+        window.history.replaceState({ view: next }, '', url)
+      } else {
+        window.history.pushState({ view: next }, '', url)
+      }
+    } catch {
+      // ignore
+    }
+  }
 
   useEffect(() => {
     setSelectedCategory(null)
@@ -135,6 +153,33 @@ function App() {
     handleResizeCloseMenu()
     window.addEventListener('resize', handleResizeCloseMenu)
     return () => window.removeEventListener('resize', handleResizeCloseMenu)
+  }, [])
+
+  // Initialize view from URL and handle back/forward
+  useEffect(() => {
+    try {
+      const path = window.location.pathname || '/'
+      if (path.startsWith('/calendar')) {
+        setView('calendar')
+      } else {
+        setView('home')
+      }
+      window.history.replaceState({ view: path.startsWith('/calendar') ? 'calendar' : 'home' }, '', path)
+      const onPop = () => {
+        const p = window.location.pathname || '/'
+        setMenuOpen(false)
+        setSearchOpen(false)
+        setIsSearching(false)
+        setCommittedQuery('')
+        setSelectedCategory(null)
+        setView(p.startsWith('/calendar') ? 'calendar' : 'home')
+      }
+      window.addEventListener('popstate', onPop)
+      return () => window.removeEventListener('popstate', onPop)
+    } catch {
+      // ignore
+    }
+    return () => {}
   }, [])
 
   // Apply theme to html root and persist (system = rely on media query)
@@ -213,13 +258,21 @@ function App() {
   return (
       <div>
       <nav className="mx-auto max-w-screen-2xl fixed inset-x-0 top-0 z-[80] h-14 flex items-center bg-transparent">
-        <div className={`mx-5 mt-10 rounded-lg border ${isMobile ? (menuOpen ? 'border-transparent' : 'border-[var(--nav-border)]') : (hasScrolled ? (menuOpen ? 'border-transparent' : 'border-[var(--nav-border)]') : 'border-transparent')} transition-all duration-300 flex h-14 w-full items-center justify-between px-3 bg-[var(--nav-bg)] backdrop-blur-xs max-[900px]:px-1.5 max-[900px]:mt-3 max-[900px]:mx-4 max-[900px]:h-12 max-[600px]:mt-1`}>
-          <a className="inline-flex items-center gap-2 font-bold text-lg text-[var(--text-color)]" href="#home" aria-label="logo" onClick={(e) => { e.preventDefault(); setIsSearching(false); setCommittedQuery(''); setSelectedCategory(null); setSearchOpen(false); setMenuOpen(false); (window as any)?.scrollTo?.({ top: 0, behavior: 'smooth' }) }}>
+        <div className={`mx-5 mt-10 rounded-lg border ${isMobile ? (menuOpen ? 'border-transparent' : 'border-[var(--nav-border)]') : (hasScrolled ? (menuOpen ? 'border-transparent' : 'border-[var(--nav-border)]') : 'border-transparent')} transition-all duration-300 flex h-14 w-full items-center justify-between px-3 bg-[var(--nav-bg)] backdrop-blur-xs max-[900px]:px-1.5 max-[900px]:mt-3 max-[900px]:mx-3 max-[900px]:h-12 max-[600px]:mt-1`}>
+          <a className="inline-flex items-center gap-2 font-bold text-lg text-[var(--text-color)]" href="#home" aria-label="logo" onClick={(e) => { 
+            e.preventDefault();
+            setIsSearching(false);
+            setCommittedQuery('');
+            setSelectedCategory(null);
+            setSearchOpen(false);
+            setMenuOpen(false);
+            goToView('home');
+            setView('home'); (window as any)?.scrollTo?.({ top: 0, behavior: 'smooth' }) }}>
             <img src={theme === 'dark' ? logo_night : logo} alt="logo" className="h-10 w-10 rounded-md max-[900px]:h-9 max-[900px]:w-9" />
             {/* {t.logo} */}
           </a>
           <div className="flex items-center gap-2">
-            <div className="items-center gap-1 max-[900px]:hidden flex">
+            <div className="items-center gap-0.5 max-[900px]:hidden flex">
               {menuItems.map((l) => (
                 ('isToggle' in l) ? (
                   <button
@@ -227,6 +280,15 @@ function App() {
                     type="button"
                     className="font-medium text-base text-[var(--text-color)] cursor-pointer hover:bg-[var(--title-hover-color)] rounded-md px-3 py-1"
                     onClick={() => setLang((prev) => (prev === 'zh' ? 'en' : 'zh'))}
+                  >
+                    {l.label}
+                  </button>
+                ) : ('isViewToggle' in l) ? (
+                  <button
+                    key="view-toggle-desktop"
+                    type="button"
+                    className="font-medium text-base text-[var(--text-color)] cursor-pointer hover:bg-[var(--title-hover-color)] rounded-md px-3 py-1"
+                    onClick={() => {goToView(view === 'home' ? 'calendar' : 'home'); (window as any)?.scrollTo?.({ top: 0, behavior: 'smooth' });}}
                   >
                     {l.label}
                   </button>
@@ -244,7 +306,7 @@ function App() {
               ))}
             </div>
             {/* Mobile search icon based on device detection, placed left to burger */}
-            {isMobile && (
+            {isMobile && view === 'home' && (
               <button
                 type="button"
                 aria-label="open search"
@@ -300,6 +362,15 @@ function App() {
                   >
                     {l.label}
                   </button>
+                ) : ('isViewToggle' in l) ? (
+                  <button
+                    key="view-toggle-mobile"
+                    type="button"
+                    onClick={() => { goToView(view === 'home' ? 'calendar' : 'home'); setMenuOpen(false); (window as any)?.scrollTo?.({ top: 0, behavior: 'smooth' }); }}
+                    className="text-2xl font-semibold text-[var(--text-color)] hover:text-blue-600"
+                  >
+                    {l.label}
+                  </button>
                 ) : (
                   <a
                     key={l.label}
@@ -318,10 +389,10 @@ function App() {
         </div>
       )}
 
-      {searchOpen && (
+      {searchOpen && view === 'home' && (
         <div className="fixed inset-0 z-[100] bg-[var(--body-bg)]">
           <form
-            className="mx-auto w-full max-w-screen-sm px-3 pt-16 max-[900px]:pt-6"
+            className="mx-auto w-full max-w-screen-sm px-3 pt-16 max-[900px]:pt-5"
             onSubmit={(e) => { e.preventDefault(); setCommittedQuery(query); setIsSearching(Boolean(query.trim())); setSelectedCategory(null); setQuery(''); setSearchOpen(false); setMenuOpen(false); (window as any)?.scrollTo?.({ top: 0, behavior: 'smooth' }); (document.activeElement as HTMLElement | null)?.blur() }}
             role="search"
             aria-label="site search"
@@ -369,6 +440,9 @@ function App() {
         </div>
       )}
 
+      {view === 'calendar' ? (
+        <Calendar lang={lang} />
+      ) : (
       <header className="relative flex flex-col min-h-screen items-center pt-35 bg-[var(--body-bg)] text-center max-[900px]:pt-30 max-[600px]:pt-25">
         <div className="mx-auto px-6 w-full max-[600px]:mx-0 max-[600px]:px-1.5">
           <h1 className="m-0 text-[36px] font-medium font-sans leading-tight text-[var(--text-color)] max-[900px]:text-[32px] max-[600px]:text-[24px]">{t.title}</h1>
@@ -439,6 +513,7 @@ function App() {
           
         </div>
       </header>
+      )}
       <footer className="mx-auto w-full max-w-screen-2xl px-10 pt-30 pb-15 text-sm text-[var(--text-500)] max-[600px]:px-5 max-[600px]:pb-6 max-[600px]:pt-15">
         <div className="grid grid-cols-2 gap-y-10 max-[600px]:gap-y-5">
           <div className="justify-self-start self-start">
