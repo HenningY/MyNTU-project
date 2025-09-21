@@ -3,6 +3,8 @@ import './index.css'
 import { services, type ServiceItem } from './data/services'
 import ServiceSections from './components/ServiceSections'
 import Calendar from './components/Calendar'
+import Admin from './components/Admin'
+import { incrementSiteView, trackClick } from './utils/analytics'
 import logo from './data/logo.png'
 import logo_night from './data/logo_night.png'
 
@@ -132,6 +134,8 @@ function App() {
   }, [])
 
   useEffect(() => {
+    // Count a view once per load/navigation
+    try { incrementSiteView() } catch {}
     const onScroll = () => setHasScrolled(window.scrollY > 0)
     // const onResize = () => setIsSmallScreen(window.innerWidth < 600)
     onScroll()
@@ -159,12 +163,14 @@ function App() {
   useEffect(() => {
     try {
       const path = window.location.pathname || '/'
-      if (path.startsWith('/calendar')) {
+      if (path.startsWith('/admin')) {
+        setView('calendar')
+      } else if (path.startsWith('/calendar')) {
         setView('calendar')
       } else {
         setView('home')
       }
-      window.history.replaceState({ view: path.startsWith('/calendar') ? 'calendar' : 'home' }, '', path)
+      window.history.replaceState({ view: path.startsWith('/calendar') || path.startsWith('/admin') ? 'calendar' : 'home' }, '', path)
       const onPop = () => {
         const p = window.location.pathname || '/'
         setMenuOpen(false)
@@ -172,7 +178,7 @@ function App() {
         setIsSearching(false)
         setCommittedQuery('')
         setSelectedCategory(null)
-        setView(p.startsWith('/calendar') ? 'calendar' : 'home')
+        setView(p.startsWith('/calendar') || p.startsWith('/admin') ? 'calendar' : 'home')
       }
       window.addEventListener('popstate', onPop)
       return () => window.removeEventListener('popstate', onPop)
@@ -299,6 +305,7 @@ function App() {
                     className="font-medium text-base text-[var(--text-color)] cursor-pointer hover:bg-[var(--title-hover-color)] rounded-md px-3 py-1"
                     target="_blank"
                     rel="noreferrer noopener"
+                    onClick={() => trackClick(l.href)}
                   >
                     {l.label}
                   </a>
@@ -358,7 +365,7 @@ function App() {
                       setLang((prev) => (prev === 'zh' ? 'en' : 'zh'))
                       setMenuOpen(false)
                     }}
-                    className="text-2xl font-semibold text-[var(--text-color)] hover:text-blue-600"
+                    className="cursor-pointer text-2xl font-semibold text-[var(--text-color)] hover:text-[var(--border-blue)]"
                   >
                     {l.label}
                   </button>
@@ -367,7 +374,7 @@ function App() {
                     key="view-toggle-mobile"
                     type="button"
                     onClick={() => { goToView(view === 'home' ? 'calendar' : 'home'); setMenuOpen(false); (window as any)?.scrollTo?.({ top: 0, behavior: 'smooth' }); }}
-                    className="text-2xl font-semibold text-[var(--text-color)] hover:text-blue-600"
+                    className="cursor-pointer text-2xl font-semibold text-[var(--text-color)] hover:text-[var(--border-blue)]"
                   >
                     {l.label}
                   </button>
@@ -378,7 +385,7 @@ function App() {
                     target="_blank"
                     rel="noreferrer noopener"
                     onClick={() => setMenuOpen(false)}
-                    className="text-2xl font-semibold text-[var(--text-color)] hover:text-blue-600"
+                    className="text-2xl font-semibold text-[var(--text-color)] hover:text-[var(--border-blue)]"
                   >
                     {l.label}
                   </a>
@@ -440,9 +447,11 @@ function App() {
         </div>
       )}
 
-      {view === 'calendar' ? (
-        <Calendar lang={lang} />
-      ) : (
+      {(() => {
+        const path = typeof window !== 'undefined' ? window.location.pathname : '/'
+        if (path.startsWith('/admin')) return <Admin />
+        if (view === 'calendar' || path.startsWith('/calendar')) return <Calendar lang={lang} />
+        return (
       <header className="relative flex flex-col min-h-screen items-center pt-35 bg-[var(--body-bg)] text-center max-[900px]:pt-30 max-[600px]:pt-25">
         <div className="mx-auto px-6 w-full max-[600px]:mx-0 max-[600px]:px-1.5">
           <h1 className="m-0 text-[36px] font-medium font-sans leading-tight text-[var(--text-color)] max-[900px]:text-[32px] max-[600px]:text-[24px]">{t.title}</h1>
@@ -513,7 +522,8 @@ function App() {
           
         </div>
       </header>
-      )}
+        )
+      })()}
       <footer className="mx-auto w-full max-w-screen-2xl px-10 pt-30 pb-15 text-sm text-[var(--text-500)] max-[600px]:px-5 max-[600px]:pb-6 max-[600px]:pt-15">
         <div className="grid grid-cols-2 gap-y-10 max-[600px]:gap-y-5">
           <div className="justify-self-start self-start">

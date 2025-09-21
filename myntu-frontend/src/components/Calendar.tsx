@@ -97,7 +97,7 @@ export default function Calendar({ lang }: CalendarProps) {
   }, [monthKeyPrefix, selectedDate])
 
   return (
-    <div className="mx-auto max-w-screen-xl px-4 pt-28 pb-12 text-[var(--text-color)] w-full">
+    <div className="mx-auto max-w-screen-xl px-4 pt-30 max-[900px]:pt-24 pb-12 text-[var(--text-color)] w-full">
       <div className="mb-10 w-100 max-[900px]:w-full flex items-start justify-between gap-10 px-4 max-[900px]:px-2">
         <div>
           <div className="text-3xl font-extrabold leading-tight">{monthLabel}</div>
@@ -155,7 +155,7 @@ export default function Calendar({ lang }: CalendarProps) {
                     isSelected
                       ? 'bg-[var(--title-hover-color)]'
                       : (isToday ? 'bg-[var(--bg-blue)] border-1 border-[var(--border-blue)]' : 'bg-transparent hover:bg-[var(--title-hover-color)]')
-                  } ${faded ? 'opacity-50' : ''} ${hasEvents ? 'cursor-pointer' : 'cursor-default'}`}
+                  } ${faded ? 'opacity-30' : ''} ${hasEvents ? 'cursor-pointer' : 'cursor-default'}`}
                   onClick={() => { if (!hasEvents) return; setSelectedDate((prev) => (prev === key ? null : key)) }}
                 >
                   <div className={`mb-1 text-sm font-semibold ${isToday ? 'text-[var(--border-blue)]' : 'text-[var(--text-color)]'}`}>

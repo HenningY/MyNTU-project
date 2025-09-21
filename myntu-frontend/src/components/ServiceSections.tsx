@@ -1,4 +1,5 @@
 import type { ServiceItem } from '../data/services'
+import { trackClick } from '../utils/analytics'
 
 type Lang = 'zh' | 'en'
 
@@ -23,6 +24,7 @@ function ServiceCard({ item, lang }: { item: ServiceItem; lang: Lang }) {
       href={href}
       target="_blank"
       rel="noreferrer noopener"
+      onClick={() => trackClick(href)}
       className="h-25 max-[1200px]:h-21 flex items-center border-0 border-[#e5e7eb] rounded-[20px] gap-3 bg-transparent px-4 py-4 transition-all duration-200 hover:bg-[var(--bg-slate-50)] max-[750px]:px-2 max-[750px]:py-1 max-[750px]:h-auto"
     >
       <img src={item.icon} alt="icon" className="h-12 w-12 rounded-lg shadow-sm border border-[var(--nav-border)] max-[1200px]:h-10 max-[1200px]:w-10" />
@@ -58,7 +60,7 @@ export default function ServiceSections(props: ServiceSectionsProps) {
     <div className="mx-auto my-8 w-full max-w-screen-xl px-0 space-y-6">
       {isSearching && searchTerm ? (
         <section className="w-full">
-          <div className="mb-2 text-left font-semibold text-[var(--muted)] px-3 max-[600px]:text-sm max-[600px]:mb-4">{resultTitle}</div>
+          <div className="overflow-hidden text-ellipsis mb-2 text-left font-semibold text-[var(--muted)] px-3 max-[600px]:text-sm max-[600px]:mb-4">{resultTitle}</div>
           {listForSearch.length === 0 ? (
             <div className="px-3 py-10 text-center text-lg max-[600px]:text-base text-[var(--text-500)]">{emptySearchText}</div>
           ) : (
