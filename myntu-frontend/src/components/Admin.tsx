@@ -17,7 +17,7 @@ export default function Admin() {
     const load = async () => {
       try {
         setError('')
-        const r = await fetch('/api/analytics/stats', { headers: { 'Accept': 'application/json' } })
+        const r = await fetch('/api/analytics/hit', { method: 'GET', headers: { 'Accept': 'application/json' } })
         if (!r.ok) {
           const txt = await r.text().catch(() => '')
           setError(`Stats request failed (${r.status}): ${txt || 'no body'}`)
@@ -26,7 +26,7 @@ export default function Admin() {
         const json = await r.json().catch(() => null)
         if (json && json.ok) {
           setViews(json.views || 0)
-          setClicks(json.clicks || {})
+          setClicks({})
         } else {
           setError(`Stats response not ok: ${JSON.stringify(json)}`)
         }
