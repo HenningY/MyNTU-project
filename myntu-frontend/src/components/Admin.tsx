@@ -17,19 +17,26 @@ export default function Admin() {
     const load = async () => {
       try {
         setError('')
-        const r = await fetch('/api/analytics/hit', { method: 'GET', headers: { 'Accept': 'application/json' } })
-        if (!r.ok) {
-          const txt = await r.text().catch(() => '')
-          setError(`Stats request failed (${r.status}): ${txt || 'no body'}`)
+        const [rv, rc] = await Promise.all([
+          fetch('/api/analytics/hit', { method: 'GET', headers: { 'Accept': 'application/json' } }),
+          fetch('/api/analytics/click', { method: 'GET', headers: { 'Accept': 'application/json' } }),
+        ])
+        if (!rv.ok) {
+          const txt = await rv.text().catch(() => '')
+          setError(`Views request failed (${rv.status}): ${txt || 'no body'}`)
           return
         }
-        const json = await r.json().catch(() => null)
-        if (json && json.ok) {
-          setViews(json.views || 0)
-          setClicks({})
-        } else {
-          setError(`Stats response not ok: ${JSON.stringify(json)}`)
+        if (!rc.ok) {
+          const txt = await rc.text().catch(() => '')
+          setError(`Clicks request failed (${rc.status}): ${txt || 'no body'}`)
+          return
         }
+        const jv = await rv.json().catch(() => null)
+        const jc = await rc.json().catch(() => null)
+        if (jv && jv.ok) setViews(jv.views || 0)
+        else setError(`Views response not ok: ${JSON.stringify(jv)}`)
+        if (jc && jc.ok) setClicks(jc.clicks || {})
+        else setError(`Clicks response not ok: ${JSON.stringify(jc)}`)
       } catch (e: any) {
         setError(String(e?.message || e || 'Unknown error'))
       }
