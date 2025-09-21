@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
-import { getClicks, getSiteViews, clearAnalytics } from '../utils/analytics'
+import { clearAnalytics } from '../utils/analytics'
 
 export default function Admin() {
   const [authed, setAuthed] = useState<boolean>(false)
@@ -13,10 +13,19 @@ export default function Admin() {
   const ADMIN_PASS = 'Henning9098'
 
   useEffect(() => {
-    if (authed) {
-      setViews(getSiteViews())
-      setClicks(getClicks())
+    const load = async () => {
+      try {
+        const r = await fetch('/api/analytics/stats')
+        const json = await r.json()
+        if (json && json.ok) {
+          setViews(json.views || 0)
+          setClicks(json.clicks || {})
+        }
+      } catch {
+        // ignore
+      }
     }
+    if (authed) load()
   }, [authed])
 
   const clickEntries = useMemo(() => {

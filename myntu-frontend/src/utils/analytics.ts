@@ -3,13 +3,15 @@ export type ClicksByUrl = Record<string, number>
 const VIEWS_KEY = 'analytics:siteViews'
 const CLICKS_KEY = 'analytics:clicksByUrl'
 
-export function incrementSiteView(): void {
+export async function incrementSiteView(): Promise<void> {
   try {
+    // local optimistic update
     const n = parseInt(window.localStorage.getItem(VIEWS_KEY) || '0', 10)
     window.localStorage.setItem(VIEWS_KEY, String(Number.isFinite(n) ? n + 1 : 1))
-  } catch {
-    // ignore storage errors
-  }
+  } catch {}
+  try {
+    await fetch('/api/analytics/hit', { method: 'POST' })
+  } catch {}
 }
 
 export function getSiteViews(): number {
@@ -21,17 +23,25 @@ export function getSiteViews(): number {
   }
 }
 
-export function trackClick(rawUrl: string): void {
+export async function trackClick(rawUrl: string): Promise<void> {
+  let url = ''
   try {
-    const url = String(rawUrl || '').trim()
+    url = String(rawUrl || '').trim()
     if (!url) return
     const raw = window.localStorage.getItem(CLICKS_KEY)
     const obj: ClicksByUrl = raw ? JSON.parse(raw) : {}
     obj[url] = (obj[url] || 0) + 1
     window.localStorage.setItem(CLICKS_KEY, JSON.stringify(obj))
-  } catch {
-    // ignore
-  }
+  } catch {}
+  try {
+    if (url) {
+      await fetch('/api/analytics/click', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ url })
+      })
+    }
+  } catch {}
 }
 
 export function getClicks(): ClicksByUrl {
