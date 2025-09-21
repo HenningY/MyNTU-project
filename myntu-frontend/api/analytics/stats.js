@@ -4,6 +4,10 @@ export default async function handler(req, res) {
     return
   }
   try {
+    // Disable CDN/browser caching so we always return fresh stats
+    res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, max-age=0')
+    res.setHeader('CDN-Cache-Control', 'no-store')
+    res.setHeader('Vercel-CDN-Cache-Control', 'no-store')
     const base = process.env.UPSTASH_REDIS_REST_URL
     const token = process.env.UPSTASH_REDIS_REST_TOKEN
     if (!base || !token) {
