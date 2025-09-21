@@ -7,6 +7,7 @@ export default function Admin() {
   const [pass, setPass] = useState<string>('')
   const [views, setViews] = useState<number>(0)
   const [clicks, setClicks] = useState<Record<string, number>>({})
+  const [error, setError] = useState<string>('')
 
   // Replace these with your own credentials
   const ADMIN_USER = 'HenningY'
@@ -15,14 +16,22 @@ export default function Admin() {
   useEffect(() => {
     const load = async () => {
       try {
-        const r = await fetch('/api/analytics/stats')
-        const json = await r.json()
+        setError('')
+        const r = await fetch('/api/analytics/stats', { headers: { 'Accept': 'application/json' } })
+        if (!r.ok) {
+          const txt = await r.text().catch(() => '')
+          setError(`Stats request failed (${r.status}): ${txt || 'no body'}`)
+          return
+        }
+        const json = await r.json().catch(() => null)
         if (json && json.ok) {
           setViews(json.views || 0)
           setClicks(json.clicks || {})
+        } else {
+          setError(`Stats response not ok: ${JSON.stringify(json)}`)
         }
-      } catch {
-        // ignore
+      } catch (e: any) {
+        setError(String(e?.message || e || 'Unknown error'))
       }
     }
     if (authed) load()
@@ -65,6 +74,11 @@ export default function Admin() {
   return (
     <div className="mx-auto max-w-screen-xl px-6 pt-28 pb-20 text-[var(--text-color)]">
       <h1 className="mb-6 text-2xl font-semibold">Analytics</h1>
+      {error ? (
+        <div className="mb-6 rounded-md border border-red-400 bg-red-50/10 px-3 py-2 text-sm text-red-500">
+          {error}
+        </div>
+      ) : null}
       <div className="mb-6 rounded-lg border border-[var(--nav-border)] bg-[var(--body-bg)] p-4">
         <div className="text-sm text-[var(--muted)]">Total Site Views</div>
         <div className="text-3xl font-bold">{views}</div>
