@@ -17,15 +17,24 @@ export default async function handler(req, res) {
       body: JSON.stringify([["GET", "views:total"], ["HGETALL", "clicks:byUrl"]])
     })
     const data = await r.json()
-    // data.result is array of results per command
-    const viewsRaw = Array.isArray(data.result) && data.result[0] ? data.result[0] : null
-    const clicksArr = Array.isArray(data.result) && Array.isArray(data.result[1]) ? data.result[1] : []
-    const views = Number.isFinite(parseInt(viewsRaw, 10)) ? parseInt(viewsRaw, 10) : 0
+    // Normalize Upstash pipeline results (can be raw or wrapped {result})
+    const unwrap = (x) => (x && typeof x === 'object' && 'result' in x ? x.result : x)
+    const arr = Array.isArray(data?.result) ? data.result.map(unwrap) : []
+    const viewsRaw = arr[0]
+    const clicksRaw = arr[1]
+    const viewsNum = parseInt(String(viewsRaw ?? '0'), 10)
+    const views = Number.isFinite(viewsNum) ? viewsNum : 0
     const clicks = {}
-    for (let i = 0; i < clicksArr.length; i += 2) {
-      const k = String(clicksArr[i] ?? '')
-      const v = parseInt(clicksArr[i + 1] ?? '0', 10) || 0
-      if (k) clicks[k] = v
+    if (Array.isArray(clicksRaw)) {
+      for (let i = 0; i < clicksRaw.length; i += 2) {
+        const k = String(clicksRaw[i] ?? '')
+        const v = parseInt(String(clicksRaw[i + 1] ?? '0'), 10) || 0
+        if (k) clicks[k] = v
+      }
+    } else if (clicksRaw && typeof clicksRaw === 'object') {
+      for (const [k, v] of Object.entries(clicksRaw)) {
+        clicks[String(k)] = parseInt(String(v ?? '0'), 10) || 0
+      }
     }
     res.status(200).json({ ok: true, views, clicks })
   } catch (e) {
