@@ -2,15 +2,20 @@ export type ClicksByUrl = Record<string, number>
 
 const VIEWS_KEY = 'analytics:siteViews'
 const CLICKS_KEY = 'analytics:clicksByUrl'
+const SESSION_HIT_KEY = 'analytics:sessionHit'
 
 export async function incrementSiteView(): Promise<void> {
   try {
+    // Count only once per browser tab session
+    const already = window.sessionStorage.getItem(SESSION_HIT_KEY)
+    if (already) return
+    window.sessionStorage.setItem(SESSION_HIT_KEY, '1')
     // local optimistic update
     const n = parseInt(window.localStorage.getItem(VIEWS_KEY) || '0', 10)
     window.localStorage.setItem(VIEWS_KEY, String(Number.isFinite(n) ? n + 1 : 1))
-  } catch {}
-  try {
-    await fetch('/api/analytics/hit', { method: 'POST' })
+    try {
+      await fetch('/api/analytics/hit', { method: 'POST' })
+    } catch {}
   } catch {}
 }
 

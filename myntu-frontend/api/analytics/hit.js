@@ -15,7 +15,7 @@ export default async function handler(req, res) {
         body: JSON.stringify([["INCR", "views:total"]])
       })
       const data = await r.json()
-      res.status(200).json({ ok: true, result: data })
+      // res.status(200).json({ ok: true, result: data })
       return
     }
     if (req.method === 'GET') {
