@@ -25,7 +25,7 @@ function ServiceCard({ item, lang }: { item: ServiceItem; lang: Lang }) {
       target="_blank"
       rel="noreferrer noopener"
       onClick={() => trackClick(href)}
-      className="h-25 max-[1200px]:h-21 flex items-center border-0 border-[#e5e7eb] rounded-[20px] gap-3 bg-transparent px-4 py-4 transition-all duration-200 hover:bg-[var(--bg-slate-50)] max-[750px]:px-2 max-[750px]:py-1 max-[750px]:h-auto"
+      className="h-25 max-[1200px]:h-21 flex items-center border-0 border-[#e5e7eb] rounded-[20px] gap-3 bg-transparent px-4 py-4 transition-all duration-200 hover:bg-[var(--bg-slate-50)] max-[750px]:px-2 max-[750px]:py-1 max-[750px]:h-auto max-[900px]:rounded-lg"
     >
       <img src={item.icon} alt="icon" className="h-12 w-12 rounded-lg shadow-sm border border-[var(--nav-border)] max-[1200px]:h-10 max-[1200px]:w-10" />
       <div className="text-left">

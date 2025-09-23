@@ -412,7 +412,7 @@ function App() {
                 className="shrink-0 rounded-md p-2 text-[var(--text-color)]"
               >
                 {/* Left arrow */}
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h- w-5">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-5 w-5">
                   <polyline points="19 21 9 12 19 3" />
                 </svg>
               </button>

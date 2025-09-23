@@ -50,7 +50,7 @@ export default function Admin() {
 
   if (!authed) {
     return (
-      <div className="mx-auto max-w-screen-sm px-6 pt-28 text-[var(--text-color)]">
+      <div className="mx-auto min-h-screen max-w-screen-sm px-6 pt-28 text-[var(--text-color)]">
         <h1 className="mb-6 text-2xl font-semibold">Admin Login</h1>
         <form
           className="space-y-3"

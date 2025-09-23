@@ -97,7 +97,7 @@ export default function Calendar({ lang }: CalendarProps) {
   }, [monthKeyPrefix, selectedDate])
 
   return (
-    <div className="mx-auto max-w-screen-xl px-4 pt-30 max-[900px]:pt-24 pb-12 text-[var(--text-color)] w-full">
+    <div className="mx-auto max-w-screen-xl px-4 pt-30 max-[900px]:pt-24 pb-12 text-[var(--text-color)] w-full min-h-screen">
       <div className="mb-10 w-100 max-[900px]:w-full flex items-start justify-between gap-10 px-4 max-[900px]:px-2">
         <div>
           <div className="text-3xl font-extrabold leading-tight">{monthLabel}</div>
@@ -132,7 +132,7 @@ export default function Calendar({ lang }: CalendarProps) {
         </div>
       </div>
 
-      <div className="grid grid-cols-10 gap-15 items-start px-4 max-[1200px]:gap-10 max-[900px]:px-0">
+      <div className="grid grid-cols-10 gap-20 items-start px-4 max-[1200px]:gap-10 max-[900px]:px-0">
         {/* Left: compact calendar */}
         <div className="col-span-10 max-[900px]:col-span-10 min-[900px]:col-span-4">
           <div className="grid grid-cols-7 gap-0">
@@ -188,11 +188,11 @@ export default function Calendar({ lang }: CalendarProps) {
                 <li className="px-4 py-4 text-sm text-[var(--text-500)]">{lang === 'zh' ? '本月沒有活動' : 'No events this month'}</li>
               ) : (
                 (selectedDate ? monthlyEvents.filter((e) => e.date === selectedDate) : monthlyEvents).map((ev, idx) => (
-                  <li key={`${ev.date}-${idx}`} className="px-4 py-3 hover:bg-[var(--title-hover-color)]">
+                  <li key={`${ev.date}-${idx}`} className="px-3 py-3 hover:bg-[var(--title-hover-color)]">
                     <div className="flex items-center gap-3">
                       <div className="mt-0.5 shrink-0 rounded-md border border-[var(--nav-border)] px-2 py-1 text-xs text-[var(--text-500)]">
                         <span className="max-[600px]:hidden inline">{ev.date}</span>
-                        <span className="min-[601px]:hidden inline">{ev.date.slice(5)}</span>
+                        <span className="min-[600px]:hidden inline">{ev.date.slice(5)}</span>
                       </div>
                       <div className="text-sm text-[var(--text-color)] leading-snug">
                         {ev.title}
