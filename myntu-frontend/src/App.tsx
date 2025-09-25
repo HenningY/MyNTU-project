@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import './index.css'
 import { services, type ServiceItem } from './data/services'
 import ServiceSections from './components/ServiceSections'
@@ -71,12 +71,28 @@ function App() {
     return prefersDark ? 'dark' : 'light'
   })
   // Placeholder hot IDs after renumbering; adjust as you like
-  const hotIds: string[] = ['76','22','30','84','186','12','11','77','10','206']
+  const hotIds: string[] = ['77','22','30','85','187','12','11','78','10','207']
   // const hotSet = new Set(hotIds)
 
   const [hasScrolled, setHasScrolled] = useState<boolean>(false)
   // const [isSmallScreen, setIsSmallScreen] = useState<boolean>(() => (typeof window !== 'undefined' ? window.innerWidth < 600 : false))
   const [view, setView] = useState<'home' | 'calendar'>('home')
+
+  // Mobile category scroller centering
+  const catScrollRef = useRef<HTMLDivElement | null>(null)
+  const centerCategoryButton = (btn: HTMLButtonElement) => {
+    try {
+      const container = catScrollRef.current
+      if (!container) return
+      const desired = btn.offsetLeft + (btn.offsetWidth / 2) - (container.clientWidth / 2)
+      const minLeft = 0
+      const maxLeft = Math.max(0, container.scrollWidth - container.clientWidth)
+      const nextLeft = Math.min(maxLeft, Math.max(minLeft, desired))
+      container.scrollTo({ left: nextLeft, behavior: 'smooth' })
+    } catch {
+      // ignore
+    }
+  }
 
   const navLinks = lang === 'zh'
     ? [
@@ -457,7 +473,7 @@ function App() {
           <h1 className="m-0 text-[36px] font-medium font-sans leading-tight text-[var(--text-color)] max-[900px]:text-[32px] max-[600px]:text-[24px]">{t.title}</h1>
           <p className="mb-8 text-lg text-[var(--muted)] max-[900px]:text-base max-[600px]:text-sm max-[600px]:mb-4">{t.subtitle}</p>
           <div className="relative mx-auto mt-6 max-w-[600px]">
-            <div className={`flex items-center gap-x-1 scrollbar-none ${isMobile ? 'flex-nowrap overflow-x-auto overflow-y-hidden justify-start gap-y-0 px-6' : 'flex-wrap justify-center gap-y-1.5 px-0'}`}>
+            <div ref={isMobile ? catScrollRef : undefined} className={`flex items-center gap-x-1 scrollbar-none ${isMobile ? 'flex-nowrap overflow-x-auto overflow-y-hidden justify-start gap-y-0 px-6' : 'flex-wrap justify-center gap-y-1.5 px-0'}`}>
               {t.buttons.map((name) => (
                 <button
                   key={name}
@@ -468,14 +484,14 @@ function App() {
                       : 'border-[var(--border)] bg-[var(--body-bg)] text-[var(--text-color)] hover:bg-[var(--title-hover-color)]'
                   }`}
                   aria-pressed={selectedCategory === name}
-                  onClick={() => { setSelectedCategory((prev) => (prev === name ? null : name)); setIsSearching(false); setCommittedQuery(''); setSearchOpen(false) }}
+                  onClick={(e) => { setSelectedCategory((prev) => (prev === name ? null : name)); setIsSearching(false); setCommittedQuery(''); setSearchOpen(false); if (isMobile) centerCategoryButton(e.currentTarget as HTMLButtonElement) }}
                 >
                   {name}
                 </button>
               ))}
             </div>
-            <div className="pointer-events-none absolute inset-y-0 left-0 z-[1] hidden w-6 bg-gradient-to-r from-[var(--body-bg)] to-transparent max-[600px]:block" />
-            <div className="pointer-events-none absolute inset-y-0 right-0 z-[1] hidden w-6 bg-gradient-to-l from-[var(--body-bg)] to-transparent max-[600px]:block" />
+            <div className={`pointer-events-none absolute inset-y-0 left-0 z-[1] w-6 bg-gradient-to-r from-[var(--body-bg)] to-transparent ${isMobile ? 'block' : 'hidden'}`} />
+            <div className={`pointer-events-none absolute inset-y-0 right-0 z-[1] w-6 bg-gradient-to-l from-[var(--body-bg)] to-transparent ${isMobile ? 'block' : 'hidden'}`} />
       </div>
           {!isMobile && (
             <form

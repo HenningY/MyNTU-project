@@ -10,6 +10,7 @@ type CalendarProps = {
 type CalendarEvent = {
   date: string
   title: string
+  dayoff?: boolean
 }
 
 function pad2(n: number): string {
@@ -67,6 +68,7 @@ export default function Calendar({ lang }: CalendarProps) {
     return calendarEvents.map((e: StoredEvent) => ({
       date: e.date,
       title: lang === 'zh' ? e.title.zh : e.title.en,
+      dayoff: e.dayoff,
     }))
   }, [lang])
 
@@ -163,12 +165,17 @@ export default function Calendar({ lang }: CalendarProps) {
                   </div>
                   <div className="mt-1 flex justify-center">
                     <div className="inline-grid grid-cols-3 gap-[2px] justify-items-center place-content-center">
-                      {evs.map((_, idx) => (
-                        <span
-                          key={`${key}-dot-${idx}`}
-                          className={`inline-block h-1 w-1 rounded-full ${isToday ? 'bg-[var(--border-blue)]' : 'bg-[var(--text-500)]'}`}
-                        />
-                      ))}
+                      {evs.map((ev, idx) => {
+                        const dotColor = ev.dayoff
+                          ? 'bg-[var(--bg-red)]'
+                          : (isToday ? 'bg-[var(--border-blue)]' : 'bg-[var(--text-500)]')
+                        return (
+                          <span
+                            key={`${key}-dot-${idx}`}
+                            className={`inline-block h-1 w-1 rounded-full ${dotColor}`}
+                          />
+                        )
+                      })}
                     </div>
                   </div>
                 </div>

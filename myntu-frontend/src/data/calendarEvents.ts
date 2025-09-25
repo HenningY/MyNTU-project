@@ -6,6 +6,7 @@ export type LocalizedText = {
 export type CalendarEvent = {
   date: string // YYYY-MM-DD
   title: LocalizedText
+  dayoff?: boolean
 }
 
 // Example events. Replace or extend as needed.
@@ -46,6 +47,7 @@ export const calendarEvents: CalendarEvent[] = [
   {
     date: '2025-09-28',
     title: { zh: '教師節(放假日)', en: 'Teacher’s Day (Holiday)' },
+    dayoff: true,
   },
   {
     date: '2025-09-29',
@@ -54,10 +56,12 @@ export const calendarEvents: CalendarEvent[] = [
   {
     date: '2025-09-29',
     title: { zh: '教師節遇例假日補假', en: 'Substitute holiday for Teacher’s Day (when it coincides with a regular holiday)' },
+    dayoff: true,
   },
   {
     date: '2025-10-06',
     title: { zh: '中秋節(放假日)', en: 'Mid-Autumn Festival (Holiday)' },
+    dayoff: true,
   },
   {
     date: '2025-10-07',
@@ -66,6 +70,7 @@ export const calendarEvents: CalendarEvent[] = [
   {
     date: '2025-10-10',
     title: { zh: '國慶日(放假日)', en: 'National Day (Holiday)' },
+    dayoff: true,
   },
   {
     date: '2025-10-13',
@@ -94,10 +99,12 @@ export const calendarEvents: CalendarEvent[] = [
   {
     date: '2025-10-24',
     title: { zh: '臺灣光復暨金門古寧頭大捷紀念日遇例假日補假', en: 'Substitute holiday for Taiwan Restoration Day and Battle of Guningtou Victory Memorial Day (when coinciding with a regular holiday)' },
+    dayoff: true,
   },
   {
     date: '2025-10-25',
     title: { zh: '臺灣光復暨金門古寧頭大捷紀念日(放假日)', en: 'Taiwan Restoration Day and Battle of Guningtou Victory Memorial Day (Holiday)' },
+    dayoff: true,
   },
   {
     date: '2025-11-14',
@@ -154,6 +161,7 @@ export const calendarEvents: CalendarEvent[] = [
   {
     date: '2025-12-25',
     title: { zh: '行憲紀念日(放假日)', en: 'Constitution Day (Holiday)' },
+    dayoff: true,
   },
   {
     date: '2025-12-25',
@@ -202,26 +210,32 @@ export const calendarEvents: CalendarEvent[] = [
   {
     date: '2026-02-15',
     title: { zh: '小年夜(放假日)', en: 'Lunar New Year’s Eve (Holiday)' },
+    dayoff: true,
   },
   {
     date: '2026-02-16',
     title: { zh: '除夕(放假日)', en: 'Lunar New Year’s Eve (Holiday)' },
+    dayoff: true,
   },
   {
     date: '2026-02-17',
     title: { zh: '年初一放假(春節開始，至2月19日止)', en: 'Lunar New Year Day (Spring Festival begins, until February 19)' },
+    dayoff: true,
   },
   {
     date: '2026-02-18',
     title: { zh: '年初二放假', en: 'Lunar New Year – Second Day (Holiday)' },
+    dayoff: true,
   },
   {
     date: '2026-02-19',
     title: { zh: '年初三放假', en: 'Lunar New Year – Third Day (Holiday)' },
+    dayoff: true,
   },
   {
     date: '2026-02-20',
     title: { zh: '小年夜遇例假日補假', en: 'Substitute holiday for Lunar New Year’s Eve coinciding with a regular holiday' },
+    dayoff: true,
   },
   {
     date: '2026-02-21',
@@ -258,6 +272,7 @@ export const calendarEvents: CalendarEvent[] = [
   {
     date: '2026-02-27',
     title: { zh: '和平紀念日遇例假日補假', en: 'Substitute holiday for Peace Memorial Day coinciding with a regular holiday' },
+    dayoff: true,
   },
   {
     date: '2026-03-07',

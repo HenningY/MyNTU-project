@@ -44,6 +44,7 @@ body,
     --x-hover: #717171;
     --text-500: #6b7280;
     --bg-slate-50: #f5f5f5;
+    --bg-red: #d20000;
   }
   .dark {
     --text-color: #f3f5f9;        /* dark */
@@ -59,6 +60,7 @@ body,
     --x-hover: #b1b1b1;
     --text-500: #c2ccda;
     --bg-slate-50: #232323;
+    --bg-red: #f30000;
   }
 
   body { background: var(--body-bg); color: var(--title-color); }
