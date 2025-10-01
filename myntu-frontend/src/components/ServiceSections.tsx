@@ -84,7 +84,7 @@ export default function ServiceSections(props: ServiceSectionsProps) {
         Array.from(groups.entries()).map(([subLabel, items]) => (
           <section key={subLabel} className="w-full">
             <div className="mb-2 text-left font-semibold text-[var(--muted)] px-3 max-[600px]:text-sm max-[600px]:mb-4">{subLabel}</div>
-            <div className="grid grid-cols-3 gap-1 max-[600px]:px-1 max-[1200px]:grid-cols-2 max-[750px]:grid-cols-1 max-[750px]:gap-2">
+            <div className="mb-8 grid grid-cols-3 gap-1 max-[600px]:px-1 max-[1200px]:grid-cols-2 max-[750px]:grid-cols-1 max-[750px]:gap-2">
               {items.map((s) => (
                 <ServiceCard key={s.id} item={s} lang={lang} />
               ))}

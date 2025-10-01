@@ -45,6 +45,9 @@ import SummerOnlineGrading from './SummerOnlineGrading.png'
 import SportsFacilityReservation from './SportsFacilityReservation.png'
 import SpecializationProgram from './SpecializationProgram.png'
 import JADE from './JADE.png'
+import HealthSurveyU from './HealthSurveyU.png'
+import HealthSurveyG from './HealthSurveyG.png'
+import LaborInsurance from './LaborInsurance.png'
 
 
 export const services: ServiceItem[] = [
@@ -90,7 +93,7 @@ export const services: ServiceItem[] = [
     category: { zh: '學生專區', en: 'Students' },
   },  {
     id: '6',
-    icon: logo,
+    icon: LaborInsurance,
     name: { zh: '勞健保加保申請', en: 'Labor and National Health Insurance Enrollment Application' },
     url: { zh: 'https://my.ntu.edu.tw/labhlh_extra/login.aspx', en: 'https://my.ntu.edu.tw/labhlh_extra/login.aspx' },
     description: { zh: '', en: '' },
@@ -101,7 +104,7 @@ export const services: ServiceItem[] = [
     icon: logo,
     name: { zh: '兼任助理臨時人員工作證明', en: 'Assistant & Temp Job Certificates' },
     url: { zh: 'https://event.ntu.edu.tw/certificate/', en: 'https://event.ntu.edu.tw/certificate/' },
-    description: { zh: '', en: '' },
+    description: { zh: '提供校內學生兼任助理及臨時人員離職證明申請程序，並提供離職證明書相關範本', en: 'Provide the application procedure for resignation certificates for student assistants and temporary staff, and offer related templates for resignation certificates' },
     subcategory: { zh: '個人資訊', en: 'Personal Info' },
     category: { zh: '學生專區', en: 'Students' },
   },  {
@@ -146,18 +149,18 @@ export const services: ServiceItem[] = [
     category: { zh: '學生專區', en: 'Students' },
   },  {
     id: '13',
-    icon: logo,
+    icon: HealthSurveyU,
     name: { zh: '學士班健檢資訊', en: 'Health Survey for Undergraduate' },
     url: { zh: 'https://my.ntu.edu.tw/newhc/studefault.aspx?p=under', en: 'https://my.ntu.edu.tw/newhc/studefault.aspx?p=under&amp;lang=eng' },
-    description: { zh: '', en: '' },
+    description: { zh: '學生進入本校就學時需做一般體格檢查，使能早期發現體格上之缺點並作進一步的治療，以維護及促進學生之健康', en: 'Students are required to undergo a general physical examination upon enrollment. This aims to detect any physical deficiencies at an early stage and provide further treatment, thereby safeguarding and promoting students\' health' },
     subcategory: { zh: '個人資訊', en: 'Personal Info' },
     category: { zh: '學生專區', en: 'Students' },
   },  {
     id: '14',
-    icon: logo,
+    icon: HealthSurveyG,
     name: { zh: '碩博班健檢資訊', en: 'Health Survey for Graduate' },
     url: { zh: 'https://my.ntu.edu.tw/newhc/studefault.aspx?p=grad', en: 'https://my.ntu.edu.tw/newhc/studefault.aspx?p=grad&amp;lang=eng' },
-    description: { zh: '', en: '' },
+    description: { zh: '學生進入本校就學時需做一般體格檢查，使能早期發現體格上之缺點並作進一步的治療，以維護及促進學生之健康', en: 'Students are required to undergo a general physical examination upon enrollment. This aims to detect any physical deficiencies at an early stage and provide further treatment, thereby safeguarding and promoting students\' health' },
     subcategory: { zh: '個人資訊', en: 'Personal Info' },
     category: { zh: '學生專區', en: 'Students' },
   },  {
@@ -165,7 +168,7 @@ export const services: ServiceItem[] = [
     icon: logo,
     name: { zh: '學生、教職員工證掛失/退費', en: 'Replacement Card' },
     url: { zh: 'https://cms.cc.ntu.edu.tw/ntucms/default.aspx', en: 'https://cms.cc.ntu.edu.tw/ntucms/default_en.aspx' },
-    description: { zh: '', en: '' },
+    description: { zh: '提供學生證、教職員工證掛失申請及退費申請', en: 'Services include reporting lost student IDs, faculty/staff IDs, and applying for refunds' },
     subcategory: { zh: '個人資訊', en: 'Personal Info' },
     category: { zh: '學生專區', en: 'Students' },
   },  {
@@ -197,7 +200,7 @@ export const services: ServiceItem[] = [
     icon: OnlineGrading,
     name: { zh: '網路登分', en: 'The Online Grading System' },
     url: { zh: 'https://reg227.aca.ntu.edu.tw/TeaScore/index.aspx', en: 'https://reg227.aca.ntu.edu.tw/TeaScoreEng/index.aspx' },
-    description: { zh: '', en: '' },
+    description: { zh: '提供教師上網建置當學期學生成績', en: 'Provide teachers with access to input student grades for the current semester online' },
     subcategory: { zh: '課務資訊', en: 'Courses' },
     category: { zh: '學生專區', en: 'Students' },
   },  {
@@ -501,7 +504,7 @@ export const services: ServiceItem[] = [
     icon: logo,
     name: { zh: '宿舍(床位)相關資訊', en: 'Dormitory Infomation' },
     url: { zh: 'https://osa_dorm.ntu.edu.tw/', en: 'https://osa_dorm.ntu.edu.tw/en/' },
-    description: { zh: '', en: '' },
+    description: { zh: '請有意申請宿舍者留意本網站「最新消息」各項申請時程，並依公告內容完成申請作業', en: 'Those interested in applying for on-campus accommodation should regularly check the "News" section of this website for application timelines and follow the posted procedures' },
     subcategory: { zh: '生活資訊', en: 'NTU Life' },
     category: { zh: '學生專區', en: 'Students' },
   },  {
@@ -509,7 +512,7 @@ export const services: ServiceItem[] = [
     icon: logo,
     name: { zh: '宿舍報修', en: 'Dormitory Maintenance Online Request' },
     url: { zh: 'https://housing.ntu.edu.tw', en: 'https://housing.ntu.edu.tw/?lang=en' },
-    description: { zh: '', en: '' },
+    description: { zh: '請同學盡速透過「住宿管理系統」填報修繕申請，並詳實填寫內容以利後續處理', en: 'To maintain a quality living environment, students who encounter equipment or facility issues should promptly submit a repair request through the system, with detailed information for efficient processing' },
     subcategory: { zh: '生活資訊', en: 'NTU Life' },
     category: { zh: '學生專區', en: 'Students' },
   },  {
@@ -517,7 +520,7 @@ export const services: ServiceItem[] = [
     icon: logo,
     name: { zh: '宿舍退宿退費申請', en: 'Application for dorm withdrawal and refund' },
     url: { zh: 'https://housing.ntu.edu.tw', en: 'https://housing.ntu.edu.tw/?lang=en' },
-    description: { zh: '', en: '' },
+    description: { zh: '如有校內宿舍退宿或退費需求，請同學透過本系統提出申請，並自行列印退宿申請書', en: 'Students who need to withdraw from on-campus housing or apply for a refund should submit their application through this system and print the withdrawal application form on their own' },
     subcategory: { zh: '生活資訊', en: 'NTU Life' },
     category: { zh: '學生專區', en: 'Students' },
   },  {
@@ -541,7 +544,7 @@ export const services: ServiceItem[] = [
     icon: youbike,
     name: { zh: 'YouBike2.0補助', en: 'YouBike2.0 Subsidy' },
     url: { zh: 'https://my.ntu.edu.tw/yb2sub/', en: 'https://my.ntu.edu.tw/yb2sub/' },
-    description: { zh: '', en: '' },
+    description: { zh: 'YouBike2.0補助方案的申請系統', en: 'Application system for YouBike 2.0 subsidy program' },
     subcategory: { zh: '生活資訊', en: 'NTU Life' },
     category: { zh: '學生專區', en: 'Students' },
   },  {
@@ -549,7 +552,7 @@ export const services: ServiceItem[] = [
     icon: NetworkIssue,
     name: { zh: '網路問題回報', en: 'Network Issue Reporting' },
     url: { zh: 'https://net4help.ntu.edu.tw/', en: 'https://net4help.ntu.edu.tw/' },
-    description: { zh: '', en: '' },
+    description: { zh: '提供網路問題回報服務', en: 'For reporting campuswide network related issues' },
     subcategory: { zh: '生活資訊', en: 'NTU Life' },
     category: { zh: '學生專區', en: 'Students' },
   },  {
@@ -573,7 +576,7 @@ export const services: ServiceItem[] = [
     icon: logo,
     name: { zh: '減免學雜費申請', en: 'Tuition And Fees Reduced System(Chinese ver.)' },
     url: { zh: 'https://my.ntu.edu.tw/discount/', en: 'https://my.ntu.edu.tw/discount/engmsg.html' },
-    description: { zh: '', en: '' },
+    description: { zh: '為了學生能順利就學，減輕就學負擔，只要符合教育部規定身分，就可以申請學雜費減免', en: 'Domestic students meeting Ministry of Education criteria can apply for tuition and fee reductions to ease financial burdens' },
     subcategory: { zh: '助學資訊', en: 'Financial Aid' },
     category: { zh: '學生專區', en: 'Students' },
   },  {
@@ -653,7 +656,7 @@ export const services: ServiceItem[] = [
     icon: CurriculumMapping,
     name: { zh: '臺大課程地圖', en: 'Curriculum Mapping' },
     url: { zh: 'http://coursemap.aca.ntu.edu.tw/course_map_all/', en: 'http://coursemap.aca.ntu.edu.tw/course_map_all/map.php?lang=en_US' },
-    description: { zh: '', en: '' },
+    description: { zh: '由教學單位設置，系統性呈現課程結構與學習脈絡，引導學生規劃學習路徑並促進教學整合', en: 'Developed by the teaching unit to systematically present the course structure and learning progression, guiding students in planning their learning paths and promoting instructional integration' },
     subcategory: { zh: '課程學習', en: 'Courses' },
     category: { zh: '課程學習', en: 'Courses' },
   },  {
@@ -1098,7 +1101,7 @@ export const services: ServiceItem[] = [
     category: { zh: '教職申辦', en: 'Faculty & Staff' },
   },  {
     id: '132',
-    icon: logo,
+    icon: LaborInsurance,
     name: { zh: '勞健保加保申請', en: 'Labor and National Health Insurance Enrollment Application' },
     url: { zh: 'https://my.ntu.edu.tw/labhlh_extra/login.aspx', en: 'https://my.ntu.edu.tw/labhlh_extra/login.aspx' },
     description: { zh: '', en: '' },
@@ -1181,7 +1184,7 @@ export const services: ServiceItem[] = [
     icon: logo,
     name: { zh: '學生、教職員工證掛失/退費', en: 'Replacement Card' },
     url: { zh: 'https://cms.cc.ntu.edu.tw/ntucms/default.aspx', en: 'https://cms.cc.ntu.edu.tw/ntucms/default_en.aspx' },
-    description: { zh: '', en: '' },
+    description: { zh: '提供學生證、教職員工證掛失申請及退費申請', en: 'Services include reporting lost student IDs, faculty/staff IDs, and applying for refunds' },
     subcategory: { zh: '教職申辦', en: 'Faculty & Staff' },
     category: { zh: '教職申辦', en: 'Faculty & Staff' },
   },  {
@@ -1485,7 +1488,7 @@ export const services: ServiceItem[] = [
     icon: OnlineGrading,
     name: { zh: '網路登分', en: 'The Online Grading System' },
     url: { zh: 'https://reg227.aca.ntu.edu.tw/TeaScore/index.aspx', en: 'https://reg227.aca.ntu.edu.tw/TeaScoreEng/index.aspx' },
-    description: { zh: '', en: '' },
+    description: { zh: '提供教師上網建置當學期學生成績', en: 'Provide teachers with access to input student grades for the current semester online' },
     subcategory: { zh: '教學', en: 'Teaching' },
     category: { zh: '教學', en: 'Teaching' },
   },  {
@@ -1517,7 +1520,7 @@ export const services: ServiceItem[] = [
     icon: JADE,
     name: { zh: 'JADE期刊文獻傳遞服務', en: 'Journal Article Delivery Express JADE' },
     url: { zh: 'http://jade.lib.ntu.edu.tw/rapid_frontend/', en: 'http://jade.lib.ntu.edu.tw/rapid_frontend/' },
-    description: { zh: '', en: '' },
+    description: { zh: '提供教職員工生申請圖書館未收藏之期刊文獻傳遞服務', en: 'Providing document delivery services for journal articles not owned by the library, available upon request by faculty, staff, and students' },
     subcategory: { zh: '圖書研究', en: 'Research' },
     category: { zh: '圖書研究', en: 'Research' },
   },  {
@@ -1677,7 +1680,7 @@ export const services: ServiceItem[] = [
     icon: logo,
     name: { zh: '兼任助理臨時人員工作證明', en: 'Assistant & Temp Job Certificates' },
     url: { zh: 'https://event.ntu.edu.tw/certificate/', en: 'https://event.ntu.edu.tw/certificate/' },
-    description: { zh: '', en: '' },
+    description: { zh: '提供校內學生兼任助理及臨時人員離職證明申請程序，並提供離職證明書相關範本', en: 'Provide the application procedure for resignation certificates for student assistants and temporary staff, and offer related templates for resignation certificates' },
     subcategory: { zh: '帳務財物', en: 'Accounts' },
     category: { zh: '帳務財務', en: 'Accounts' },
   },  {
@@ -1861,7 +1864,7 @@ export const services: ServiceItem[] = [
     icon: NetworkIssue,
     name: { zh: '網路問題回報', en: 'Network Issue Reporting' },
     url: { zh: 'https://net4help.ntu.edu.tw/', en: 'https://net4help.ntu.edu.tw/' },
-    description: { zh: '', en: '' },
+    description: { zh: '提供網路問題回報服務', en: 'For reporting campuswide network related issues' },
     subcategory: { zh: '校園資源', en: 'Resources' },
     category: { zh: '校園資源', en: 'Resource' },
   },  {
