@@ -16,7 +16,7 @@ function App() {
   const t = {
     zh: {
       title: 'myNTU 校園服務整合平台',
-      subtitle: '一站式快速連結所有常用校務與學習資源',
+      subtitle: '快速連結所有常用校務與學習資源',
       links: ['聯絡資訊', '最新消息', '台大首頁', '計中首頁'],
       toggle: 'EN',
       logo: 'myNTU',
@@ -36,7 +36,7 @@ function App() {
     },
     en: {
       title: 'myNTU Unified Campus Services',
-      subtitle: 'One-stop access to academic and campus resources',
+      subtitle: 'Access to academic and campus resources',
       links: ['Contact', 'News', 'NTU Website', 'C&INC Website'],
       toggle: '中文',
       logo: 'myNTU',
@@ -71,7 +71,7 @@ function App() {
     return prefersDark ? 'dark' : 'light'
   })
   // Placeholder hot IDs after renumbering; adjust as you like
-  const hotIds: string[] = ['77','78','11','22','30','85','187','12','10','207']
+  const hotIds: string[] = ['78','79','10','21','29','86','188','11','9','208']
   // const hotSet = new Set(hotIds)
 
   const [hasScrolled, setHasScrolled] = useState<boolean>(false)
@@ -277,6 +277,8 @@ function App() {
   const hotTitle = lang === 'zh' ? '熱門項目' : 'Popular'
   const resultTitle = lang === 'zh' ? `${searchTerm} : 搜尋結果` : `${searchTerm} : Results`
 
+  const [spinLogo, setSpinLogo] = useState(false)
+
   return (
       <div>
       <nav className="mx-auto max-w-screen-2xl fixed inset-x-0 top-0 z-[80] h-14 flex items-center bg-transparent">
@@ -289,8 +291,11 @@ function App() {
             setSearchOpen(false);
             setMenuOpen(false);
             goToView('home');
-            setView('home'); (window as any)?.scrollTo?.({ top: 0, behavior: 'smooth' }) }}>
-            <img src={theme === 'dark' ? logo_night : logo} alt="logo" className="h-10 w-10 rounded-md max-[900px]:h-9 max-[900px]:w-9" />
+            setView('home'); (window as any)?.scrollTo?.({ top: 0, behavior: 'smooth' });
+            setSpinLogo(true);
+            window.setTimeout(() => setSpinLogo(false), 650);
+          }}>
+            <img src={theme === 'dark' ? logo_night : logo} alt="logo" className={`h-10 w-10 rounded-md max-[900px]:h-9 max-[900px]:w-9 ${spinLogo ? 'spin-once' : ''}`} />
             {/* {t.logo} */}
           </a>
           <div className="flex items-center gap-2">

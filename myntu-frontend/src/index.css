@@ -75,3 +75,11 @@ body,
     display: none; /* Chrome, Safari, Opera */
   }
 }
+
+/* One-time spin animation for logo */
+@keyframes spin-once {
+  to { transform: rotate(360deg); }
+}
+.spin-once {
+  animation: spin-once 0.6s ease-out;
+}
