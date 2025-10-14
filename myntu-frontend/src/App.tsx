@@ -447,7 +447,7 @@ function App() {
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder={t.search}
-                className="w-full h-10 rounded-none border-b border-[var(--nav-border)] px-2 text-[var(--text-color)] text-lg outline-none placeholder:text-[var(--placeholder)]"
+                className="w-full h-10 mr-2 rounded-none border-b border-[var(--nav-border)] px-2 text-[var(--text-color)] text-lg outline-none placeholder:text-[var(--placeholder)]"
               />
               {query ? (
                 <button

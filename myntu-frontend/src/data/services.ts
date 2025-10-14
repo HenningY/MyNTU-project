@@ -54,6 +54,19 @@ import ReplacementCard from './ReplacementCard.png'
 import sos from './sos.png'
 import turnitin from './turnitin.png'
 import GradeInquiryExploration from './GradeInquiryExploration.png'
+import AdvancedEnglishCourses from './AdvancedEnglishCourses.png'
+import AppExemptionAdvEng from './AppExemptionAdvEng.png'
+import InfoAdvisee from './InfoAdvisee.png'
+import StudentHiredInfo from './StudentHiredInfo.png'
+import AssistantandTempCertificates from './AssistantandTempCertificates.png'
+import ocw from './ocw.png'
+import zhseminarroom from './zhseminarroom.png'
+import OnlineCourseQuestionnaire from './OnlineCourseQuestionnaire.png'
+import NTUstudyabroadexpo from './NTUstudyabroadexpo.png'
+import StudyAbroad from './StudyAbroad.png'
+import iNTU from './iNTU.png'
+import NTUVDI from './NTUVDI.png'
+
 
 
 export const services: ServiceItem[] = [
@@ -83,7 +96,7 @@ export const services: ServiceItem[] = [
     category: { zh: '學生專區', en: 'Students' },
   },  {
     id: '4',
-    icon: logo,
+    icon: InfoAdvisee,
     name: { zh: '導生綜合資料', en: 'Personal information of advisee' },
     url: { zh: 'https://my.ntu.edu.tw/stuinfo/default.aspx', en: 'https://my.ntu.edu.tw/stuinfo/default.aspx' },
     description: { zh: '學生資訊平台，整合學生個人、學籍、學習紀錄及社團參與等跨系統資訊', en: 'A student information platform that consolidates data from multiple systems—including personal information, academic records, and extracurricular involvement' },
@@ -91,7 +104,7 @@ export const services: ServiceItem[] = [
     category: { zh: '學生專區', en: 'Students' },
   },  {
     id: '5',
-    icon: logo,
+    icon: StudentHiredInfo,
     name: { zh: '學生聘僱查詢系統', en: 'NTU Student Hired Information Query System(Chinese ver.)' },
     url: { zh: 'https://my.ntu.edu.tw/StuHireInfoQuery/index.html', en: 'https://my.ntu.edu.tw/StuHireInfoQuery/index.html' },
     description: { zh: '', en: '' },
@@ -107,7 +120,7 @@ export const services: ServiceItem[] = [
     category: { zh: '學生專區', en: 'Students' },
   },  {
     id: '7',
-    icon: logo,
+    icon: AssistantandTempCertificates,
     name: { zh: '兼任助理臨時人員工作證明', en: 'Assistant & Temp Job Certificates' },
     url: { zh: 'https://event.ntu.edu.tw/certificate/', en: 'https://event.ntu.edu.tw/certificate/' },
     description: { zh: '提供校內學生兼任助理及臨時人員離職證明申請程序，並提供離職證明書相關範本', en: 'Provide the application procedure for resignation certificates for student assistants and temporary staff, and offer related templates for resignation certificates' },
@@ -238,7 +251,7 @@ export const services: ServiceItem[] = [
     icon: logo,
     name: { zh: '本校生校際選課系統', en: 'Intercollegiate Course Selection System (for NTU Students)' },
     url: { zh: 'https://if177.aca.ntu.edu.tw/SelCou_Oschool/login.asp', en: 'https://if177.aca.ntu.edu.tw/SelCou_Oschool/login.asp' },
-    description: { zh: '', en: '' },
+    description: { zh: '本系統僅限申請臺大系統以外且兩校簽定合作協議書之本校未開放課程，但不包含國北大和臺藝大之通識課程', en: 'This system is limited to courses not offered at NTU but available through partner universities that have signed cooperation agreements with NTU. It does not include general education courses from NTUE or NTUA' },
     subcategory: { zh: '課務資訊', en: 'Courses' },
     category: { zh: '學生專區', en: 'Students' },
   },  {
@@ -254,7 +267,7 @@ export const services: ServiceItem[] = [
     icon: logo,
     name: { zh: '選課及註冊須知', en: 'Notice for Course Selection & Registration' },
     url: { zh: 'https://www.aca.ntu.edu.tw/WebUPD/aca/UAADForms/selcou.pdf', en: 'https://www.aca.ntu.edu.tw/WebUPD/acaEN/UAADForms/selcou-eng.pdf' },
-    description: { zh: '', en: '' },
+    description: { zh: '提供學生選課前相關準備及概念之整理，並詳細介紹初選、加退選、選課確認和停修之流程', en: 'Provide a summary of the relevant preparations and concepts for students before course selection, along with a detailed introduction to the processes of pre-registration selection, add/drop selection, course confirmation, and course withdrawal' },
     subcategory: { zh: '課務資訊', en: 'Courses' },
     category: { zh: '學生專區', en: 'Students' },
   },  {
@@ -262,7 +275,7 @@ export const services: ServiceItem[] = [
     icon: logo,
     name: { zh: '延緩註冊申請', en: 'Registration Extension System' },
     url: { zh: 'https://reg227.aca.ntu.edu.tw/regwork/login.asp', en: 'https://reg227.aca.ntu.edu.tw/regwork/login.asp' },
-    description: { zh: '', en: '' },
+    description: { zh: '提供學生延緩註冊申請', en: 'Provide students with the option to apply for deferred registration' },
     subcategory: { zh: '課務資訊', en: 'Courses' },
     category: { zh: '學生專區', en: 'Students' },
   },  {
@@ -270,7 +283,7 @@ export const services: ServiceItem[] = [
     icon: logo,
     name: { zh: '臺灣大學博碩士論文提交系統', en: 'NTU These and Dissertations Submission' },
     url: { zh: 'https://submit.tdr.lib.ntu.edu.tw/', en: 'https://submit.tdr.lib.ntu.edu.tw/?lang=en' },
-    description: { zh: '', en: '' },
+    description: { zh: '提供博碩士生上傳電子學位論文', en: 'Providing thesis/dissertation submission for graduate students' },
     subcategory: { zh: '課務資訊', en: 'Courses' },
     category: { zh: '學生專區', en: 'Students' },
   },  {
@@ -284,7 +297,7 @@ export const services: ServiceItem[] = [
   },  {
     id: '29',
     icon: course,
-    name: { zh: '網路選課1', en: 'Online Course Selection System I' },
+    name: { zh: '網路選課', en: 'Online Course Selection System I' },
     url: { zh: 'https://if192.aca.ntu.edu.tw/', en: 'https://if192.aca.ntu.edu.tw/default.asp?lang=en' },
     description: { zh: '初選和加退選', en: 'Pre-registration selection and add/drop selection' },
     subcategory: { zh: '課務資訊', en: 'Courses' },
@@ -310,7 +323,7 @@ export const services: ServiceItem[] = [
     icon: logo,
     name: { zh: '學分學程線上申請', en: 'Online Application for Credit Programs' },
     url: { zh: 'http://ifsel3.aca.ntu.edu.tw/cou_stu/default.asp', en: 'http://ifsel3.aca.ntu.edu.tw/cou_stu/default.asp' },
-    description: { zh: '', en: '' },
+    description: { zh: '提供學生查閱學分學程各項資訊及申請管道', en: 'Provides students with information on credit programs and application procedures' },
     subcategory: { zh: '課務資訊', en: 'Courses' },
     category: { zh: '學生專區', en: 'Students' },
   },  {
@@ -326,7 +339,7 @@ export const services: ServiceItem[] = [
     icon: logo,
     name: { zh: '學士班修課檢視表', en: 'Undergraduate Course Checklist' },
     url: { zh: 'https://reg.aca.ntu.edu.tw/GradeCheck/login', en: 'https://reg.aca.ntu.edu.tw/GradeCheck/login' },
-    description: { zh: '', en: '' },
+    description: { zh: '提供學士班學生查閱其修課紀錄', en: 'Provide students with access to their course records' },
     subcategory: { zh: '課務資訊', en: 'Courses' },
     category: { zh: '學生專區', en: 'Students' },
   },  {
@@ -334,7 +347,7 @@ export const services: ServiceItem[] = [
     icon: logo,
     name: { zh: '轉系輔系雙主修', en: 'Program Transfer / Minor / Double Major' },
     url: { zh: 'http://reg227.aca.ntu.edu.tw/TMD/stuquery/', en: 'http://reg227.aca.ntu.edu.tw/TMD/stuquery/' },
-    description: { zh: '', en: '' },
+    description: { zh: '轉輔雙申請及查榜系統，也可查詢到學系之轉出和轉入及相關法規規定', en: 'Applications and result inquiries related to department transfers, minors, and double majors. It allows applicants to check the transfer-in, transfer-out and relevant regulations of each department' },
     subcategory: { zh: '課務資訊', en: 'Courses' },
     category: { zh: '學生專區', en: 'Students' },
   },  {
@@ -342,7 +355,7 @@ export const services: ServiceItem[] = [
     icon: logo,
     name: { zh: '學分抵免審查', en: 'Credit Transfer Applications' },
     url: { zh: 'http://curri.aca.ntu.edu.tw/aca_doc/waive.asp', en: 'https://curri.aca.ntu.edu.tw/aca_doc/waive_English.asp' },
-    description: { zh: '', en: '' },
+    description: { zh: '入學前曾經在臺大或其他大專校院修習過之及格科目/考試證明等，經申請並由相關單位審核通過後，准予抵免', en: 'Courses or examination credits previously completed and passed at NTU or other accredited colleges/universities prior to enrollment may be transferred upon application and approval by the relevant departments or authorities' },
     subcategory: { zh: '課務資訊', en: 'Courses' },
     category: { zh: '學生專區', en: 'Students' },
   },  {
@@ -350,23 +363,23 @@ export const services: ServiceItem[] = [
     icon: logo,
     name: { zh: '交換生國外修課成績登錄暨採計申請', en: 'NTU Students\' Credit Recognition for Courses Taken Abroad System (Chinese ver.)' },
     url: { zh: 'https://if190.aca.ntu.edu.tw/exstuapp/loginr.asp', en: 'https://if190.aca.ntu.edu.tw/exstuapp/loginr.asp' },
-    description: { zh: '', en: '' },
+    description: { zh: '學生於出國修讀結束返國後，提出成績證明及相關文件辦理學分採計之申請，並經就讀學系審查後採認學分數', en: 'After completing your overseas studies and returning to Taiwan, students shall submit transcripts and relevant documents to apply for credit recognition. The number of credits to be recognized shall be reviewed and approved by your department' },
     subcategory: { zh: '課務資訊', en: 'Courses' },
     category: { zh: '學生專區', en: 'Students' },
   },  {
     id: '38',
-    icon: logo,
+    icon: StudyAbroad,
     name: { zh: '海外教育資訊網', en: 'NTU Study Abroad' },
     url: { zh: 'https://studyabroad.ntu.edu.tw', en: 'https://studyabroad.ntu.edu.tw/en/' },
-    description: { zh: '', en: '' },
+    description: { zh: 'Your study, your journey. 讓同學在完成臺大學業的同時，擁有專屬的出國學習經驗，建立國際視野', en: 'Your study, your journey. Our mission is to connect NTU students to a variety of study abroad options that broaden their horizons' },
     subcategory: { zh: '課務資訊', en: 'Courses' },
     category: { zh: '學生專區', en: 'Students' },
   },  {
     id: '39',
-    icon: logo,
+    icon: NTUstudyabroadexpo,
     name: { zh: '海外教育博覽會', en: 'NTU Study Abroad Expo' },
     url: { zh: 'https://studyabroadexpo.ntu.edu.tw', en: 'https://studyabroadexpo.ntu.edu.tw/en' },
-    description: { zh: '', en: '' },
+    description: { zh: '不清楚出國交換流程、要準備什麼資料？在這個線上博覽會裡，你可以得到你要的資訊', en: 'Not quite clear about the application process or the required documents? At NTU Study Abroad Expo, you can find all the information you need' },
     subcategory: { zh: '課務資訊', en: 'Courses' },
     category: { zh: '學生專區', en: 'Students' },
   },  {
@@ -387,10 +400,10 @@ export const services: ServiceItem[] = [
     category: { zh: '學生專區', en: 'Students' },
   },  {
     id: '42',
-    icon: logo,
+    icon: ocw,
     name: { zh: '開放式課程網', en: 'Open Course Website' },
     url: { zh: 'http://ocw.aca.ntu.edu.tw/', en: 'http://ocw.aca.ntu.edu.tw/' },
-    description: { zh: '', en: '' },
+    description: { zh: '邀請各系提供特色課程，推動資源共享與終身學習，供社會大眾及學術界免費參考與使用', en: 'Invite each department to provide special courses, promote resource sharing and lifelong learning, and provide free reference and use for the public and academic institutions' },
     subcategory: { zh: '課務資訊', en: 'Courses' },
     category: { zh: '學生專區', en: 'Students' },
   },  {
@@ -398,15 +411,15 @@ export const services: ServiceItem[] = [
     icon: logo,
     name: { zh: '服務學習網', en: 'Service Learning Portal' },
     url: { zh: 'https://osa_activity.ntu.edu.tw/ServiceLearning', en: 'https://osa_activity.ntu.edu.tw/ServiceLearning' },
-    description: { zh: '', en: '' },
+    description: { zh: '發布服務學習相關活動及資訊，並提供服務學習教學助理上傳成果報告之平台', en: 'Announce service-learning related activities and information, and provide a platform for service-learning teaching assistants to upload their progress reports' },
     subcategory: { zh: '課務資訊', en: 'Courses' },
     category: { zh: '學生專區', en: 'Students' },
   },  {
     id: '44',
-    icon: logo,
+    icon: AppExemptionAdvEng,
     name: { zh: '免修進階英語申請', en: 'Application for Exemption from Advanced English' },
     url: { zh: 'https://investea.aca.ntu.edu.tw/secen-waive/OpenTime.asp', en: 'https://investea.aca.ntu.edu.tw/secen-waive/OpenTime.asp' },
-    description: { zh: '', en: '' },
+    description: { zh: '提供大學部學生免修進階英語申請', en: 'Provide undergraduate students the opportunity to apply for exemption from the OEP course' },
     subcategory: { zh: '課務資訊', en: 'Courses' },
     category: { zh: '學生專區', en: 'Students' },
   },  {
@@ -422,15 +435,15 @@ export const services: ServiceItem[] = [
     icon: logo,
     name: { zh: '學習諮詢', en: 'NTU Academic Counseling Service' },
     url: { zh: 'https://ntuacounseling.ntu.edu.tw/web/basic', en: 'https://ntuacounseling.ntu.edu.tw/web/basic' },
-    description: { zh: '', en: '' },
+    description: { zh: '提供學生預約基礎學科小老師諮詢服務；系辦及導師申請專業學科或個案諮詢服務', en: 'Students can make appointments for peer tutoring services in common courses; departmental offices and academic advisors can apply for tutoring services in specialized courses or individual cases' },
     subcategory: { zh: '課務資訊', en: 'Courses' },
     category: { zh: '學生專區', en: 'Students' },
   },  {
     id: '47',
-    icon: logo,
+    icon: OnlineCourseQuestionnaire,
     name: { zh: '教學意見調查', en: 'Online Course Questionnaire System' },
     url: { zh: 'http://investea.aca.ntu.edu.tw/aca_doc/opinion/opinion.asp', en: 'https://if163.aca.ntu.edu.tw/eportfolio/defaulteng.asp' },
-    description: { zh: '', en: '' },
+    description: { zh: '期中教調僅收集文字意見；期末教調包含評鑑值與文字意見，作為改進教學之依據', en: 'The midterm questionnaire collects written feedback only, while the final questionnaire includes both evaluation scores and written comments, which serve as a basis for improving teaching' },
     subcategory: { zh: '課務資訊', en: 'Courses' },
     category: { zh: '學生專區', en: 'Students' },
   },  {
@@ -446,12 +459,12 @@ export const services: ServiceItem[] = [
     icon: logo,
     name: { zh: '碩博士學位考試申請', en: 'Online Application System for the Oral Thesis/Dissertation Defenses' },
     url: { zh: 'https://gra103.aca.ntu.edu.tw/degree/index_main.asp', en: 'https://gra103.aca.ntu.edu.tw/degree/index_main_en.asp' },
-    description: { zh: '', en: '' },
+    description: { zh: '碩、博士班學生申請學位考試系統(含學位考試申請及已通過學位考試論文未繳交者)', en: 'For online application for Thesis/Dissertation Defense (including those who have passed the defense but have not yet submitted their thesis)' },
     subcategory: { zh: '課務資訊', en: 'Courses' },
     category: { zh: '學生專區', en: 'Students' },
   },  {
     id: '50',
-    icon: logo,
+    icon: zhseminarroom,
     name: { zh: '綜合教學館討論室借用', en: 'Zonghe Lecture Building Seminar Room Reservation' },
     url: { zh: 'https://roaccon.aca.ntu.edu.tw/MRBS/AgreementPage.aspx', en: 'https://roaccon.aca.ntu.edu.tw/MRBS/AgreementPage.aspx' },
     description: { zh: '', en: '' },
@@ -556,9 +569,9 @@ export const services: ServiceItem[] = [
   },  {
     id: '63',
     icon: youbike,
-    name: { zh: 'YouBike2.0補助', en: 'YouBike2.0 Subsidy' },
+    name: { zh: 'YouBike2.0 補助', en: 'YouBike2.0 Subsidy' },
     url: { zh: 'https://my.ntu.edu.tw/yb2sub/', en: 'https://my.ntu.edu.tw/yb2sub/' },
-    description: { zh: 'YouBike2.0補助方案的申請系統', en: 'Application system for YouBike 2.0 subsidy program' },
+    description: { zh: 'YouBike2.0 補助方案的申請系統', en: 'Application system for YouBike 2.0 subsidy program' },
     subcategory: { zh: '生活資訊', en: 'NTU Life' },
     category: { zh: '學生專區', en: 'Students' },
   },  {
@@ -582,7 +595,7 @@ export const services: ServiceItem[] = [
     icon: logo,
     name: { zh: '生活學習助學金申請', en: 'Applying the Learning Through Living Student Assistantship' },
     url: { zh: 'https://my.ntu.edu.tw/internApp/', en: 'https://my.ntu.edu.tw/internApp/' },
-    description: { zh: '', en: '' },
+    description: { zh: '為培養經濟弱勢學生的自立精神與生活學習能力，提升臺大學生的基本素養與就業競爭力，特依據教育部大專院校弱勢學生助學計畫', en: 'To foster independence and life-learning skills among economically disadvantaged students, enhance NTU students’ core competencies, and strengthen their employability, in accordance with the Ministry of Education’s Assistance Program for Disadvantaged Students' },
     subcategory: { zh: '助學資訊', en: 'Financial Aid' },
     category: { zh: '學生專區', en: 'Students' },
   },  {
@@ -598,7 +611,7 @@ export const services: ServiceItem[] = [
     icon: logo,
     name: { zh: '弱勢學生助學申請', en: 'Underprivileged Student Aids (Chinese ver.)' },
     url: { zh: 'https://my.ntu.edu.tw/coloan/readme.aspx?logoutFunction=false', en: 'https://my.ntu.edu.tw/coloan/engmsg.html' },
-    description: { zh: '', en: '' },
+    description: { zh: '為家庭年所得後40％之弱勢學生提供學雜費、生活費、急難與住宿補助，協助減輕經濟負擔，確保就學機會平等', en: 'Offering tuition, living, emergency, and housing subsidies for students from families in the lower 40% income bracket to ease financial burdens and ensure equal access to education' },
     subcategory: { zh: '助學資訊', en: 'Financial Aid' },
     category: { zh: '學生專區', en: 'Students' },
   },  {
@@ -606,7 +619,7 @@ export const services: ServiceItem[] = [
     icon: logo,
     name: { zh: '就學貸款申請', en: 'Student Loan Application System (Chinese ver.)' },
     url: { zh: 'https://my.ntu.edu.tw/loan/', en: 'https://my.ntu.edu.tw/loan/engmsg.html' },
-    description: { zh: '', en: '' },
+    description: { zh: '為減輕就學負擔，只要是本國學生，政府可提供優惠款，畢業後，借款者應即擔負起攤還本息的還款責任', en: 'As long as they are domestic students, the government can offer subsidized amounts. However, after graduation, they will still be responsible for repaying the loan in full' },
     subcategory: { zh: '助學資訊', en: 'Financial Aid' },
     category: { zh: '學生專區', en: 'Students' },
   },  {
@@ -724,7 +737,7 @@ export const services: ServiceItem[] = [
   },  {
     id: '84',
     icon: course,
-    name: { zh: '網路選課1', en: 'Online Course Selection System I' },
+    name: { zh: '網路選課', en: 'Online Course Selection System I' },
     url: { zh: 'https://if192.aca.ntu.edu.tw/', en: 'https://if192.aca.ntu.edu.tw/default.asp?lang=en' },
     description: { zh: '初選和加退選', en: 'Pre-registration selection and add/drop selection' },
     subcategory: { zh: '課程學習', en: 'Courses' },
@@ -747,18 +760,18 @@ export const services: ServiceItem[] = [
     category: { zh: '課程學習', en: 'Courses' },
   },  {
     id: '87',
-    icon: logo,
+    icon: StudyAbroad,
     name: { zh: '海外教育資訊網', en: 'NTU Study Abroad' },
     url: { zh: 'https://studyabroad.ntu.edu.tw', en: 'https://studyabroad.ntu.edu.tw/en/' },
-    description: { zh: '', en: '' },
+    description: { zh: 'Your study, your journey. 讓同學在完成臺大學業的同時，擁有專屬的出國學習經驗，建立國際視野', en: 'Your study, your journey. Our mission is to connect NTU students to a variety of study abroad options that broaden their horizons' },
     subcategory: { zh: '課程學習', en: 'Courses' },
     category: { zh: '課程學習', en: 'Courses' },
   },  {
     id: '88',
-    icon: logo,
+    icon: NTUstudyabroadexpo,
     name: { zh: '海外教育博覽會', en: 'NTU Study Abroad Expo' },
     url: { zh: 'https://studyabroadexpo.ntu.edu.tw', en: 'https://studyabroadexpo.ntu.edu.tw/en' },
-    description: { zh: '', en: '' },
+    description: { zh: '不清楚出國交換流程、要準備什麼資料？在這個線上博覽會裡，你可以得到你要的資訊', en: 'Not quite clear about the application process or the required documents? At NTU Study Abroad Expo, you can find all the information you need' },
     subcategory: { zh: '課程學習', en: 'Courses' },
     category: { zh: '課程學習', en: 'Courses' },
   },  {
@@ -806,7 +819,7 @@ export const services: ServiceItem[] = [
     icon: logo,
     name: { zh: '停修課程網路申請系統', en: 'Withdrawal Application System' },
     url: { zh: 'https://eportfolio.ntu.edu.tw/withhold/Index', en: 'https://eportfolio.ntu.edu.tw/withhold/Index' },
-    description: { zh: '', en: '' },
+    description: { zh: '提供學生下載以及上傳停修申請書，並查詢審核結果。', en: 'Provide the course withdrawal application form for students to download and upload. Students can also inquire the result of the withdrawal' },
     subcategory: { zh: '課程學習', en: 'Courses' },
     category: { zh: '課程學習', en: 'Courses' },
   },  {
@@ -830,7 +843,7 @@ export const services: ServiceItem[] = [
     icon: logo,
     name: { zh: '學分抵免審查', en: 'Credit Transfer Applications' },
     url: { zh: 'http://curri.aca.ntu.edu.tw/aca_doc/waive.asp', en: 'https://curri.aca.ntu.edu.tw/aca_doc/waive_English.asp' },
-    description: { zh: '', en: '' },
+    description: { zh: '入學前曾經在臺大或其他大專校院修習過之及格科目/考試證明等，經申請並由相關單位審核通過後，准予抵免', en: 'Courses or examination credits previously completed and passed at NTU or other accredited colleges/universities prior to enrollment may be transferred upon application and approval by the relevant departments or authorities' },
     subcategory: { zh: '課程學習', en: 'Courses' },
     category: { zh: '課程學習', en: 'Courses' },
   },  {
@@ -838,7 +851,7 @@ export const services: ServiceItem[] = [
     icon: logo,
     name: { zh: '課程Excel檔下載', en: 'Download Courses in Excel' },
     url: { zh: 'http://ftp.ntu.edu.tw/NTU/course/course.htm', en: 'ftp://ftp.ntu.edu.tw/NTU/course/courseev.htm' },
-    description: { zh: '', en: '' },
+    description: { zh: '當學期課程資料下載應用', en: 'Download application of current semester course materials' },
     subcategory: { zh: '課程學習', en: 'Courses' },
     category: { zh: '課程學習', en: 'Courses' },
   },  {
@@ -854,7 +867,7 @@ export const services: ServiceItem[] = [
     icon: logo,
     name: { zh: '學士班修課檢視表', en: 'Undergraduate Course Checklist' },
     url: { zh: 'https://reg.aca.ntu.edu.tw/GradeCheck/login', en: 'https://reg.aca.ntu.edu.tw/GradeCheck/login' },
-    description: { zh: '', en: '' },
+    description: { zh: '提供學士班學生查閱其修課紀錄', en: 'Provide students with access to their course records' },
     subcategory: { zh: '課程學習', en: 'Courses' },
     category: { zh: '課程學習', en: 'Courses' },
   },  {
@@ -862,7 +875,7 @@ export const services: ServiceItem[] = [
     icon: logo,
     name: { zh: '學分學程線上申請', en: 'Online Application for Credit Programs' },
     url: { zh: 'http://ifsel3.aca.ntu.edu.tw/cou_stu/default.asp', en: 'http://ifsel3.aca.ntu.edu.tw/cou_stu/default.asp' },
-    description: { zh: '', en: '' },
+    description: { zh: '提供學生查閱學分學程各項資訊及申請管道', en: 'Provides students with information on credit programs and application procedures' },
     subcategory: { zh: '課程學習', en: 'Courses' },
     category: { zh: '課程學習', en: 'Courses' },
   },  {
@@ -870,7 +883,7 @@ export const services: ServiceItem[] = [
     icon: logo,
     name: { zh: '暑期班', en: 'Summer Session Information' },
     url: { zh: 'https://coursemap.aca.ntu.edu.tw/summer/index.html?lang_type=tw', en: 'https://coursemap.aca.ntu.edu.tw/summer/index.html?lang_type=en' },
-    description: { zh: '', en: '' },
+    description: { zh: '提供臺大暑期課程資訊，系所使用本網站開課，學生透過本網站申請專案開課及查詢各類暑期課程及其開設單位、時間與內容', en: 'This website provides information on NTU summer courses. Departments use it to offer courses, while students can apply for special courses and search for various summer courses, their offering units, schedules, and content' },
     subcategory: { zh: '課程學習', en: 'Courses' },
     category: { zh: '課程學習', en: 'Courses' },
   },  {
@@ -878,7 +891,7 @@ export const services: ServiceItem[] = [
     icon: logo,
     name: { zh: '學習諮詢', en: 'NTU Academic Counseling Service' },
     url: { zh: 'https://ntuacounseling.ntu.edu.tw/web/basic', en: 'https://ntuacounseling.ntu.edu.tw/web/basic' },
-    description: { zh: '', en: '' },
+    description: { zh: '提供學生預約基礎學科小老師諮詢服務；系辦及導師申請專業學科或個案諮詢服務', en: 'Students can make appointments for peer tutoring services in common courses; departmental offices and academic advisors can apply for tutoring services in specialized courses or individual cases' },
     subcategory: { zh: '課程學習', en: 'Courses' },
     category: { zh: '課程學習', en: 'Courses' },
   },  {
@@ -886,15 +899,15 @@ export const services: ServiceItem[] = [
     icon: logo,
     name: { zh: '服務學習網', en: 'Service Learning Portal' },
     url: { zh: 'https://osa_activity.ntu.edu.tw/ServiceLearning', en: 'https://osa_activity.ntu.edu.tw/ServiceLearning' },
-    description: { zh: '', en: '' },
+    description: { zh: '發布服務學習相關活動及資訊，並提供服務學習教學助理上傳成果報告之平台', en: 'Announce service-learning related activities and information, and provide a platform for service-learning teaching assistants to upload their progress reports' },
     subcategory: { zh: '課程學習', en: 'Courses' },
     category: { zh: '課程學習', en: 'Courses' },
   },  {
     id: '105',
-    icon: logo,
+    icon: ocw,
     name: { zh: '開放式課程網', en: 'Open Course Website' },
     url: { zh: 'http://ocw.aca.ntu.edu.tw/', en: 'http://ocw.aca.ntu.edu.tw/' },
-    description: { zh: '', en: '' },
+    description: { zh: '邀請各系提供特色課程，推動資源共享與終身學習，供社會大眾及學術界免費參考與使用', en: 'Invite each department to provide special courses, promote resource sharing and lifelong learning, and provide free reference and use for the public and academic institutions' },
     subcategory: { zh: '課程學習', en: 'Courses' },
     category: { zh: '課程學習', en: 'Courses' },
   },  {
@@ -923,7 +936,7 @@ export const services: ServiceItem[] = [
     category: { zh: '課程學習', en: 'Courses' },
   },  {
     id: '109',
-    icon: logo,
+    icon: AdvancedEnglishCourses,
     name: { zh: '進階英語課程', en: 'Advanced English Courses' },
     url: { zh: 'https://eclass.fltc.ntu.edu.tw/', en: 'https://eclass.fltc.ntu.edu.tw/' },
     description: { zh: '', en: '' },
@@ -1348,7 +1361,7 @@ export const services: ServiceItem[] = [
   },  {
     id: '162',
     icon: logo,
-    name: { zh: 'NTU aCARE學習預警暨輔導追蹤系統', en: 'NTU aCARE Learning Alert and Counseling Tracking System' },
+    name: { zh: 'NTU aCARE 學習預警暨輔導追蹤系統', en: 'NTU aCARE Learning Alert and Counseling Tracking System' },
     url: { zh: 'https://ntuacare.ntu.edu.tw/', en: 'https://ntuacare.ntu.edu.tw/' },
     description: { zh: '', en: '' },
     subcategory: { zh: '教學', en: 'Teaching' },
@@ -1372,7 +1385,7 @@ export const services: ServiceItem[] = [
   },  {
     id: '165',
     icon: logo,
-    name: { zh: 'FACULTY+數位教學服務', en: 'FACULTY+ Digital Teaching Services' },
+    name: { zh: 'FACULTY+ 數位教學服務', en: 'FACULTY+ Digital Teaching Services' },
     url: { zh: 'https://www.dlc.ntu.edu.tw/faculty/', en: 'https://www.dlc.ntu.edu.tw/faculty/' },
     description: { zh: '', en: '' },
     subcategory: { zh: '教學', en: 'Teaching' },
@@ -1427,7 +1440,7 @@ export const services: ServiceItem[] = [
     category: { zh: '教學', en: 'Teaching' },
   },  {
     id: '172',
-    icon: logo,
+    icon: InfoAdvisee,
     name: { zh: '導生綜合資料', en: 'Personal information of advisee' },
     url: { zh: 'https://my.ntu.edu.tw/stuinfo/default.aspx', en: 'https://my.ntu.edu.tw/stuinfo/default.aspx' },
     description: { zh: '學生資訊平台，整合學生個人、學籍、學習紀錄及社團參與等跨系統資訊', en: 'A student information platform that consolidates data from multiple systems—including personal information, academic records, and extracurricular involvement' },
@@ -1566,7 +1579,7 @@ export const services: ServiceItem[] = [
     icon: logo,
     name: { zh: '臺大學術典藏', en: 'NTU Scholars' },
     url: { zh: 'https://scholars.lib.ntu.edu.tw/', en: 'https://scholars.lib.ntu.edu.tw/' },
-    description: { zh: '', en: '' },
+    description: { zh: '歡迎本校研究人員加入臺大學術典藏，打造個人學術品牌，永久典藏研究成果', en: 'NTU researchers are welcome to join NTU Scholars to archive and showcase researcher profiles and scholarly works' },
     subcategory: { zh: '圖書研究', en: 'Research' },
     category: { zh: '圖書研究', en: 'Research' },
   },  {
@@ -1691,7 +1704,7 @@ export const services: ServiceItem[] = [
     category: { zh: '帳務財務', en: 'Accounts' },
   },  {
     id: '205',
-    icon: logo,
+    icon: AssistantandTempCertificates,
     name: { zh: '兼任助理臨時人員工作證明', en: 'Assistant & Temp Job Certificates' },
     url: { zh: 'https://event.ntu.edu.tw/certificate/', en: 'https://event.ntu.edu.tw/certificate/' },
     description: { zh: '提供校內學生兼任助理及臨時人員離職證明申請程序，並提供離職證明書相關範本', en: 'Provide the application procedure for resignation certificates for student assistants and temporary staff, and offer related templates for resignation certificates' },
@@ -1902,7 +1915,7 @@ export const services: ServiceItem[] = [
     icon: logo,
     name: { zh: 'eduroam', en: 'eduroam' },
     url: { zh: 'https://ccnet.ntu.edu.tw/wireless/ccnet/wireless.php?page=eduroam', en: 'http://ccnet.ntu.edu.tw/wireless/eduroam_en.html' },
-    description: { zh: '', en: '' },
+    description: { zh: '提供跨校漫遊服務', en: 'Offering services related to campus WiFi roaming' },
     subcategory: { zh: '校園資源', en: 'Resources' },
     category: { zh: '校園資源', en: 'Resource' },
   },  {
@@ -1910,15 +1923,15 @@ export const services: ServiceItem[] = [
     icon: logo,
     name: { zh: 'NTU Space', en: 'NTU Space' },
     url: { zh: 'https://www.space.ntu.edu.tw', en: 'https://www.space.ntu.edu.tw' },
-    description: { zh: '', en: '' },
+    description: { zh: '提供全校每位學生15GB、教職員40GB的雲端儲存空間，除了可以利用網頁介面上傳、下載及分享檔案，還提供了Windows 及Mac版的同步程式(Sync Agent)', en: 'NTU Space provides every student with 15GB and each faculty/staff member with 40GB of cloud storage. In addition to uploading, downloading, and sharing files via the web interface, it also offers Sync Agent programs for Windows and Mac, allowing you to synchronize your computer data at any time' },
     subcategory: { zh: '校園資源', en: 'Resources' },
     category: { zh: '校園資源', en: 'Resource' },
   },  {
     id: '233',
-    icon: logo,
+    icon: NTUVDI,
     name: { zh: 'NTU VDI', en: 'NTU VDI' },
     url: { zh: 'https://vdi.cloud.ntu.edu.tw/', en: 'https://vdi.cloud.ntu.edu.tw/' },
-    description: { zh: '', en: '' },
+    description: { zh: '提供了跨平臺、裝置的連線方式，使用者可以利用任一種瀏覽器連線至 NTU VDI 。或是在使用者的任一裝置上安裝VMware Horizon Client，即可全功能使用', en: 'NTU VDI offers cross-platform and cross-device connectivity options. Users can connect to NTU VDI through any web browser or enjoy full functionality by installing the VMware Horizon Client on any of their devices' },
     subcategory: { zh: '校園資源', en: 'Resources' },
     category: { zh: '校園資源', en: 'Resource' },
   },  {
@@ -1926,15 +1939,15 @@ export const services: ServiceItem[] = [
     icon: logo,
     name: { zh: '保健中心預約掛號', en: 'Health Center/ Online Appointment' },
     url: { zh: 'https://hcregister.ntu.edu.tw/', en: 'https://hcregister.ntu.edu.tw/' },
-    description: { zh: '', en: '' },
+    description: { zh: '預約掛號系統可提供保健中心14日內之門診預約，科別包含家醫科、皮膚科、耳鼻喉科、眼科、牙科 、婦科等', en: 'The online appointment (registration) system provides 24-hour service. Appointments can be made for outpatient departments within 14 days, including family medicine, dermatology, otolaryngology, ophthalmology, dentistry, gynecology, etc' },
     subcategory: { zh: '校園資源', en: 'Resources' },
     category: { zh: '校園資源', en: 'Resource' },
   },  {
     id: '235',
-    icon: logo,
+    icon: iNTU,
     name: { zh: 'iNTU', en: 'iNTU' },
     url: { zh: 'https://m.ntu.edu.tw/', en: 'https://m.ntu.edu.tw/' },
-    description: { zh: '', en: '' },
+    description: { zh: '整合校務系統及校園資訊，提供行動版資訊服務應用程式，以利即時查詢校務資訊', en: 'Integrates university systems and campus information to provide mobile information service applications for real-time access to university information' },
     subcategory: { zh: '校園資源', en: 'Resources' },
     category: { zh: '校園資源', en: 'Resource' },
   },  {
@@ -1942,23 +1955,23 @@ export const services: ServiceItem[] = [
     icon: logo,
     name: { zh: '計中校園軟體下載', en: 'Licensed Software Downloads' },
     url: { zh: 'https://download.cc.ntu.edu.tw', en: 'https://download.cc.ntu.edu.tw' },
-    description: { zh: '', en: '' },
+    description: { zh: '供教職員生免費下載授權軟體，以支援教學、研究及行政作業之需求（如 Microsoft Office、Windows、輸入法等）', en: 'The university provides a Campus Software Download System to offer faculty, staff, and students access to licensed software free of charge' },
     subcategory: { zh: '校園資源', en: 'Resources' },
     category: { zh: '校園資源', en: 'Resource' },
   },  {
     id: '237',
     icon: logo,
-    name: { zh: '有關計中eMail帳號...', en: 'About C&INC Email Account' },
+    name: { zh: '有關計中 eMail 帳號...', en: 'About C&INC Email Account' },
     url: { zh: 'http://apply.cc.ntu.edu.tw/', en: 'http://apply.cc.ntu.edu.tw/index_en.html' },
-    description: { zh: '', en: '' },
+    description: { zh: '提供校內各項網路服務使用之身分認證與資料確認的帳號密碼系統', en: 'An account and password system that provides identity authentication and data confirmation for using various campus network services' },
     subcategory: { zh: '校園資源', en: 'Resources' },
     category: { zh: '校園資源', en: 'Resource' },
   },  {
     id: '238',
     icon: logo,
-    name: { zh: '計中eMail帳號密碼修改', en: 'Change of password' },
+    name: { zh: '計中 eMail 帳號密碼修改', en: 'Change of password' },
     url: { zh: 'http://changepassword.cc.ntu.edu.tw/', en: 'http://changepassword.cc.ntu.edu.tw/' },
-    description: { zh: '', en: '' },
+    description: { zh: '單一登入帳號及Eduroam無線網路服務之密碼更換、Google Workspace服務設定、VPN服務設定', en: 'Password change for Single Sign-On (SSO) accounts and the Eduroam wireless service, Google Workspace service settings, and VPN service settings' },
     subcategory: { zh: '校園資源', en: 'Resources' },
     category: { zh: '校園資源', en: 'Resource' },
   },  {
@@ -1966,31 +1979,31 @@ export const services: ServiceItem[] = [
     icon: logo,
     name: { zh: '個人網頁空間', en: 'Personal Web-pages' },
     url: { zh: 'https://www.cc.ntu.edu.tw/chinese/services/serv_i01.asp', en: 'https://www.cc.ntu.edu.tw/chinese/english/services/serv_i01.asp' },
-    description: { zh: '', en: '' },
+    description: { zh: '提供網頁空間，以便製作個人或所屬單位之網頁', en: 'Providing web space for creating personal web pages or web pages for affiliated units/departments' },
     subcategory: { zh: '校園資源', en: 'Resources' },
     category: { zh: '校園資源', en: 'Resource' },
   },  {
     id: '240',
     icon: logo,
-    name: { zh: 'Wi-Fi無線網路', en: 'Wireless Network' },
+    name: { zh: 'Wi-Fi 無線網路', en: 'Wireless Network' },
     url: { zh: 'http://ccnet.ntu.edu.tw/wireless/', en: 'http://ccnet.ntu.edu.tw/english/wireless/' },
-    description: { zh: '', en: '' },
+    description: { zh: '提供校園無線網路服務', en: 'Offering services related to campus WiFi' },
     subcategory: { zh: '校園資源', en: 'Resources' },
     category: { zh: '校園資源', en: 'Resource' },
   },  {
     id: '241',
     icon: logo,
-    name: { zh: 'VPN虛擬私有網路', en: 'VPN Services' },
+    name: { zh: 'VPN 虛擬私有網路', en: 'VPN Services' },
     url: { zh: 'https://ccnet.ntu.edu.tw/vpn/', en: 'https://ccnet.ntu.edu.tw/vpn/PulseSecure-eng.html' },
-    description: { zh: '', en: '' },
+    description: { zh: '提供本校師生於校外使用僅允許臺大網路存取之網路資源', en: 'Providing SSL VPN service for accessing NTU Campus only resouce from off-campus network' },
     subcategory: { zh: '校園資源', en: 'Resources' },
     category: { zh: '校園資源', en: 'Resource' },
   },  {
     id: '242',
     icon: logo,
-    name: { zh: 'ADSL校園網路到府服務', en: 'ADSL Application' },
+    name: { zh: 'ADSL 校園網路到府服務', en: 'ADSL Application' },
     url: { zh: 'https://ccnet.ntu.edu.tw/ADSL/', en: 'https://www.cc.ntu.edu.tw/english/services/serv_n07.asp' },
-    description: { zh: '', en: '' },
+    description: { zh: '提供校園網路到府服務', en: 'Offering services related to ADSL' },
     subcategory: { zh: '校園資源', en: 'Resources' },
     category: { zh: '校園資源', en: 'Resource' },
   },  {
@@ -2006,7 +2019,7 @@ export const services: ServiceItem[] = [
     icon: logo,
     name: { zh: '校園網路資料查詢', en: 'Campus Network Data Inquiry' },
     url: { zh: 'http://netadm.cc.ntu.edu.tw/ip/query.php', en: 'http://netadm.cc.ntu.edu.tw/ip/query.php' },
-    description: { zh: '', en: '' },
+    description: { zh: '校內各單位IP位址及網管人員資料查詢', en: 'For lookin up information about department IP address and network management staff' },
     subcategory: { zh: '校園資源', en: 'Resources' },
     category: { zh: '校園資源', en: 'Resource' },
   },  {
@@ -2022,7 +2035,7 @@ export const services: ServiceItem[] = [
     icon: logo,
     name: { zh: '資通安全服務中心', en: 'Information Security Services Center' },
     url: { zh: 'http://cert.ntu.edu.tw/', en: 'http://cert.ntu.edu.tw/' },
-    description: { zh: '', en: '' },
+    description: { zh: '提供資通安全相關服務', en: 'Offering services related to information security' },
     subcategory: { zh: '校園資源', en: 'Resources' },
     category: { zh: '校園資源', en: 'Resource' },
   },  {
@@ -2030,15 +2043,15 @@ export const services: ServiceItem[] = [
     icon: logo,
     name: { zh: '高效能運算服務', en: 'High Performance Computing' },
     url: { zh: 'http://grid.ntu.edu.tw/', en: 'http://grid.ntu.edu.tw/' },
-    description: { zh: '', en: '' },
+    description: { zh: '為了幫助臺大各研究團隊加快實驗模擬程式的執行時間，計中提供了高效能的計算服務。此外，我們也提供商業軟體，包括 Matlab, SAS, Gaussian, VASP ...等', en: 'To help NTU research teams accelerate the execution time of experimental simulation programs, the Computer Center provides high-performance computing services. Furthermore, we also offer commercial software including Matlab, SAS, Gaussian, VASP, etc.' },
     subcategory: { zh: '校園資源', en: 'Resources' },
     category: { zh: '校園資源', en: 'Resource' },
   },  {
     id: '248',
     icon: logo,
-    name: { zh: 'NTP網路校時', en: 'Network time protocol server' },
+    name: { zh: 'NTP 網路校時', en: 'Network time protocol server' },
     url: { zh: 'http://ccnet.ntu.edu.tw/ntp/index.html', en: 'http://ccnet.ntu.edu.tw/english/ntp.html' },
-    description: { zh: '', en: '' },
+    description: { zh: '提供網路校時服務', en: 'Offering services related to NTP' },
     subcategory: { zh: '校園資源', en: 'Resources' },
     category: { zh: '校園資源', en: 'Resource' },
   },  {
@@ -2046,7 +2059,7 @@ export const services: ServiceItem[] = [
     icon: logo,
     name: { zh: '校友資訊', en: 'Alumni Information' },
     url: { zh: 'https://www.alumni.ntu.edu.tw/', en: 'https://www.alumni.ntu.edu.tw/' },
-    description: { zh: '', en: '' },
+    description: { zh: '為提供校友服務所建立的網站', en: 'A website built to provide services for alumni' },
     subcategory: { zh: '校園資源', en: 'Resources' },
     category: { zh: '校園資源', en: 'Resource' },
   },  {
@@ -2078,7 +2091,7 @@ export const services: ServiceItem[] = [
     icon: logo,
     name: { zh: '轉系輔系雙主修', en: 'Program Transfer / Minor / Double Major' },
     url: { zh: 'http://reg227.aca.ntu.edu.tw/TMD/stuquery/', en: 'http://reg227.aca.ntu.edu.tw/TMD/stuquery/' },
-    description: { zh: '', en: '' },
+    description: { zh: '轉輔雙申請及查榜系統，也可查詢到學系之轉出和轉入及相關法規規定', en: 'Applications and result inquiries related to department transfers, minors, and double majors. It allows applicants to check the transfer-in, transfer-out and relevant regulations of each department' },
     subcategory: { zh: '消息公告', en: 'Bulletin' },
     category: { zh: '消息公告', en: 'Bulletin' },
   },  {
