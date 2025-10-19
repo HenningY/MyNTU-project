@@ -12,6 +12,8 @@ type ServiceSectionsProps = {
   groups: Map<string, ServiceItem[]>
   hotTitle: string
   resultTitle: string
+  recentTitle: string
+  recentServices: ServiceItem[]
 }
 
 function ServiceCard({ item, lang }: { item: ServiceItem; lang: Lang }) {
@@ -37,7 +39,7 @@ function ServiceCard({ item, lang }: { item: ServiceItem; lang: Lang }) {
 }
 
 export default function ServiceSections(props: ServiceSectionsProps) {
-  const { lang, isSearching, searchTerm, selectedCategory, visibleServices, groups, hotTitle, resultTitle } = props
+  const { lang, isSearching, searchTerm, selectedCategory, visibleServices, groups, hotTitle, resultTitle, recentTitle, recentServices } = props
 
   // Deduplicate by localized name when searching
   const listForSearch = (() => {
@@ -72,14 +74,26 @@ export default function ServiceSections(props: ServiceSectionsProps) {
           )}
         </section>
       ) : (!selectedCategory ? (
-        <section className="w-full">
-          <div className="mb-2 text-left font-semibold text-[var(--muted)] px-3 max-[600px]:text-sm max-[600px]:mb-4">{hotTitle}</div>
-          <div className="grid grid-cols-3 gap-1 max-[600px]:px-1 max-[1200px]:grid-cols-2 max-[750px]:grid-cols-1 max-[750px]:gap-2">
-            {visibleServices.map((s) => (
-              <ServiceCard key={s.id} item={s} lang={lang} />
-            ))}
-          </div>
-        </section>
+        <>
+          <section className="w-full">
+            <div className="mb-2 text-left font-semibold text-[var(--muted)] px-3 max-[600px]:text-sm max-[600px]:mb-4">{hotTitle}</div>
+            <div className="grid grid-cols-3 gap-1 max-[600px]:px-1 max-[1200px]:grid-cols-2 max-[750px]:grid-cols-1 max-[750px]:gap-2">
+              {visibleServices.map((s) => (
+                <ServiceCard key={s.id} item={s} lang={lang} />
+              ))}
+            </div>
+          </section>
+          {recentServices.length > 0 && (
+            <section className="w-full mt-10">
+              <div className="mb-2 text-left font-semibold text-[var(--muted)] px-3 max-[600px]:text-sm max-[600px]:mb-4">{recentTitle}</div>
+              <div className="grid grid-cols-3 gap-1 max-[600px]:px-1 max-[1200px]:grid-cols-2 max-[750px]:grid-cols-1 max-[750px]:gap-2">
+                {recentServices.map((s) => (
+                  <ServiceCard key={s.id} item={s} lang={lang} />
+                ))}
+              </div>
+            </section>
+          )}
+        </>
       ) : (
         Array.from(groups.entries()).map(([subLabel, items]) => (
           <section key={subLabel} className="w-full">

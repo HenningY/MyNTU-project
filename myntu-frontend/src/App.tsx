@@ -71,8 +71,10 @@ function App() {
     return prefersDark ? 'dark' : 'light'
   })
   // Placeholder hot IDs after renumbering; adjust as you like
-  const hotIds: string[] = ['78','79','10','21','29','86','188','11','9','208']
+  const hotIds: string[] = ['79','80','10','21','29','87','189','11','9','209']
   // const hotSet = new Set(hotIds)
+  // Recent added IDs (configurable)
+  const recentIds: string[] = ['50','51','31']
 
   const [hasScrolled, setHasScrolled] = useState<boolean>(false)
   // const [isSmallScreen, setIsSmallScreen] = useState<boolean>(() => (typeof window !== 'undefined' ? window.innerWidth < 600 : false))
@@ -276,6 +278,13 @@ function App() {
   }
   const hotTitle = lang === 'zh' ? '熱門項目' : 'Popular'
   const resultTitle = lang === 'zh' ? `${searchTerm} : 搜尋結果` : `${searchTerm} : Results`
+  const recentTitle = lang === 'zh' ? '近期新增項目' : 'Recently Added'
+  const recentServices: ServiceItem[] = (!selectedCategory && !(isSearching && searchTerm))
+    ? recentIds
+        .map((id) => services.find((s) => s.id === id))
+        .filter((s): s is ServiceItem => Boolean(s))
+        .filter(hasLocalizedData)
+    : []
 
   const [spinLogo, setSpinLogo] = useState(false)
 
@@ -539,6 +548,8 @@ function App() {
             groups={groups}
             hotTitle={hotTitle}
             resultTitle={resultTitle}
+            recentTitle={recentTitle}
+            recentServices={recentServices}
           />
           
         </div>

@@ -180,6 +180,11 @@ export const calendarEvents: CalendarEvent[] = [
     title: { zh: '教師繳交學期成績截止日', en: 'Deadline for instructors to submit semester grades' },
   },
   {
+    date: '2026-01-01',
+    title: { zh: '元旦(放假日)', en: 'New Year’s Day (Holiday)' },
+    dayoff: true,
+  },
+  {
     date: '2026-01-02',
     title: { zh: '公告114學年度第二學期全校課程', en: 'Announcement of university-wide courses for the 2nd semester, Academic Year 114' },
   },
@@ -272,6 +277,11 @@ export const calendarEvents: CalendarEvent[] = [
   {
     date: '2026-02-27',
     title: { zh: '和平紀念日遇例假日補假', en: 'Substitute holiday for Peace Memorial Day coinciding with a regular holiday' },
+    dayoff: true,
+  },
+  {
+    date: '2026-02-28',
+    title: { zh: '和平紀念日(放假日)', en: 'Peace Memorial Day (Holiday)' },
     dayoff: true,
   },
   {
