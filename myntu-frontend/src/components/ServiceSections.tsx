@@ -14,6 +14,8 @@ type ServiceSectionsProps = {
   resultTitle: string
   recentTitle: string
   recentServices: ServiceItem[]
+  altResultsTitle: string
+  altResults: ServiceItem[]
 }
 
 function ServiceCard({ item, lang }: { item: ServiceItem; lang: Lang }) {
@@ -39,7 +41,7 @@ function ServiceCard({ item, lang }: { item: ServiceItem; lang: Lang }) {
 }
 
 export default function ServiceSections(props: ServiceSectionsProps) {
-  const { lang, isSearching, searchTerm, selectedCategory, visibleServices, groups, hotTitle, resultTitle, recentTitle, recentServices } = props
+  const { lang, isSearching, searchTerm, selectedCategory, visibleServices, groups, hotTitle, resultTitle, recentTitle, recentServices, altResultsTitle, altResults } = props
 
   // Deduplicate by localized name when searching
   const listForSearch = (() => {
@@ -58,6 +60,21 @@ export default function ServiceSections(props: ServiceSectionsProps) {
 
   const emptySearchText = lang === 'zh' ? '抱歉，無符合的搜尋結果' : 'Sorry, no matching results'
 
+  // Deduplicate alt results by localized name as well
+  const altListForSearch = (() => {
+    if (!isSearching) return altResults
+    const seen = new Set<string>()
+    const unique: ServiceItem[] = []
+    for (const s of altResults) {
+      const nmRaw = lang === 'zh' ? s.name.zh : s.name.en
+      const key = (nmRaw || '').trim().toLowerCase()
+      if (!key || seen.has(key)) continue
+      seen.add(key)
+      unique.push(s)
+    }
+    return unique
+  })()
+
   return (
     <div className="mx-auto my-8 w-full max-w-screen-xl px-0 space-y-6">
       {isSearching && searchTerm ? (
@@ -70,6 +87,16 @@ export default function ServiceSections(props: ServiceSectionsProps) {
               {listForSearch.map((s) => (
                 <ServiceCard key={s.id} item={s} lang={lang} />
               ))}
+            </div>
+          )}
+          {isSearching && searchTerm && altListForSearch.length > 0 && (
+            <div className="mt-6">
+              <div className="mb-2 text-left font-semibold text-[var(--muted)] px-3 max-[600px]:text-sm max-[600px]:mb-4">{altResultsTitle}</div>
+              <div className="grid grid-cols-3 gap-1 max-[600px]:px-1 max-[1200px]:grid-cols-2 max-[750px]:grid-cols-1 max-[750px]:gap-2">
+                {altListForSearch.map((s) => (
+                  <ServiceCard key={`alt-${s.id}`} item={s} lang={lang} />
+                ))}
+              </div>
             </div>
           )}
         </section>

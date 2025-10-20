@@ -7,6 +7,7 @@ import Admin from './components/Admin'
 import { incrementSiteView, trackClick } from './utils/analytics'
 import logo from './data/logo.png'
 import logo_night from './data/logo_night.png'
+import { synonymsGroupsZh, synonymsGroupsEn } from './data/searchSynonyms'
 
 type Lang = 'zh' | 'en'
 
@@ -286,6 +287,40 @@ function App() {
         .filter(hasLocalizedData)
     : []
 
+  // Alternative results via synonym groups
+  const synonymGroups = lang === 'zh' ? synonymsGroupsZh : synonymsGroupsEn
+  const altKeywords = (() => {
+    const q = searchTerm.trim().toLowerCase()
+    if (!q) return [] as string[]
+    for (const group of synonymGroups) {
+      const lower = group.map((g) => g.toLowerCase())
+      if (lower.includes(q)) return lower.filter((w) => w !== q)
+    }
+    return [] as string[]
+  })()
+  const altResults: ServiceItem[] = (isSearching && searchTerm && altKeywords.length > 0)
+    ? (() => {
+        const matched: ServiceItem[] = []
+        const seen = new Set<string>()
+        for (const kw of altKeywords) {
+          for (const s of services) {
+            if (!hasLocalizedData(s)) continue
+            const nm = lang === 'zh' ? s.name.zh : s.name.en
+            const ok = lang === 'zh' ? isSubsequence(kw, nm) : (nm || '').toLowerCase().includes(kw)
+            if (!ok) continue
+            // avoid duplicates and items already in main results
+            if (seen.has(s.id)) continue
+            const inMain = visibleServices.some((v) => v.id === s.id)
+            if (inMain) continue
+            seen.add(s.id)
+            matched.push(s)
+          }
+        }
+        return matched
+      })()
+    : []
+  const altResultsTitle = lang === 'zh' ? '其他可能搜尋結果' : 'Other possible results'
+
   const [spinLogo, setSpinLogo] = useState(false)
 
   return (
@@ -550,6 +585,8 @@ function App() {
             resultTitle={resultTitle}
             recentTitle={recentTitle}
             recentServices={recentServices}
+            altResultsTitle={altResultsTitle}
+            altResults={altResults}
           />
           
         </div>

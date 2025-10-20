@@ -68,6 +68,15 @@ import StudyAbroad from './StudyAbroad.png'
 import iNTU from './iNTU.png'
 import NTUVDI from './NTUVDI.png'
 import parkingpermit from './parkingpermit.png'
+import UnderprivilegedStudentAids from './UnderprivilegedStudentAids.png'
+import LearningThroughLiving from './LearningThroughLiving.png'
+import StudentLoanApplication from './StudentLoanApplication.png'
+import TuitionFeesReduced from './TuitionFeesReduced.png'
+import FinancialAidSystem from './FinancialAidSystem.png'
+import OnlineTranscriptOrder from './OnlineTranscriptOrder.png'
+import CarPermitApplication from './CarPermitApplication.png'
+import MotorcyclePermit from './MotorcyclePermit.png'
+import CarPermitRegistration from './CarPermitRegistration.png'
 
 
 
@@ -242,7 +251,7 @@ export const services: ServiceItem[] = [
     category: { zh: '學生專區', en: 'Students' },
   },  {
     id: '22',
-    icon: logo,
+    icon: OnlineTranscriptOrder,
     name: { zh: '成績單及學位證明書線上申請', en: 'Online Transcript Order System' },
     url: { zh: 'https://portal.aca.ntu.edu.tw/transcript/', en: 'https://portal.aca.ntu.edu.tw/transcript/' },
     description: { zh: '', en: '' },
@@ -562,7 +571,7 @@ export const services: ServiceItem[] = [
     category: { zh: '學生專區', en: 'Students' },
   },  {
     id: '62',
-    icon: logo,
+    icon: CarPermitRegistration,
     name: { zh: '汽車證抽籤登記', en: 'Car Permit Registration' },
     url: { zh: 'https://my.ntu.edu.tw/ntupass/login.aspx', en: 'https://my.ntu.edu.tw/ntupass/login.aspx' },
     description: { zh: '', en: '' },
@@ -570,7 +579,7 @@ export const services: ServiceItem[] = [
     category: { zh: '學生專區', en: 'Students' },
   },  {
     id: '63',
-    icon: logo,
+    icon: MotorcyclePermit,
     name: { zh: '機車證申請', en: 'Motorcycle Permit Application' },
     url: { zh: 'https://iparking.ntu.edu.tw/Application/NTUParking', en: 'https://iparking.ntu.edu.tw/Application/NTUParking' },
     description: { zh: '', en: '' },
@@ -594,7 +603,7 @@ export const services: ServiceItem[] = [
     category: { zh: '學生專區', en: 'Students' },
   },  {
     id: '66',
-    icon: logo,
+    icon: FinancialAidSystem,
     name: { zh: '學生財務支援服務(獎助學金)', en: 'Financial Aid System' },
     url: { zh: 'https://my.ntu.edu.tw/fao/login.aspx', en: 'https://my.ntu.edu.tw/fao/login.aspx' },
     description: { zh: '', en: '' },
@@ -602,7 +611,7 @@ export const services: ServiceItem[] = [
     category: { zh: '學生專區', en: 'Students' },
   },  {
     id: '67',
-    icon: logo,
+    icon: LearningThroughLiving,
     name: { zh: '生活學習助學金申請', en: 'Applying the Learning Through Living Student Assistantship' },
     url: { zh: 'https://my.ntu.edu.tw/internApp/', en: 'https://my.ntu.edu.tw/internApp/' },
     description: { zh: '為培養經濟弱勢學生的自立精神與生活學習能力，提升臺大學生的基本素養與就業競爭力，特依據教育部大專院校弱勢學生助學計畫', en: 'To foster independence and life-learning skills among economically disadvantaged students, enhance NTU students’ core competencies, and strengthen their employability, in accordance with the Ministry of Education’s Assistance Program for Disadvantaged Students' },
@@ -610,7 +619,7 @@ export const services: ServiceItem[] = [
     category: { zh: '學生專區', en: 'Students' },
   },  {
     id: '68',
-    icon: logo,
+    icon: TuitionFeesReduced,
     name: { zh: '減免學雜費申請', en: 'Tuition And Fees Reduced System(Chinese ver.)' },
     url: { zh: 'https://my.ntu.edu.tw/discount/', en: 'https://my.ntu.edu.tw/discount/engmsg.html' },
     description: { zh: '為了學生能順利就學，減輕就學負擔，只要符合教育部規定身分，就可以申請學雜費減免', en: 'Domestic students meeting Ministry of Education criteria can apply for tuition and fee reductions to ease financial burdens' },
@@ -618,7 +627,7 @@ export const services: ServiceItem[] = [
     category: { zh: '學生專區', en: 'Students' },
   },  {
     id: '69',
-    icon: logo,
+    icon: UnderprivilegedStudentAids,
     name: { zh: '弱勢學生助學申請', en: 'Underprivileged Student Aids (Chinese ver.)' },
     url: { zh: 'https://my.ntu.edu.tw/coloan/readme.aspx?logoutFunction=false', en: 'https://my.ntu.edu.tw/coloan/engmsg.html' },
     description: { zh: '為家庭年所得後40％之弱勢學生提供學雜費、生活費、急難與住宿補助，協助減輕經濟負擔，確保就學機會平等', en: 'Offering tuition, living, emergency, and housing subsidies for students from families in the lower 40% income bracket to ease financial burdens and ensure equal access to education' },
@@ -626,7 +635,7 @@ export const services: ServiceItem[] = [
     category: { zh: '學生專區', en: 'Students' },
   },  {
     id: '70',
-    icon: logo,
+    icon: StudentLoanApplication,
     name: { zh: '就學貸款申請', en: 'Student Loan Application System (Chinese ver.)' },
     url: { zh: 'https://my.ntu.edu.tw/loan/', en: 'https://my.ntu.edu.tw/loan/engmsg.html' },
     description: { zh: '為減輕就學負擔，只要是本國學生，政府可提供優惠款，畢業後，借款者應即擔負起攤還本息的還款責任', en: 'As long as they are domestic students, the government can offer subsidized amounts. However, after graduation, they will still be responsible for repaying the loan in full' },
@@ -1194,7 +1203,7 @@ export const services: ServiceItem[] = [
     category: { zh: '教職申辦', en: 'Faculty & Staff' },
   },  {
     id: '141',
-    icon: logo,
+    icon: CarPermitApplication,
     name: { zh: '汽車證申請', en: 'Car Permit Application' },
     url: { zh: 'https://my.ntu.edu.tw/ntupass/login.aspx?area=campus_head', en: 'https://my.ntu.edu.tw/ntupass/login.aspx?area=campus_head' },
     description: { zh: '', en: '' },
@@ -1202,7 +1211,7 @@ export const services: ServiceItem[] = [
     category: { zh: '教職申辦', en: 'Faculty & Staff' },
   },  {
     id: '142',
-    icon: logo,
+    icon: MotorcyclePermit,
     name: { zh: '機車證申請', en: 'Motorcycle Permit Application' },
     url: { zh: 'https://iparking.ntu.edu.tw/Application/NTUParking', en: 'https://iparking.ntu.edu.tw/Application/NTUParking' },
     description: { zh: '', en: '' },
