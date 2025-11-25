@@ -14,7 +14,8 @@ export type ServiceItem = {
   imgSrc?: string
 }
 
-import logo from './logo.png'
+// import logo from './logo.png'
+import logo from './logo_xmas.png'
 import ntucool from './ntucool.png'
 import ntumail from './ntumail.png'
 import score from './score.png'

@@ -83,3 +83,36 @@ body,
 .spin-once {
   animation: spin-once 0.6s ease-out;
 }
+
+/* Snowfall effect on home page */
+@keyframes snow-fall {
+  0% {
+    transform: translate3d(0, -10px, 0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(0, 20vh, 0); /* Stop before bottom */
+    opacity: 0;
+  }
+}
+
+.snowflake {
+  position: absolute;
+  top: -10px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.95); /* 白色底 */
+  border: 1px solid rgba(191, 219, 254, 0.95); /* 淺藍色外框 (tailwind sky-200 風格) */
+  box-shadow: 0 0 6px rgba(191, 219, 254, 0.8);
+  animation-name: snow-fall;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  will-change: transform, opacity;
+  pointer-events: none;
+}
+/* Snowfall effect end */

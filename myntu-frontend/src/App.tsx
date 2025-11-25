@@ -5,9 +5,55 @@ import ServiceSections from './components/ServiceSections'
 import Calendar from './components/Calendar'
 import Admin from './components/Admin'
 import { incrementSiteView, trackClick } from './utils/analytics'
-import logo from './data/logo.png'
+// import logo from './data/logo.png'
+import logo from './data/logo_xmas.png'
 import logo_night from './data/logo_night.png'
 import { synonymsGroupsZh, synonymsGroupsEn } from './data/searchSynonyms'
+
+// snowfall effect
+interface Flake {
+  id: number
+  left: number
+  delay: number
+  duration: number
+  size: number
+}
+
+function Snowfall() {
+  const flakesRef = useRef<Flake[]>([])
+
+  if (flakesRef.current.length === 0) {
+    const count = 30
+    flakesRef.current = Array.from({ length: count }, (_, i) => ({
+      id: i,
+      left: Math.random() * 100,           // 0–100% 寬度隨機位置
+      delay: Math.random() * -20,          // 負的 delay 讓一載入就有不同進度的雪花
+      duration: 6 + Math.random() * 6,     // 6–12 秒落下一次
+      size: 6 + Math.random() * 3,         // 6–14px 尺寸
+    }))
+  }
+
+  const flakes = flakesRef.current
+
+  return (
+    <div className="pointer-events-none fixed inset-0 z-20 overflow-hidden">
+      {flakes.map((flake) => (
+        <div
+          key={flake.id}
+          className="snowflake"
+          style={{
+            left: `${flake.left}%`,
+            width: `${flake.size}px`,
+            height: `${flake.size}px`,
+            animationDuration: `${flake.duration}s`,
+            animationDelay: `${flake.delay}s`,
+          }}
+        />
+      ))}
+    </div>
+  )
+}
+// snowfall effect end
 
 type Lang = 'zh' | 'en'
 
@@ -75,7 +121,7 @@ function App() {
   const hotIds: string[] = ['79','80','10','21','29','87','189','11','9','209']
   // const hotSet = new Set(hotIds)
   // Recent added IDs (configurable)
-  const recentIds: string[] = ['50','51','31']
+  const recentIds: string[] = ['50','51']
 
   const [hasScrolled, setHasScrolled] = useState<boolean>(false)
   // const [isSmallScreen, setIsSmallScreen] = useState<boolean>(() => (typeof window !== 'undefined' ? window.innerWidth < 600 : false))
@@ -287,28 +333,37 @@ function App() {
         .filter(hasLocalizedData)
     : []
 
-  // Alternative results via synonym groups
+  // Alternative results via synonym groups: replace matched synonym inside the query
   const synonymGroups = lang === 'zh' ? synonymsGroupsZh : synonymsGroupsEn
-  const altKeywords = (() => {
-    const q = searchTerm.trim().toLowerCase()
+  const altQueries = (() => {
+    const q = searchTerm.trim()
     if (!q) return [] as string[]
+    const baseLower = q.toLowerCase()
+    const out = new Set<string>()
     for (const group of synonymGroups) {
-      const lower = group.map((g) => g.toLowerCase())
-      if (lower.includes(q)) return lower.filter((w) => w !== q)
+      const lowerGroup = group.map((g) => g.toLowerCase())
+      const matched = lowerGroup.find((w) => baseLower.includes(w))
+      if (!matched) continue
+      // Build case-insensitive regex to replace all occurrences of matched token
+      const re = new RegExp(matched.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi')
+      for (const alt of lowerGroup) {
+        if (alt === matched) continue
+        const replaced = baseLower.replace(re, alt)
+        if (replaced !== baseLower) out.add(replaced)
+      }
     }
-    return [] as string[]
+    return Array.from(out)
   })()
-  const altResults: ServiceItem[] = (isSearching && searchTerm && altKeywords.length > 0)
+  const altResults: ServiceItem[] = (isSearching && searchTerm && altQueries.length > 0)
     ? (() => {
         const matched: ServiceItem[] = []
         const seen = new Set<string>()
-        for (const kw of altKeywords) {
+        for (const altQ of altQueries) {
           for (const s of services) {
             if (!hasLocalizedData(s)) continue
             const nm = lang === 'zh' ? s.name.zh : s.name.en
-            const ok = lang === 'zh' ? isSubsequence(kw, nm) : (nm || '').toLowerCase().includes(kw)
+            const ok = lang === 'zh' ? isSubsequence(altQ, nm) : (nm || '').toLowerCase().includes(altQ)
             if (!ok) continue
-            // avoid duplicates and items already in main results
             if (seen.has(s.id)) continue
             const inMain = visibleServices.some((v) => v.id === s.id)
             if (inMain) continue
@@ -517,6 +572,10 @@ function App() {
         if (path.startsWith('/admin')) return <Admin />
         if (view === 'calendar' || path.startsWith('/calendar')) return <Calendar lang={lang} />
         return (
+      // snowfall effect start
+      <>
+      <Snowfall />
+      {/* snowfall effect end */}
       <header className="relative flex flex-col min-h-screen items-center pt-35 bg-[var(--body-bg)] text-center max-[900px]:pt-30 max-[600px]:pt-25">
         <div className="mx-auto px-6 w-full max-[600px]:mx-0 max-[600px]:px-1.5">
           <h1 className="m-0 text-[36px] font-medium font-sans leading-tight text-[var(--text-color)] max-[900px]:text-[32px] max-[600px]:text-[24px]">{t.title}</h1>
@@ -591,6 +650,9 @@ function App() {
           
         </div>
       </header>
+      {/* snowfall effect start */}
+      </>
+      // snowfall effect end
         )
       })()}
       <footer className="mx-auto w-full max-w-screen-2xl px-10 pt-30 pb-15 text-sm text-[var(--text-500)] max-[600px]:px-5 max-[600px]:pb-6 max-[600px]:pt-15">

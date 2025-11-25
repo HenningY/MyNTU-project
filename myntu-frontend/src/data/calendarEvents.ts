@@ -312,6 +312,34 @@ export const calendarEvents: CalendarEvent[] = [
     date: '2026-03-14',
     title: { zh: '杜鵑花節開幕式', en: 'Azalea Festival Opening Ceremony' },
   },
+  {
+    date: '2026-03-14',
+    title: { zh: '學系博覽會(至3月15日止)', en: 'Department Expo (until March 15)' },
+  },
+  {
+    date: '2026-03-16',
+    title: { zh: '第二學期非學系申請服務學習開課（至4月10日止）', en: 'Start of Service-Learning courses outside the department (until April 10)' },
+  },
+  {
+    date: '2026-03-20',
+    title: { zh: '第二學期第一次教務會議', en: 'First Academic Affairs Meeting of the 2nd semester' },
+  },
+  {
+    date: '2026-03-21',
+    title: { zh: '第二學期第一次校務會議', en: 'First University Affairs Meeting of the 2nd semester' },
+  },
+  {
+    date: '2026-03-23',
+    title: { zh: '第二次進階英語網路申請免修開始(至3月27日止，日期暫定以公告為準)', en: 'Second round of online applications for Advanced English exemption begins (tentative deadline March 27, subject to official announcement)' },
+  },
+  {
+    date: '2026-03-28',
+    title: { zh: '校園馬拉松賽', en: 'Campus Marathon' },
+  },
+  {
+    date: '2026-03-30',
+    title: { zh: '第二階段學分費等各項費用繳費開始(至4月10日止)', en: 'Start of second phase tuition and miscellaneous fee payment (until April 10)' },
+  },
 ]
 
 
