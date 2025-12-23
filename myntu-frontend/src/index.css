@@ -85,6 +85,7 @@ body,
 }
 
 /* Snowfall effect on home page */
+/* default: large screen (> 600px) */
 @keyframes snow-fall {
   0% {
     transform: translate3d(0, -10px, 0);
@@ -97,7 +98,7 @@ body,
     opacity: 1;
   }
   100% {
-    transform: translate3d(0, 20vh, 0); /* Stop before bottom */
+    transform: translate3d(var(--snow-drift, 0px), 12vh, 0); /* 左下或右下飄落 */
     opacity: 0;
   }
 }
@@ -105,14 +106,78 @@ body,
 .snowflake {
   position: absolute;
   top: -10px;
-  border-radius: 9999px;
-  background: rgba(255, 255, 255, 0.95); /* 白色底 */
-  border: 1px solid rgba(191, 219, 254, 0.95); /* 淺藍色外框 (tailwind sky-200 風格) */
-  box-shadow: 0 0 6px rgba(191, 219, 254, 0.8);
   animation-name: snow-fall;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
   will-change: transform, opacity;
   pointer-events: none;
 }
+
+@keyframes snow-rotate-cw {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes snow-rotate-ccw {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-360deg);
+  }
+}
+
+.snowflake-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0); /* 白色底 */
+  border: 1px solid rgba(191, 219, 254, 0); /* 淺藍色外框 */
+  box-shadow: 0 0 0px rgba(191, 219, 254, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform-origin: center;
+}
+
+.snowflake-inner--cw {
+  animation-name: snow-rotate-cw;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.snowflake-inner--ccw {
+  animation-name: snow-rotate-ccw;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.snowflake-arm {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 1px;
+  height: 120%;
+  background: rgba(224, 238, 255, 0.95);
+  box-shadow: 0 0 4px rgba(211, 231, 255, 0.8);
+  transform-origin: 50% 50%;
+}
+
+.snowflake-arm--v {
+  transform: translate(-50%, -50%) rotate(0deg);
+}
+
+.snowflake-arm--d1 {
+  transform: translate(-50%, -50%) rotate(60deg);
+}
+
+.snowflake-arm--d2 {
+  transform: translate(-50%, -50%) rotate(120deg);
+}
+
 /* Snowfall effect end */

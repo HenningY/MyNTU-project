@@ -17,26 +17,33 @@ interface Flake {
   delay: number
   duration: number
   size: number
+  rotateDuration: number
+  clockwise: boolean
+  drift: number
 }
 
 function Snowfall() {
   const flakesRef = useRef<Flake[]>([])
-
+  const width = typeof window !== 'undefined' ? window.innerWidth : 0
   if (flakesRef.current.length === 0) {
-    const count = 30
+    const count = width > 600 ? width/35 : 20
+    const basesize = width > 600 ? 8 : 6
     flakesRef.current = Array.from({ length: count }, (_, i) => ({
       id: i,
       left: Math.random() * 100,           // 0–100% 寬度隨機位置
       delay: Math.random() * -20,          // 負的 delay 讓一載入就有不同進度的雪花
-      duration: 6 + Math.random() * 6,     // 6–12 秒落下一次
-      size: 6 + Math.random() * 3,         // 6–14px 尺寸
+      duration: 2 + Math.random() * 3,     // 6–12 秒落下一次
+      size: basesize + Math.random() * 3,         // 雪花基礎尺寸
+      rotateDuration: 10 + Math.random() * 4, // 4–8 秒轉一圈
+      clockwise: Math.random() < 0.5,        // 隨機順時針 / 逆時針
+      drift: (Math.random() < 0.5 ? -1 : 1) * (10 + Math.random() * 25), // 每片雪花的水平位移，左下或右下
     }))
   }
 
   const flakes = flakesRef.current
 
   return (
-    <div className="pointer-events-none fixed inset-0 z-20 overflow-hidden">
+    <div className="pointer-events-none fixed inset-0 max-[900px]:z-[20] z-[120] overflow-hidden">
       {flakes.map((flake) => (
         <div
           key={flake.id}
@@ -47,8 +54,24 @@ function Snowfall() {
             height: `${flake.size}px`,
             animationDuration: `${flake.duration}s`,
             animationDelay: `${flake.delay}s`,
+            ['--snow-drift' as any]: `${flake.drift}px`,
           }}
-        />
+        >
+          <div
+            className={
+              flake.clockwise
+                ? 'snowflake-inner snowflake-inner--cw'
+                : 'snowflake-inner snowflake-inner--ccw'
+            }
+            style={{
+              animationDuration: `${flake.rotateDuration}s`,
+            }}
+          >
+            <span className="snowflake-arm snowflake-arm--v" />
+            <span className="snowflake-arm snowflake-arm--d1" />
+            <span className="snowflake-arm snowflake-arm--d2" />
+          </div>
+        </div>
       ))}
     </div>
   )
@@ -623,7 +646,7 @@ function App() {
                     onClick={() => setQuery('')}
                     className="absolute right-2 top-1/2 -translate-y-1/2 rounded-md p-2 text-[var(--text-color)] hover:text-[var(--x-hover)]"
                   >
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-6 w-6">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-6 w-6 cursor-pointer">
                       <line x1="18" y1="6" x2="6" y2="18" />
                       <line x1="6" y1="6" x2="18" y2="18" />
                     </svg>

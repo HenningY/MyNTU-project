@@ -78,6 +78,8 @@ import OnlineTranscriptOrder from './OnlineTranscriptOrder.png'
 import CarPermitApplication from './CarPermitApplication.png'
 import MotorcyclePermit from './MotorcyclePermit.png'
 import CarPermitRegistration from './CarPermitRegistration.png'
+import ThesisSubmission from './ThesisSubmission.png'
+import SteptoLeave from './SteptoLeave.png'
 
 
 
@@ -292,7 +294,7 @@ export const services: ServiceItem[] = [
     category: { zh: '學生專區', en: 'Students' },
   },  {
     id: '27',
-    icon: logo,
+    icon: ThesisSubmission,
     name: { zh: '臺灣大學博碩士論文提交系統', en: 'NTU These and Dissertations Submission' },
     url: { zh: 'https://submit.tdr.lib.ntu.edu.tw/', en: 'https://submit.tdr.lib.ntu.edu.tw/?lang=en' },
     description: { zh: '提供博碩士生上傳電子學位論文', en: 'Providing thesis/dissertation submission for graduate students' },
@@ -660,7 +662,7 @@ export const services: ServiceItem[] = [
     category: { zh: '學生專區', en: 'Students' },
   },  {
     id: '73',
-    icon: logo,
+    icon: SteptoLeave,
     name: { zh: '畢業生離校手續查詢', en: 'Steps for Application to Leave School' },
     url: { zh: 'https://my.ntu.edu.tw/StudLeave/Login.aspx', en: 'https://my.ntu.edu.tw/StudLeave/LoginEnglish.aspx?lang=eng' },
     description: { zh: '', en: '' },
