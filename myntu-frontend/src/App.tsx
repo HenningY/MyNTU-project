@@ -27,7 +27,7 @@ function Snowfall() {
   const width = typeof window !== 'undefined' ? window.innerWidth : 0
   if (flakesRef.current.length === 0) {
     const count = width > 600 ? width/35 : 20
-    const basesize = width > 600 ? 8 : 6
+    const basesize = width > 600 ? 7 : 6
     flakesRef.current = Array.from({ length: count }, (_, i) => ({
       id: i,
       left: Math.random() * 100,           // 0–100% 寬度隨機位置
@@ -141,10 +141,10 @@ function App() {
     return prefersDark ? 'dark' : 'light'
   })
   // Placeholder hot IDs after renumbering; adjust as you like
-  const hotIds: string[] = ['79','80','10','21','29','87','189','11','9','209']
+  const hotIds: string[] = ['77','78','11','20','28','85','187','12','10','207']
   // const hotSet = new Set(hotIds)
   // Recent added IDs (configurable)
-  const recentIds: string[] = ['50','51']
+  const recentIds: string[] = ['49','50']
 
   const [hasScrolled, setHasScrolled] = useState<boolean>(false)
   // const [isSmallScreen, setIsSmallScreen] = useState<boolean>(() => (typeof window !== 'undefined' ? window.innerWidth < 600 : false))
@@ -293,6 +293,21 @@ function App() {
       // clear explicit flag; media query controls dark variant
     }
     window.localStorage.setItem('theme', theme)
+
+    // Sync browser / PWA theme-color with current effective theme
+    try {
+      const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+      const effectiveTheme = theme === 'system' ? (prefersDark ? 'dark' : 'light') : theme
+      let meta = document.querySelector('meta[name="theme-color"]') as HTMLMetaElement | null
+      if (!meta) {
+        meta = document.createElement('meta')
+        meta.name = 'theme-color'
+        document.head.appendChild(meta)
+      }
+      meta.content = effectiveTheme === 'dark' ? '#000000' : '#ffffff'
+    } catch {
+      // ignore
+    }
   }, [theme])
 
   // Helpers
