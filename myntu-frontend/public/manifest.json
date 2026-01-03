@@ -3,12 +3,12 @@
     "short_name": "myNTU",
     "icons": [
       {
-        "src": "/logo_xmas.png",
+        "src": "/logo.png",
         "sizes": "192x192",
         "type": "image/png"
       },
       {
-        "src": "/logo_xmas.png",
+        "src": "/logo.png",
         "sizes": "512x512",
         "type": "image/png"
       }

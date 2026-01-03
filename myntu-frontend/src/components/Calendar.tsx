@@ -18,7 +18,7 @@ function pad2(n: number): string {
 }
 
 function toKey(d: Date): string {
-  return `${d.getFullYear()}-${pad2(d.getMonth() + 1)}-${pad2(d.getDate())}`
+  return `${d.getFullYear()}/${pad2(d.getMonth() + 1)}/${pad2(d.getDate())}`
 }
 
 function startOfMonth(d: Date): Date {
@@ -85,7 +85,7 @@ export default function Calendar({ lang }: CalendarProps) {
   const cells = useMemo(() => getCalendarGrid(cursor), [cursor])
   const inMonth = (d: Date) => d.getMonth() === cursor.getMonth()
 
-  const monthKeyPrefix = `${cursor.getFullYear()}-${pad2(cursor.getMonth() + 1)}-`
+  const monthKeyPrefix = `${cursor.getFullYear()}/${pad2(cursor.getMonth() + 1)}/`
   const monthlyEvents = useMemo(() => {
     return sampleEvents
       .filter((e) => e.date.startsWith(monthKeyPrefix))
@@ -100,36 +100,40 @@ export default function Calendar({ lang }: CalendarProps) {
 
   return (
     <div className="mx-auto max-w-screen-xl px-4 pt-30 max-[900px]:pt-24 pb-12 text-[var(--text-color)] w-full min-h-screen">
-      <div className="mb-10 w-100 max-[900px]:w-full flex items-start justify-between gap-10 px-4 max-[900px]:px-2">
+      <div className="mb-10 w-115 max-[900px]:w-full flex items-start justify-between gap-10 px-4 max-[900px]:px-2">
         <div>
           <div className="text-3xl font-extrabold leading-tight">{monthLabel}</div>
           <div className="mt-1 text-sm text-[var(--text-500)]">
             {lang === 'zh' ? '近期活動一覽。' : 'Recent events at a glance.'}
           </div>
         </div>
-        <div className="flex items-center gap-2 border-b-1 border-[var(--nav-border)] pt-0 pb-1">
+        <div className="flex items-center gap-1 border-b-1 border-[var(--nav-border)] pt-0 pb-1">
           <button
             type="button"
             aria-label="prev month"
-            className="cursor-pointer text-[24px] rounded-md border-0 border-[var(--nav-border)] px-2 py-0 hover:bg-[var(--title-hover-color)]"
+            className="cursor-pointer text-[24px] rounded-md border-0 border-[var(--nav-border)] px-2 py-1 hover:bg-[var(--title-hover-color)]"
             onClick={() => setCursor((c) => addMonths(c, -1))}
           >
-            ‹
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-6 w-6">
+              <path d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+          <button
+            type="button"
+            className="cursor-pointer font-medium rounded-lg border-0 border-[var(--nav-border)] bg-[var(--body-bg)] px-2 py-1 hover:bg-[var(--title-hover-color)]"
+            onClick={() => setCursor(startOfMonth(new Date()))}
+          >
+            {lang === 'zh' ? '今天' : 'Today'}
           </button>
           <button
             type="button"
             aria-label="next month"
-            className="cursor-pointer text-[24px] rounded-md border-0 border-[var(--nav-border)] px-2 py-0 hover:bg-[var(--title-hover-color)]"
+            className="cursor-pointer text-[24px] rounded-md border-0 border-[var(--nav-border)] px-2 py-1 hover:bg-[var(--title-hover-color)]"
             onClick={() => setCursor((c) => addMonths(c, 1))}
           >
-            ›
-          </button>
-          <button
-            type="button"
-            className="ml-3 cursor-pointer rounded-lg border-0 border-[var(--nav-border)] bg-[var(--body-bg)] px-2 py-1 hover:bg-[var(--title-hover-color)]"
-            onClick={() => setCursor(startOfMonth(new Date()))}
-          >
-            {lang === 'zh' ? '今天' : 'Today'}
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-6 w-6">
+              <path d="M9 5l7 7-7 7" />
+            </svg>
           </button>
         </div>
       </div>
@@ -194,19 +198,25 @@ export default function Calendar({ lang }: CalendarProps) {
               {(selectedDate ? monthlyEvents.filter((e) => e.date === selectedDate) : monthlyEvents).length === 0 ? (
                 <li className="px-4 py-4 text-sm text-[var(--text-500)]">{lang === 'zh' ? '本月沒有活動' : 'No events this month'}</li>
               ) : (
-                (selectedDate ? monthlyEvents.filter((e) => e.date === selectedDate) : monthlyEvents).map((ev, idx) => (
-                  <li key={`${ev.date}-${idx}`} className="px-3 py-3 hover:bg-[var(--title-hover-color)]">
-                    <div className="flex items-center gap-3">
-                      <div className="mt-0.5 shrink-0 rounded-md border border-[var(--nav-border)] px-2 py-1 text-xs text-[var(--text-500)]">
-                        <span className="max-[600px]:hidden inline">{ev.date}</span>
-                        <span className="min-[600px]:hidden inline">{ev.date.slice(5)}</span>
+                (selectedDate ? monthlyEvents.filter((e) => e.date === selectedDate) : monthlyEvents).map((ev, idx) => {
+                  const isTodayEvent = ev.date === todayKey
+                  const dateBoxClasses = isTodayEvent
+                    ? 'border-[var(--border-blue)] bg-[var(--bg-blue)] text-[var(--border-blue)]'
+                    : 'border-[var(--nav-border)] text-[var(--text-500)]'
+                  return (
+                    <li key={`${ev.date}-${idx}`} className="px-3 py-3 hover:bg-[var(--title-hover-color)]">
+                      <div className="flex items-center gap-3">
+                        <div className={`mt-0.5 shrink-0 rounded-md border px-2 py-1 text-xs ${dateBoxClasses}`}>
+                          <span className="max-[600px]:hidden inline">{ev.date}</span>
+                          <span className="min-[600px]:hidden inline">{ev.date.slice(5)}</span>
+                        </div>
+                        <div className="text-sm text-[var(--text-color)] leading-snug">
+                          {ev.title}
+                        </div>
                       </div>
-                      <div className="text-sm text-[var(--text-color)] leading-snug">
-                        {ev.title}
-                      </div>
-                    </div>
-                  </li>
-                ))
+                    </li>
+                  )
+                })
               )}
             </ul>
           </div>

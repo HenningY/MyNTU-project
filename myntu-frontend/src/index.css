@@ -49,8 +49,8 @@ body,
   .dark {
     --text-color: #f3f5f9;        /* dark */
     --title-hover-color: #313131;
-    --body-bg: #000000;
-    --nav-bg: rgba(0,0,0,0.8);
+    --body-bg: #141414;
+    --nav-bg: rgba(20,20,20,0.8);
     --nav-border: #2c3035;
     --muted: #94a3b8;
     --placeholder: #c2ccda;

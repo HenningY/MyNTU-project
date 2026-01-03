@@ -5,8 +5,8 @@ import ServiceSections from './components/ServiceSections'
 import Calendar from './components/Calendar'
 import Admin from './components/Admin'
 import { incrementSiteView, trackClick } from './utils/analytics'
-// import logo from './data/logo.png'
-import logo from './data/logo_xmas.png'
+import logo from './data/logo.png'
+// import logo from './data/logo_xmas.png'
 import logo_night from './data/logo_night.png'
 import { synonymsGroupsZh, synonymsGroupsEn } from './data/searchSynonyms'
 
@@ -27,7 +27,7 @@ function Snowfall() {
   const width = typeof window !== 'undefined' ? window.innerWidth : 0
   if (flakesRef.current.length === 0) {
     const count = width > 600 ? width/35 : 20
-    const basesize = width > 600 ? 7 : 6
+    const basesize = width > 600 ? 6 : 5
     flakesRef.current = Array.from({ length: count }, (_, i) => ({
       id: i,
       left: Math.random() * 100,           // 0–100% 寬度隨機位置
@@ -85,7 +85,7 @@ function App() {
 
   const t = {
     zh: {
-      title: 'myNTU 校園服務整合平台',
+      title: 'myNTU 臺大校務整合平台',
       subtitle: '快速連結所有常用校務與學習資源',
       links: ['聯絡資訊', '最新消息', '台大首頁', '計中首頁'],
       toggle: 'EN',
@@ -166,6 +166,26 @@ function App() {
     }
   }
 
+  const buildPath = (viewForPath: 'home' | 'calendar', langForPath: Lang): string => {
+    const base = viewForPath === 'calendar' ? '/calendar' : '/'
+    if (langForPath === 'zh') return base
+    return base === '/' ? '/en' : `${base}/en`
+  }
+
+  const toggleLang = () => {
+    setLang((prev) => {
+      const nextLang: Lang = prev === 'zh' ? 'en' : 'zh'
+      try {
+        const currentView = view
+        const url = buildPath(currentView, nextLang)
+        window.history.replaceState({ view: currentView, lang: nextLang }, '', url)
+      } catch {
+        // ignore
+      }
+      return nextLang
+    })
+  }
+
   const navLinks = lang === 'zh'
     ? [
         { label: '聯絡資訊', href: 'https://www.ntu.edu.tw/contact.html' },
@@ -190,11 +210,11 @@ function App() {
   const goToView = (next: 'home' | 'calendar', replace = false) => {
     setView(next)
     try {
-      const url = next === 'calendar' ? '/calendar' : '/'
+      const url = buildPath(next, lang)
       if (replace) {
-        window.history.replaceState({ view: next }, '', url)
+        window.history.replaceState({ view: next, lang }, '', url)
       } else {
-        window.history.pushState({ view: next }, '', url)
+        window.history.pushState({ view: next, lang }, '', url)
       }
     } catch {
       // ignore
@@ -250,23 +270,43 @@ function App() {
   // Initialize view from URL and handle back/forward
   useEffect(() => {
     try {
-      const path = window.location.pathname || '/'
-      if (path.startsWith('/admin')) {
-        setView('calendar')
-      } else if (path.startsWith('/calendar')) {
-        setView('calendar')
-      } else {
-        setView('home')
+      const parsePath = (rawPath: string) => {
+        let path = rawPath || '/'
+        let langFromPath: Lang = 'zh'
+        if (path.length > 1 && path.endsWith('/')) {
+          path = path.slice(0, -1) || '/'
+        }
+        if (path.endsWith('/en')) {
+          langFromPath = 'en'
+          path = path.slice(0, -3) || '/'
+        }
+        const viewFromPath: 'home' | 'calendar' =
+          path.startsWith('/calendar') || path.startsWith('/admin') ? 'calendar' : 'home'
+        return { path, langFromPath, viewFromPath }
       }
-      window.history.replaceState({ view: path.startsWith('/calendar') || path.startsWith('/admin') ? 'calendar' : 'home' }, '', path)
+
+      const rawPath = window.location.pathname || '/'
+      const { path, langFromPath, viewFromPath } = parsePath(rawPath)
+
+      setLang(langFromPath)
+      setView(viewFromPath)
+
+      const canonicalPath = path.startsWith('/admin')
+        ? path
+        : buildPath(viewFromPath, langFromPath)
+
+      window.history.replaceState({ view: viewFromPath, lang: langFromPath }, '', canonicalPath)
+
       const onPop = () => {
         const p = window.location.pathname || '/'
+        const { langFromPath: popLang, viewFromPath: popView } = parsePath(p)
         setMenuOpen(false)
         setSearchOpen(false)
         setIsSearching(false)
         setCommittedQuery('')
         setSelectedCategory(null)
-        setView(p.startsWith('/calendar') || p.startsWith('/admin') ? 'calendar' : 'home')
+        setLang(popLang)
+        setView(popView)
       }
       window.addEventListener('popstate', onPop)
       return () => window.removeEventListener('popstate', onPop)
@@ -304,7 +344,7 @@ function App() {
         meta.name = 'theme-color'
         document.head.appendChild(meta)
       }
-      meta.content = effectiveTheme === 'dark' ? '#000000' : '#ffffff'
+      meta.content = effectiveTheme === 'dark' ? '#141414' : '#ffffff'
     } catch {
       // ignore
     }
@@ -419,7 +459,7 @@ function App() {
   return (
       <div>
       <nav className="mx-auto max-w-screen-2xl fixed inset-x-0 top-0 z-[80] h-14 flex items-center bg-transparent">
-        <div className={`mx-5 mt-10 rounded-lg border ${isMobile ? (menuOpen ? 'border-transparent' : 'border-[var(--nav-border)]') : (hasScrolled ? (menuOpen ? 'border-transparent' : 'border-[var(--nav-border)]') : 'border-transparent')} transition-all duration-300 flex h-14 w-full items-center justify-between px-3 bg-[var(--nav-bg)] backdrop-blur-xs max-[900px]:px-1.5 max-[900px]:mt-3 max-[900px]:mx-3 max-[900px]:h-12 max-[600px]:mt-1`}>
+        <div className={`mx-5 mt-8 rounded-lg border ${isMobile ? (menuOpen ? 'border-transparent' : 'border-[var(--nav-border)]') : (hasScrolled ? (menuOpen ? 'border-transparent' : 'border-[var(--nav-border)]') : 'border-transparent')} transition-all duration-300 flex h-13 w-full items-center justify-between px-2 bg-[var(--nav-bg)] backdrop-blur-xs max-[900px]:px-1.5 max-[900px]:mt-3 max-[900px]:mx-3 max-[900px]:h-12 max-[600px]:mt-1`}>
           <a className="inline-flex items-center gap-2 font-bold text-lg text-[var(--text-color)]" href="#home" aria-label="logo" onClick={(e) => { 
             e.preventDefault();
             setIsSearching(false);
@@ -432,7 +472,7 @@ function App() {
             setSpinLogo(true);
             window.setTimeout(() => setSpinLogo(false), 650);
           }}>
-            <img src={theme === 'dark' ? logo_night : logo} alt="logo" className={`h-10 w-10 rounded-md max-[900px]:h-9 max-[900px]:w-9 ${spinLogo ? 'spin-once' : ''}`} />
+            <img src={theme === 'dark' ? logo_night : logo} alt="logo" className={`h-9 w-9 rounded-md max-[900px]:h-9 max-[900px]:w-9 ${spinLogo ? 'spin-once' : ''}`} />
             {/* {t.logo} */}
           </a>
           <div className="flex items-center gap-2">
@@ -443,7 +483,7 @@ function App() {
                     key="lang-toggle-desktop"
                     type="button"
                     className="font-medium text-base text-[var(--text-color)] cursor-pointer hover:bg-[var(--title-hover-color)] rounded-md px-3 py-1"
-                    onClick={() => setLang((prev) => (prev === 'zh' ? 'en' : 'zh'))}
+                    onClick={toggleLang}
                   >
                     {l.label}
                   </button>
@@ -520,7 +560,7 @@ function App() {
                     key="lang-toggle-mobile"
                     type="button"
                     onClick={() => {
-                      setLang((prev) => (prev === 'zh' ? 'en' : 'zh'))
+                      toggleLang()
                       setMenuOpen(false)
                     }}
                     className="cursor-pointer text-2xl font-semibold text-[var(--text-color)] hover:text-[var(--border-blue)]"
@@ -611,9 +651,9 @@ function App() {
         if (view === 'calendar' || path.startsWith('/calendar')) return <Calendar lang={lang} />
         return (
       // snowfall effect start
-      <>
-      <Snowfall />
-      {/* snowfall effect end */}
+      // <>
+      // <Snowfall />
+      // {/* snowfall effect end */}
       <header className="relative flex flex-col min-h-screen items-center pt-35 bg-[var(--body-bg)] text-center max-[900px]:pt-30 max-[600px]:pt-25">
         <div className="mx-auto px-6 w-full max-[600px]:mx-0 max-[600px]:px-1.5">
           <h1 className="m-0 text-[36px] font-medium font-sans leading-tight text-[var(--text-color)] max-[900px]:text-[32px] max-[600px]:text-[24px]">{t.title}</h1>
@@ -688,8 +728,8 @@ function App() {
           
         </div>
       </header>
-      {/* snowfall effect start */}
-      </>
+      // {/* snowfall effect start */}
+      // </>
       // snowfall effect end
         )
       })()}
@@ -702,7 +742,7 @@ function App() {
             <button
               type="button"
               className="cursor-pointer rounded-lg border border-[var(--nav-border)] px-3 py-1 text-[var(--text-500)] hover:bg-[var(--title-hover-color)]"
-              onClick={() => setLang((prev) => (prev === 'zh' ? 'en' : 'zh'))}
+              onClick={toggleLang}
             >
               {lang === 'zh' ? 'English' : '中文'}
             </button>
@@ -727,7 +767,7 @@ function App() {
               <button
                 type="button"
                 aria-label="Use light theme"
-                className={`cursor-pointer rounded-lg border px-2 py-1 text-slate-700 ${theme==='light' ? 'bg-slate-0' : 'border-[#333333] hover:text-slate-300'}`}
+                className={`cursor-pointer rounded-lg border px-1.5 py-1 text-slate-600 ${theme==='light' ? 'bg-slate-0' : 'border-[#333333] hover:text-slate-300 hover:border-[#666666]'}`}
                 onClick={() => setTheme('light')}
                 title={lang==='zh' ? '淺色' : 'Light'}
               >
@@ -746,7 +786,7 @@ function App() {
               <button
                 type="button"
                 aria-label="Use dark theme"
-                className={`cursor-pointer rounded-lg border px-2 py-1 text-slate-400 ${theme==='light' ? 'bg-slate-100 hover:text-slate-700' : 'border-[#333333]'}`}
+                className={`cursor-pointer rounded-lg border px-1.5 py-1 text-slate-400 ${theme==='light' ? 'bg-slate-100 hover:text-slate-700' : 'border-[#666666]'}`}
                 onClick={() => setTheme('dark')}
                 title={lang==='zh' ? '深色' : 'Dark'}
               >

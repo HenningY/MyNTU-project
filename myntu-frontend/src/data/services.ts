@@ -14,8 +14,8 @@ export type ServiceItem = {
   imgSrc?: string
 }
 
-// import logo from './logo.png'
-import logo from './logo_xmas.png'
+import logo from './logo.png'
+// import logo from './logo_xmas.png'
 import ntucool from './ntucool.png'
 import ntumail from './ntumail.png'
 import score from './score.png'
@@ -664,7 +664,7 @@ export const services: ServiceItem[] = [
   },  {
     id: '73',
     icon: logo,
-    name: { zh: '畢業生流向問卷調查--校友端', en: 'Graduate Destination Survey (Chinese ver.)' },
+    name: { zh: '畢業生流向問卷調查 - 校友端', en: 'Graduate Destination Survey (Chinese ver.)' },
     url: { zh: 'https://career.ntu.edu.tw/Alumni/gsurvey/informationplatform', en: 'https://career.ntu.edu.tw/Alumni/gsurvey/informationplatform ' },
     description: { zh: '', en: '' },
     subcategory: { zh: '畢業生資訊', en: 'Graduation' },
@@ -856,7 +856,7 @@ export const services: ServiceItem[] = [
   },  {
     id: '97',
     icon: logo,
-    name: { zh: '課程Excel檔下載', en: 'Download Courses in Excel' },
+    name: { zh: '課程 Excel 檔下載', en: 'Download Courses in Excel' },
     url: { zh: 'http://ftp.ntu.edu.tw/NTU/course/course.htm', en: 'ftp://ftp.ntu.edu.tw/NTU/course/courseev.htm' },
     description: { zh: '當學期課程資料下載應用', en: 'Download application of current semester course materials' },
     subcategory: { zh: '課程學習', en: 'Courses' },
@@ -1552,7 +1552,7 @@ export const services: ServiceItem[] = [
   },  {
     id: '184',
     icon: JADE,
-    name: { zh: 'JADE期刊文獻傳遞服務', en: 'Journal Article Delivery Express JADE' },
+    name: { zh: 'JADE 期刊文獻傳遞服務', en: 'Journal Article Delivery Express JADE' },
     url: { zh: 'http://jade.lib.ntu.edu.tw/rapid_frontend/', en: 'http://jade.lib.ntu.edu.tw/rapid_frontend/' },
     description: { zh: '提供教職員工生申請圖書館未收藏之期刊文獻傳遞服務', en: 'Providing document delivery services for journal articles not owned by the library, available upon request by faculty, staff, and students' },
     subcategory: { zh: '圖書研究', en: 'Research' },
@@ -1728,7 +1728,7 @@ export const services: ServiceItem[] = [
   },  {
     id: '206',
     icon: logo,
-    name: { zh: '部門帳務--部門主管', en: 'Department Accounting – Department Supervisor' },
+    name: { zh: '部門帳務 - 部門主管', en: 'Department Accounting – Department Supervisor' },
     url: { zh: 'https://ntuacc.cc.ntu.edu.tw/acc/sso.asp?act=d&amp;c=m&amp;f=portal', en: 'https://ntuacc.cc.ntu.edu.tw/acc/sso.asp?act=d&amp;c=m&amp;f=portal' },
     description: { zh: '', en: '' },
     subcategory: { zh: '帳務財物', en: 'Accounts' },
