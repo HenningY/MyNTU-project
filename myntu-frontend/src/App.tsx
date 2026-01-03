@@ -11,71 +11,71 @@ import logo_night from './data/logo_night.png'
 import { synonymsGroupsZh, synonymsGroupsEn } from './data/searchSynonyms'
 
 // snowfall effect
-interface Flake {
-  id: number
-  left: number
-  delay: number
-  duration: number
-  size: number
-  rotateDuration: number
-  clockwise: boolean
-  drift: number
-}
+// interface Flake {
+//   id: number
+//   left: number
+//   delay: number
+//   duration: number
+//   size: number
+//   rotateDuration: number
+//   clockwise: boolean
+//   drift: number
+// }
 
-function Snowfall() {
-  const flakesRef = useRef<Flake[]>([])
-  const width = typeof window !== 'undefined' ? window.innerWidth : 0
-  if (flakesRef.current.length === 0) {
-    const count = width > 600 ? width/35 : 20
-    const basesize = width > 600 ? 6 : 5
-    flakesRef.current = Array.from({ length: count }, (_, i) => ({
-      id: i,
-      left: Math.random() * 100,           // 0–100% 寬度隨機位置
-      delay: Math.random() * -20,          // 負的 delay 讓一載入就有不同進度的雪花
-      duration: 2 + Math.random() * 3,     // 6–12 秒落下一次
-      size: basesize + Math.random() * 3,         // 雪花基礎尺寸
-      rotateDuration: 10 + Math.random() * 4, // 4–8 秒轉一圈
-      clockwise: Math.random() < 0.5,        // 隨機順時針 / 逆時針
-      drift: (Math.random() < 0.5 ? -1 : 1) * (10 + Math.random() * 25), // 每片雪花的水平位移，左下或右下
-    }))
-  }
+// function Snowfall() {
+//   const flakesRef = useRef<Flake[]>([])
+//   const width = typeof window !== 'undefined' ? window.innerWidth : 0
+//   if (flakesRef.current.length === 0) {
+//     const count = width > 600 ? width/35 : 20
+//     const basesize = width > 600 ? 6 : 5
+//     flakesRef.current = Array.from({ length: count }, (_, i) => ({
+//       id: i,
+//       left: Math.random() * 100,           // 0–100% 寬度隨機位置
+//       delay: Math.random() * -20,          // 負的 delay 讓一載入就有不同進度的雪花
+//       duration: 2 + Math.random() * 3,     // 6–12 秒落下一次
+//       size: basesize + Math.random() * 3,         // 雪花基礎尺寸
+//       rotateDuration: 10 + Math.random() * 4, // 4–8 秒轉一圈
+//       clockwise: Math.random() < 0.5,        // 隨機順時針 / 逆時針
+//       drift: (Math.random() < 0.5 ? -1 : 1) * (10 + Math.random() * 25), // 每片雪花的水平位移，左下或右下
+//     }))
+//   }
 
-  const flakes = flakesRef.current
+//   const flakes = flakesRef.current
 
-  return (
-    <div className="pointer-events-none fixed inset-0 max-[900px]:z-[20] z-[120] overflow-hidden">
-      {flakes.map((flake) => (
-        <div
-          key={flake.id}
-          className="snowflake"
-          style={{
-            left: `${flake.left}%`,
-            width: `${flake.size}px`,
-            height: `${flake.size}px`,
-            animationDuration: `${flake.duration}s`,
-            animationDelay: `${flake.delay}s`,
-            ['--snow-drift' as any]: `${flake.drift}px`,
-          }}
-        >
-          <div
-            className={
-              flake.clockwise
-                ? 'snowflake-inner snowflake-inner--cw'
-                : 'snowflake-inner snowflake-inner--ccw'
-            }
-            style={{
-              animationDuration: `${flake.rotateDuration}s`,
-            }}
-          >
-            <span className="snowflake-arm snowflake-arm--v" />
-            <span className="snowflake-arm snowflake-arm--d1" />
-            <span className="snowflake-arm snowflake-arm--d2" />
-          </div>
-        </div>
-      ))}
-    </div>
-  )
-}
+//   return (
+//     <div className="pointer-events-none fixed inset-0 max-[900px]:z-[20] z-[120] overflow-hidden">
+//       {flakes.map((flake) => (
+//         <div
+//           key={flake.id}
+//           className="snowflake"
+//           style={{
+//             left: `${flake.left}%`,
+//             width: `${flake.size}px`,
+//             height: `${flake.size}px`,
+//             animationDuration: `${flake.duration}s`,
+//             animationDelay: `${flake.delay}s`,
+//             ['--snow-drift' as any]: `${flake.drift}px`,
+//           }}
+//         >
+//           <div
+//             className={
+//               flake.clockwise
+//                 ? 'snowflake-inner snowflake-inner--cw'
+//                 : 'snowflake-inner snowflake-inner--ccw'
+//             }
+//             style={{
+//               animationDuration: `${flake.rotateDuration}s`,
+//             }}
+//           >
+//             <span className="snowflake-arm snowflake-arm--v" />
+//             <span className="snowflake-arm snowflake-arm--d1" />
+//             <span className="snowflake-arm snowflake-arm--d2" />
+//           </div>
+//         </div>
+//       ))}
+//     </div>
+//   )
+// }
 // snowfall effect end
 
 type Lang = 'zh' | 'en'
