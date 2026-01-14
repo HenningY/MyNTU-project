@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
-import { clearAnalytics } from '../utils/analytics'
+// import { clearAnalytics } from '../utils/analytics'
 
 export default function Admin() {
   const [authed, setAuthed] = useState<boolean>(false)
@@ -108,7 +108,7 @@ export default function Admin() {
       <button
         type="button"
         className="mt-6 rounded-md border border-[var(--nav-border)] px-3 py-1 text-sm hover:bg-[var(--title-hover-color)]"
-        onClick={() => { clearAnalytics(); setViews(0); setClicks({}) }}
+        // onClick={() => { clearAnalytics(); setViews(0); setClicks({}) }}
       >
         Clear data
       </button>

@@ -4,7 +4,7 @@ import { services, type ServiceItem } from './data/services'
 import ServiceSections from './components/ServiceSections'
 import Calendar from './components/Calendar'
 import Admin from './components/Admin'
-import { incrementSiteView, trackClick } from './utils/analytics'
+// import { incrementSiteView, trackClick } from './utils/analytics'
 import logo from './data/logo.png'
 // import logo from './data/logo_xmas.png'
 import logo_night from './data/logo_night.png'
@@ -146,7 +146,7 @@ function App() {
   // Recent added IDs (configurable)
   const recentIds: string[] = ['49','50']
 
-  const [hasScrolled, setHasScrolled] = useState<boolean>(false)
+  const [hasScrolled] = useState<boolean>(false)
   // const [isSmallScreen, setIsSmallScreen] = useState<boolean>(() => (typeof window !== 'undefined' ? window.innerWidth < 600 : false))
   const [view, setView] = useState<'home' | 'calendar'>('home')
 
@@ -241,20 +241,20 @@ function App() {
     }
   }, [])
 
-  useEffect(() => {
-    // Count a view once per load/navigation
-    try { incrementSiteView() } catch {}
-    const onScroll = () => setHasScrolled(window.scrollY > 0)
-    // const onResize = () => setIsSmallScreen(window.innerWidth < 600)
-    onScroll()
-    // onResize()
-    window.addEventListener('scroll', onScroll, { passive: true } as any)
-    // window.addEventListener('resize', onResize)
-    return () => {
-      window.removeEventListener('scroll', onScroll)
-      // window.removeEventListener('resize', onResize)
-    }
-  }, [])
+  // useEffect(() => {
+  //   // Count a view once per load/navigation
+  //   try { incrementSiteView() } catch {}
+  //   const onScroll = () => setHasScrolled(window.scrollY > 0)
+  //   // const onResize = () => setIsSmallScreen(window.innerWidth < 600)
+  //   onScroll()
+  //   // onResize()
+  //   window.addEventListener('scroll', onScroll, { passive: true } as any)
+  //   // window.addEventListener('resize', onResize)
+  //   return () => {
+  //     window.removeEventListener('scroll', onScroll)
+  //     // window.removeEventListener('resize', onResize)
+  //   }
+  // }, [])
 
   useEffect(() => {
     const handleResizeCloseMenu = () => {
@@ -503,7 +503,7 @@ function App() {
                     className="font-medium text-base text-[var(--text-color)] cursor-pointer hover:bg-[var(--title-hover-color)] rounded-md px-3 py-1"
                     target="_blank"
                     rel="noreferrer noopener"
-                    onClick={() => trackClick(l.href)}
+                    // onClick={() => trackClick(l.href)}
                   >
                     {l.label}
                   </a>
