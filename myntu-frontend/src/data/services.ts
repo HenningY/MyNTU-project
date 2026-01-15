@@ -81,6 +81,7 @@ import ThesisSubmission from './ThesisSubmission.png'
 import SteptoLeave from './SteptoLeave.png'
 import safetyPortal from './safetyPortal.png'
 import MilitaryServiceSearch from './MilitaryServiceSearch.png'
+import NTUcalendar from './NTUcalendar.png'
 
 
 
@@ -304,7 +305,7 @@ export const services: ServiceItem[] = [
   },  {
     id: '28',
     icon: course,
-    name: { zh: '網路選課', en: 'Online Course Selection System I' },
+    name: { zh: '網路選課', en: 'Online Course Selection System' },
     url: { zh: 'https://if192.aca.ntu.edu.tw/', en: 'https://if192.aca.ntu.edu.tw/default.asp?lang=en' },
     description: { zh: '初選和加退選', en: 'Pre-registration selection and add/drop selection' },
     subcategory: { zh: '課務資訊', en: 'Courses' },
@@ -744,7 +745,7 @@ export const services: ServiceItem[] = [
   },  {
     id: '83',
     icon: course,
-    name: { zh: '網路選課', en: 'Online Course Selection System I' },
+    name: { zh: '網路選課', en: 'Online Course Selection System' },
     url: { zh: 'https://if192.aca.ntu.edu.tw/', en: 'https://if192.aca.ntu.edu.tw/default.asp?lang=en' },
     description: { zh: '初選和加退選', en: 'Pre-registration selection and add/drop selection' },
     subcategory: { zh: '課程學習', en: 'Courses' },
@@ -2119,7 +2120,7 @@ export const services: ServiceItem[] = [
     category: { zh: '消息公告', en: 'Bulletin' },
   },  {
     id: '255',
-    icon: logo,
+    icon: NTUcalendar,
     name: { zh: '臺大行事曆', en: 'NTU Calendar' },
     url: { zh: 'https://www.aca.ntu.edu.tw/w/aca/calendar', en: 'https://www.aca.ntu.edu.tw/w/acaEN/Calendar' },
     description: { zh: '', en: '' },
