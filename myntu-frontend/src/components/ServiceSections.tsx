@@ -35,11 +35,11 @@ function ServiceCard({ item, lang }: { item: ServiceItem; lang: Lang }) {
         // onClick={() => trackClick(href)}
         className="h-22 max-[1200px]:h-20 flex items-center border-0 border-[#e5e7eb] rounded-[20px] gap-3 bg-transparent px-4 py-4 transition-all duration-200 hover:bg-[var(--bg-slate-50)] max-[750px]:px-2 max-[750px]:py-1 max-[750px]:h-auto max-[900px]:rounded-lg"
       >
-        <img src={item.icon} alt="icon" className="h-14 w-14 rounded-lg shadow-sm border border-[var(--nav-border)] max-[1200px]:h-12 max-[1200px]:w-12 max-[600px]:h-10 max-[600px]:w-10" />
+        <img src={item.icon} alt="icon" className="h-14 w-14 rounded-xl shadow-sm border border-[var(--nav-border)] max-[1200px]:h-12 max-[1200px]:w-12 max-[600px]:h-10 max-[600px]:w-10 max-[1200px]:rounded-lg" />
         <div className="text-left">
           <div className="flex items-center gap-1 flex-wrap">
             <div className="text-lg line-clamp-2 leading-tight font-medium text-[var(--text-color)] max-[1200px]:text-[17px] mr-2">{localizedName}</div>
-            <div className="text-xs leading-tight fo17nt-medium text-[var(--text-500)] max-[1200px]:text-[12px] border border-[var(--nav-border)] rounded-md px-1.5 py-0.5">{courseText1}</div>
+            <div className="text-xs leading-tight font-medium text-[var(--text-500)] max-[1200px]:text-[12px] border border-[var(--nav-border)] rounded-md px-1.5 py-0.5">{courseText1}</div>
             <div className="text-xs leading-tight font-medium text-[var(--text-500)] max-[1200px]:text-[12px] border border-[var(--nav-border)] rounded-md px-1.5 py-0.5">{courseText2}</div>
           </div>
           <div className="text-sm line-clamp-2 leading-tight mt-1 font-light text-[var(--text-500)] max-[1200px]:text-xs max-[1200px]:mt-0">{localizedDesc}</div>
@@ -56,7 +56,7 @@ function ServiceCard({ item, lang }: { item: ServiceItem; lang: Lang }) {
       // onClick={() => trackClick(href)}
       className="h-22 max-[1200px]:h-20 flex items-center border-0 border-[#e5e7eb] rounded-[20px] gap-3 bg-transparent px-4 py-4 transition-all duration-200 hover:bg-[var(--bg-slate-50)] max-[750px]:px-2 max-[750px]:py-1 max-[750px]:h-auto max-[900px]:rounded-lg"
     >
-      <img src={item.icon} alt="icon" className="h-14 w-14 rounded-lg shadow-sm border border-[var(--nav-border)] max-[1200px]:h-12 max-[1200px]:w-12 max-[600px]:h-10 max-[600px]:w-10" />
+      <img src={item.icon} alt="icon" className="h-14 w-14 rounded-xl shadow-sm border border-[var(--nav-border)] max-[1200px]:h-12 max-[1200px]:w-12 max-[600px]:h-10 max-[600px]:w-10 max-[1200px]:rounded-lg" />
       <div className="text-left">
         <div className="text-lg line-clamp-2 leading-tight font-medium text-[var(--text-color)] max-[1200px]:text-[17px]">{localizedName}</div>
         <div className="text-sm line-clamp-2 leading-tight mt-1 font-light text-[var(--text-500)] max-[1200px]:text-xs max-[1200px]:mt-0">{localizedDesc}</div>

@@ -251,7 +251,7 @@ function App() {
     return prefersDark ? 'dark' : 'light'
   })
   // Placeholder hot IDs after renumbering; adjust as you like
-  const hotIds: string[] = ['77','78','11','20','28','85','187','12','10','207', '255']
+  const hotIds: string[] = ['77','78','11','20','28','85','187','12','10','207','254']
   // const hotSet = new Set(hotIds)
   // Recent added IDs (configurable)
   const recentIds: string[] = []
@@ -456,37 +456,83 @@ function App() {
     return () => {}
   }, [])
 
-  // Apply theme to html root and persist (system = rely on media query)
+  // Apply theme to html root and persist (dark / light explicit)
   useEffect(() => {
     const root = document.documentElement
-    // reset attributes
-    root.removeAttribute('data-theme')
     if (theme === 'dark') {
       root.classList.add('dark')
       root.setAttribute('data-theme', 'dark')
     } else if (theme === 'light') {
       root.classList.remove('dark')
       root.setAttribute('data-theme', 'light')
-    } else {
-      // system
-      root.classList.remove('dark')
-      // clear explicit flag; media query controls dark variant
     }
     window.localStorage.setItem('theme', theme)
 
-    // Sync browser / PWA theme-color with current effective theme
-    try {
-      const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
-      const effectiveTheme = theme === 'system' ? (prefersDark ? 'dark' : 'light') : theme
-      let meta = document.querySelector('meta[name="theme-color"]') as HTMLMetaElement | null
-      if (!meta) {
-        meta = document.createElement('meta')
-        meta.name = 'theme-color'
-        document.head.appendChild(meta)
+    // For explicit light/dark, sync theme-color immediately.
+    if (theme === 'light' || theme === 'dark') {
+      try {
+        let meta = document.querySelector('meta[name="theme-color"]') as HTMLMetaElement | null
+        if (!meta) {
+          meta = document.createElement('meta')
+          meta.name = 'theme-color'
+          document.head.appendChild(meta)
+        }
+        meta.content = theme === 'dark' ? '#141414' : '#ffffff'
+      } catch {
+        // ignore
       }
-      meta.content = effectiveTheme === 'dark' ? '#141414' : '#ffffff'
-    } catch {
-      // ignore
+    }
+  }, [theme])
+
+  // When theme = system, follow OS prefers-color-scheme changes
+  useEffect(() => {
+    if (theme !== 'system') return
+    if (typeof window === 'undefined' || !window.matchMedia) return
+
+    const mql = window.matchMedia('(prefers-color-scheme: dark)')
+
+    const apply = (ev: MediaQueryList | MediaQueryListEvent) => {
+      const prefersDark = ev.matches
+      const root = document.documentElement
+      try {
+        let meta = document.querySelector('meta[name="theme-color"]') as HTMLMetaElement | null
+        if (!meta) {
+          meta = document.createElement('meta')
+          meta.name = 'theme-color'
+          document.head.appendChild(meta)
+        }
+        if (prefersDark) {
+          root.classList.add('dark')
+          root.setAttribute('data-theme', 'dark')
+          meta.content = '#141414'
+        } else {
+          root.classList.remove('dark')
+          root.setAttribute('data-theme', 'light')
+          meta.content = '#ffffff'
+        }
+      } catch {
+        // ignore
+      }
+    }
+
+    // initial apply
+    apply(mql)
+
+    // subscribe to changes
+    const listener = (ev: MediaQueryListEvent) => apply(ev)
+    if (typeof mql.addEventListener === 'function') {
+      mql.addEventListener('change', listener)
+    } else {
+      // Safari < 14
+      mql.addListener(listener)
+    }
+
+    return () => {
+      if (typeof mql.removeEventListener === 'function') {
+        mql.removeEventListener('change', listener)
+      } else {
+        mql.removeListener(listener)
+      }
     }
   }, [theme])
 
@@ -636,7 +682,13 @@ function App() {
                       key={item.key}
                       type="button"
                       className="font-medium text-base text-[var(--text-color)] cursor-pointer hover:bg-[var(--title-hover-color)] rounded-md px-3 py-1"
-                      onClick={() => { goToView(item.view); (window as any)?.scrollTo?.({ top: 0, behavior: 'smooth' }); }}
+                      onClick={() => { 
+                        setSelectedCategory(null);
+                        setIsSearching(false);
+                        setCommittedQuery('');
+                        goToView(item.view);
+                        (window as any)?.scrollTo?.({ top: 0, behavior: 'smooth' });
+                      }}
                     >
                       <span className="relative inline-blocks">
                         {item.label}
@@ -725,7 +777,14 @@ function App() {
                     <button
                       key={item.key}
                       type="button"
-                      onClick={() => { goToView(item.view); setMenuOpen(false); (window as any)?.scrollTo?.({ top: 0, behavior: 'smooth' }); }}
+                      onClick={() => {
+                        setSelectedCategory(null);
+                        setIsSearching(false);
+                        setCommittedQuery('');
+                        goToView(item.view); 
+                        (window as any)?.scrollTo?.({ top: 0, behavior: 'smooth' }); 
+                        setMenuOpen(false);
+                      }}
                       className="cursor-pointer text-2xl font-semibold text-[var(--text-color)] hover:text-[var(--border-blue)]"
                     >
                       <span className="relative inline-flex items-center">
@@ -895,48 +954,60 @@ function App() {
       // snowfall effect end
         )
       })()}
-      <footer className="mx-auto w-full max-w-screen-2xl px-10 pt-30 pb-15 text-sm text-[var(--text-500)] max-[600px]:px-5 max-[600px]:pb-6 max-[600px]:pt-15">
-        <div className="grid grid-cols-[3fr_2fr] gap-y-10 max-[600px]:gap-y-10">
+      <footer className="mx-auto w-full max-w-screen-2xl mt-30 px-10 pt-10 pb-8 text-sm text-[var(--footer-text)] max-[600px]:px-5 max-[600px]:pb-5 max-[600px]:mt-20 max-[600px]:pt-5">
+        <div className="grid grid-cols-[3fr_2fr] gap-y-10 max-[900px]:gap-y-5 max-[900px]:flex max-[900px]:flex-col max-[900px]:items-start">
           <div className="justify-self-start self-start flex flex-col gap-y-2">
             <span className="block">Not affiliated with NTU; only links to public services from my.ntu.edu.tw.</span>
             <span className="block flex gap-x-3 max-[600px]:gap-x-2">
-              <a href="https://www.ntu.edu.tw" target="_blank" rel="noreferrer noopener" className="text-[var(--text-color)] hover:text-[var(--border-blue)] border-r-1 border-[var(--nav-border)] pr-3 max-[600px]:pr-2">{lang==='zh' ? '臺大首頁' : 'NTU'}</a>
-              <a href="https://www.cc.ntu.edu.tw" target="_blank" rel="noreferrer noopener" className="text-[var(--text-color)] hover:text-[var(--border-blue)] border-r-1 border-[var(--nav-border)] pr-3 max-[600px]:pr-2">{lang==='zh' ? '計中首頁' : 'C&INC'}</a>
-              <a href="https://www.ntu.edu.tw/contact.html" target="_blank" rel="noreferrer noopener" className="text-[var(--text-color)] hover:text-[var(--border-blue)] ">{lang==='zh' ? '聯絡我們' : 'Contact'}</a>
+              <a href={lang==='zh' ? "https://www.ntu.edu.tw" : "https://www.ntu.edu.tw/english/"} target="_blank" rel="noreferrer noopener" className="text-[var(--text-color)] hover:text-[var(--border-blue)] border-r-1 border-[var(--nav-border)] pr-3 max-[600px]:pr-2">{lang==='zh' ? '臺大首頁' : 'NTU'}</a>
+              <a href={lang==='zh' ? "https://www.cc.ntu.edu.tw" : "https://www.cc.ntu.edu.tw/english/index.asp"} target="_blank" rel="noreferrer noopener" className="text-[var(--text-color)] hover:text-[var(--border-blue)] border-r-1 border-[var(--nav-border)] pr-3 max-[600px]:pr-2">{lang==='zh' ? '計中首頁' : 'C&INC'}</a>
+              <a href={lang==='zh' ? "https://ann.cc.ntu.edu.tw" : "https://ann.cc.ntu.edu.tw/eng/index.asp"} target="_blank" rel="noreferrer noopener" className="text-[var(--text-color)] hover:text-[var(--border-blue)] border-r-1 border-[var(--nav-border)] pr-3 max-[600px]:pr-2">{lang==='zh' ? '最新消息' : 'News'}</a>
+              <a href={lang==='zh' ? "https://www.ntu.edu.tw/contact.html" : "https://www.ntu.edu.tw/english/contact.html"} target="_blank" rel="noreferrer noopener" className="text-[var(--text-color)] hover:text-[var(--border-blue)] ">{lang==='zh' ? '聯絡我們' : 'Contact Us'}</a>
             </span>
           </div>
-          <div className="justify-self-end self-start">
-            <button
-              type="button"
-              className="cursor-pointer rounded-lg border border-[var(--nav-border)] px-3 py-1 text-[var(--text-500)] hover:bg-[var(--title-hover-color)]"
-              onClick={toggleLang}
-            >
-              {lang === 'zh' ? 'English' : '中文'}
-            </button>
+          <div className="justify-self-end"></div>
+          <div className="justify-self-start self-end max-[900px]:self-start">
+            Copyright © 2026 HenningY
           </div>
-          <div className="justify-self-start self-end">
-            henning9098@gmail.com <br /> Copyright © 2025 HenningY
-          </div>
-          <div className="justify-self-end self-end">
-            <div className="flex items-center gap-1">
-              {/* <button
+          <div className="justify-self-end self-end flex gap-3 max-[900px]:self-start">
+            {/* Theme toggle pill */}
+            <div className="relative flex items-center justify-between w-31 h-8 rounded-full bg-[var(--footer)] border-0 border-[var(--nav-border)] px-2">
+              {/* sliding thumb */}
+              {(() => {
+                const order: ('system' | 'light' | 'dark')[] = ['system', 'light', 'dark']
+                const idx = order.indexOf(theme)
+                const translate = idx < 0 ? 0 : idx * 100
+                return (
+                  <div
+                    className="absolute inset-y-0.5 w-10 left-0.5 rounded-full border border-[var(--footer-border)] bg-[var(--footer-darker)] transition-transform duration-200"
+                    style={{ transform: `translateX(${translate}%)` }}
+                  />
+                )
+              })()}
+              {/* system */}
+              <button
                 type="button"
-                aria-label="Use system theme"
-                className={`rounded-md border px-2.5 py-1.5 text-slate-700 hover:bg-slate-50 dark:text-slate-200 dark:border-slate-700 dark:hover:bg-slate-800 ${theme==='system' ? 'bg-slate-100 dark:bg-slate-800' : 'border-[#e5e7eb] dark:border-slate-700'}`}
+                aria-label={lang === 'zh' ? '依系統' : 'System'}
+                className={`relative z-[1] flex h-7 w-7 items-center justify-center rounded-full cursor-pointer ${
+                  theme === 'system' ? 'text-[var(--text-color)]' : 'text-[var(--footer-text)] hover:text-[var(--text-color)]'
+                }`}
                 onClick={() => setTheme('system')}
-                title={lang==='zh' ? '依系統' : 'System'}
+                title={lang === 'zh' ? '依系統' : 'System'}
               >
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-5 w-5">
                   <rect x="3" y="4" width="18" height="12" rx="2" ry="2" />
                   <line x1="8" y1="20" x2="16" y2="20" />
                 </svg>
-              </button> */}
+              </button>
+              {/* light */}
               <button
                 type="button"
-                aria-label="Use light theme"
-                className={`cursor-pointer rounded-lg border px-1.5 py-1 text-slate-600 ${theme==='light' ? 'bg-slate-0' : 'border-[#333333] hover:text-slate-300 hover:border-[#666666]'}`}
+                aria-label={lang === 'zh' ? '淺色' : 'Light'}
+                className={`relative z-[1] flex h-7 w-7 items-center justify-center rounded-full cursor-pointer ${
+                  theme === 'light' ? 'text-[var(--text-color)]' : 'text-[var(--footer-text)] hover:text-[var(--text-color)]'
+                }`}
                 onClick={() => setTheme('light')}
-                title={lang==='zh' ? '淺色' : 'Light'}
+                title={lang === 'zh' ? '淺色' : 'Light'}
               >
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-5 w-5">
                   <circle cx="12" cy="12" r="5" />
@@ -950,16 +1021,29 @@ function App() {
                   <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
                 </svg>
               </button>
+              {/* dark */}
               <button
                 type="button"
-                aria-label="Use dark theme"
-                className={`cursor-pointer rounded-lg border px-1.5 py-1 text-slate-400 ${theme==='light' ? 'bg-slate-100 hover:text-slate-700' : 'border-[#666666]'}`}
+                aria-label={lang === 'zh' ? '深色' : 'Dark'}
+                className={`relative z-[1] flex h-7 w-7 items-center justify-center rounded-full cursor-pointer ${
+                  theme === 'dark' ? 'text-[var(--text-color)]' : 'text-[var(--footer-text)] hover:text-[var(--text-color)]'
+                }`}
                 onClick={() => setTheme('dark')}
-                title={lang==='zh' ? '深色' : 'Dark'}
+                title={lang === 'zh' ? '深色' : 'Dark'}
               >
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-5 w-5">
                   <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
                 </svg>
+              </button>
+            </div>
+            <div className="justify-self-end self-start">
+              <button
+                type="button"
+                className="cursor-pointer h-8 bg-[var(--footer)] border border-[var(--nav-border)] rounded-full px-2.5 py-1 text-[var(--text-color)] hover:bg-[var(--footer-darker)]"
+                onClick={toggleLang}
+              >
+                <span className="mr-0.5"> &#127760;&#xFE0E; </span>
+                {lang === 'zh' ? ' English' : '中文'}
               </button>
             </div>
           </div>

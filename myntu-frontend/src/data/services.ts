@@ -82,6 +82,12 @@ import SteptoLeave from './SteptoLeave.png'
 import safetyPortal from './safetyPortal.png'
 import MilitaryServiceSearch from './MilitaryServiceSearch.png'
 import NTUcalendar from './NTUcalendar.png'
+import CourseChecklist from './CourseChecklist.png'
+import ithenticate from './ithenticate.png'
+import exceldownload from './exceldownload.png'
+import NTUSpace from './NTUSpace.png'
+import WirelessNetwork from './WirelessNetwork.png'
+import VPN from './VPN.png'
 
 
 
@@ -344,7 +350,7 @@ export const services: ServiceItem[] = [
     category: { zh: '學生專區', en: 'Students' },
   },  {
     id: '33',
-    icon: logo,
+    icon: CourseChecklist,
     name: { zh: '學士班修課檢視表', en: 'Undergraduate Course Checklist' },
     url: { zh: 'https://reg.aca.ntu.edu.tw/GradeCheck/login', en: 'https://reg.aca.ntu.edu.tw/GradeCheck/login' },
     description: { zh: '提供學士班學生查閱其修課紀錄', en: 'Provide students with access to their course records' },
@@ -856,7 +862,7 @@ export const services: ServiceItem[] = [
     category: { zh: '課程學習', en: 'Courses' },
   },  {
     id: '97',
-    icon: logo,
+    icon: exceldownload,
     name: { zh: '課程 Excel 檔下載', en: 'Download Courses in Excel' },
     url: { zh: 'http://ftp.ntu.edu.tw/NTU/course/course.htm', en: 'ftp://ftp.ntu.edu.tw/NTU/course/courseev.htm' },
     description: { zh: '當學期課程資料下載應用', en: 'Download application of current semester course materials' },
@@ -872,7 +878,7 @@ export const services: ServiceItem[] = [
     category: { zh: '課程學習', en: 'Courses' },
   },  {
     id: '99',
-    icon: logo,
+    icon: CourseChecklist,
     name: { zh: '學士班修課檢視表', en: 'Undergraduate Course Checklist' },
     url: { zh: 'https://reg.aca.ntu.edu.tw/GradeCheck/login', en: 'https://reg.aca.ntu.edu.tw/GradeCheck/login' },
     description: { zh: '提供學士班學生查閱其修課紀錄', en: 'Provide students with access to their course records' },
@@ -1568,7 +1574,7 @@ export const services: ServiceItem[] = [
     category: { zh: '圖書研究', en: 'Research' },
   },  {
     id: '186',
-    icon: logo,
+    icon: ithenticate,
     name: { zh: 'iThenticate 2.0', en: 'iThenticate 2.0' },
     url: { zh: 'https://download.cc.ntu.edu.tw/iThenticate/Default.aspx', en: 'https://download.cc.ntu.edu.tw/iThenticate/Default.aspx' },
     description: { zh: '', en: '' },
@@ -1928,7 +1934,7 @@ export const services: ServiceItem[] = [
     category: { zh: '校園資源', en: 'Resource' },
   },  {
     id: '231',
-    icon: logo,
+    icon: NTUSpace,
     name: { zh: 'NTU Space', en: 'NTU Space' },
     url: { zh: 'https://www.space.ntu.edu.tw', en: 'https://www.space.ntu.edu.tw' },
     description: { zh: '提供全校每位學生15GB、教職員40GB的雲端儲存空間，除了可以利用網頁介面上傳、下載及分享檔案，還提供了Windows 及Mac版的同步程式(Sync Agent)', en: 'NTU Space provides every student with 15GB and each faculty/staff member with 40GB of cloud storage. In addition to uploading, downloading, and sharing files via the web interface, it also offers Sync Agent programs for Windows and Mac, allowing you to synchronize your computer data at any time' },
@@ -1992,7 +1998,7 @@ export const services: ServiceItem[] = [
     category: { zh: '校園資源', en: 'Resource' },
   },  {
     id: '239',
-    icon: logo,
+    icon: WirelessNetwork,
     name: { zh: 'Wi-Fi 無線網路', en: 'Wireless Network' },
     url: { zh: 'http://ccnet.ntu.edu.tw/wireless/', en: 'http://ccnet.ntu.edu.tw/english/wireless/' },
     description: { zh: '提供校園無線網路服務', en: 'Offering services related to campus WiFi' },
@@ -2000,7 +2006,7 @@ export const services: ServiceItem[] = [
     category: { zh: '校園資源', en: 'Resource' },
   },  {
     id: '240',
-    icon: logo,
+    icon: VPN,
     name: { zh: 'VPN 虛擬私有網路', en: 'VPN Services' },
     url: { zh: 'https://ccnet.ntu.edu.tw/vpn/', en: 'https://ccnet.ntu.edu.tw/vpn/PulseSecure-eng.html' },
     description: { zh: '提供本校師生於校外使用僅允許臺大網路存取之網路資源', en: 'Providing SSL VPN service for accessing NTU Campus only resouce from off-campus network' },
@@ -2017,21 +2023,13 @@ export const services: ServiceItem[] = [
   },  {
     id: '242',
     icon: logo,
-    name: { zh: '簡報範本下載', en: 'Download of Powerpoint Templates' },
-    url: { zh: 'https://www.cc.ntu.edu.tw/chinese/services/serv_i05.asp', en: 'https://www.cc.ntu.edu.tw/chinese/english/services/serv_i05.asp' },
-    description: { zh: '', en: '' },
-    subcategory: { zh: '校園資源', en: 'Resources' },
-    category: { zh: '校園資源', en: 'Resource' },
-  },  {
-    id: '243',
-    icon: logo,
     name: { zh: '校園網路資料查詢', en: 'Campus Network Data Inquiry' },
     url: { zh: 'http://netadm.cc.ntu.edu.tw/ip/query.php', en: 'http://netadm.cc.ntu.edu.tw/ip/query.php' },
     description: { zh: '校內各單位IP位址及網管人員資料查詢', en: 'For lookin up information about department IP address and network management staff' },
     subcategory: { zh: '校園資源', en: 'Resources' },
     category: { zh: '校園資源', en: 'Resource' },
   },  {
-    id: '244',
+    id: '243',
     icon: logo,
     name: { zh: '門禁管理', en: 'Access Control Management' },
     url: { zh: 'http://acs.cc.ntu.edu.tw/NTUAcs/_defaut.aspx', en: 'http://acs.cc.ntu.edu.tw/NTUAcs/_defaut.aspx' },
@@ -2039,7 +2037,7 @@ export const services: ServiceItem[] = [
     subcategory: { zh: '校園資源', en: 'Resources' },
     category: { zh: '校園資源', en: 'Resource' },
   },  {
-    id: '245',
+    id: '244',
     icon: logo,
     name: { zh: '資通安全服務中心', en: 'Information Security Services Center' },
     url: { zh: 'http://cert.ntu.edu.tw/', en: 'http://cert.ntu.edu.tw/' },
@@ -2047,7 +2045,7 @@ export const services: ServiceItem[] = [
     subcategory: { zh: '校園資源', en: 'Resources' },
     category: { zh: '校園資源', en: 'Resource' },
   },  {
-    id: '246',
+    id: '245',
     icon: logo,
     name: { zh: '高效能運算服務', en: 'High Performance Computing' },
     url: { zh: 'http://grid.ntu.edu.tw/', en: 'http://grid.ntu.edu.tw/' },
@@ -2055,7 +2053,7 @@ export const services: ServiceItem[] = [
     subcategory: { zh: '校園資源', en: 'Resources' },
     category: { zh: '校園資源', en: 'Resource' },
   },  {
-    id: '247',
+    id: '246',
     icon: logo,
     name: { zh: 'NTP 網路校時', en: 'Network time protocol server' },
     url: { zh: 'http://ccnet.ntu.edu.tw/ntp/index.html', en: 'http://ccnet.ntu.edu.tw/english/ntp.html' },
@@ -2063,7 +2061,7 @@ export const services: ServiceItem[] = [
     subcategory: { zh: '校園資源', en: 'Resources' },
     category: { zh: '校園資源', en: 'Resource' },
   },  {
-    id: '248',
+    id: '247',
     icon: logo,
     name: { zh: '校友資訊', en: 'Alumni Information' },
     url: { zh: 'https://www.alumni.ntu.edu.tw/', en: 'https://www.alumni.ntu.edu.tw/' },
@@ -2071,7 +2069,7 @@ export const services: ServiceItem[] = [
     subcategory: { zh: '校園資源', en: 'Resources' },
     category: { zh: '校園資源', en: 'Resource' },
   },  {
-    id: '249',
+    id: '248',
     icon: logo,
     name: { zh: '校園傳染病管制網', en: 'NTU Website for Disease Control' },
     url: { zh: 'https://my.ntu.edu.tw/ntuwdc/', en: 'https://my.ntu.edu.tw/ntuwdc/' },
@@ -2079,7 +2077,7 @@ export const services: ServiceItem[] = [
     subcategory: { zh: '消息公告', en: 'Bulletin' },
     category: { zh: '消息公告', en: 'Bulletin' },
   },  {
-    id: '250',
+    id: '249',
     icon: logo,
     name: { zh: '活動報名', en: 'Event Registration' },
     url: { zh: 'https://my.ntu.edu.tw/actregister/Default.aspx', en: 'https://my.ntu.edu.tw/actregister/Default.aspx' },
@@ -2087,7 +2085,7 @@ export const services: ServiceItem[] = [
     subcategory: { zh: '消息公告', en: 'Bulletin' },
     category: { zh: '消息公告', en: 'Bulletin' },
   },  {
-    id: '251',
+    id: '250',
     icon: logo,
     name: { zh: '校園公佈欄', en: 'Announcements / News' },
     url: { zh: 'https://ann.cc.ntu.edu.tw/', en: 'http://ann.cc.ntu.edu.tw/eng/index.asp' },
@@ -2095,7 +2093,7 @@ export const services: ServiceItem[] = [
     subcategory: { zh: '消息公告', en: 'Bulletin' },
     category: { zh: '消息公告', en: 'Bulletin' },
   },  {
-    id: '252',
+    id: '251',
     icon: logo,
     name: { zh: '轉系輔系雙主修', en: 'Program Transfer / Minor / Double Major' },
     url: { zh: 'http://reg227.aca.ntu.edu.tw/TMD/stuquery/', en: 'http://reg227.aca.ntu.edu.tw/TMD/stuquery/' },
@@ -2103,7 +2101,7 @@ export const services: ServiceItem[] = [
     subcategory: { zh: '消息公告', en: 'Bulletin' },
     category: { zh: '消息公告', en: 'Bulletin' },
   },  {
-    id: '253',
+    id: '252',
     icon: logo,
     name: { zh: '活動月曆', en: 'Event Calendar' },
     url: { zh: 'https://ann.cc.ntu.edu.tw/activities/', en: 'https://ann.cc.ntu.edu.tw/activities/' },
@@ -2111,7 +2109,7 @@ export const services: ServiceItem[] = [
     subcategory: { zh: '消息公告', en: 'Bulletin' },
     category: { zh: '消息公告', en: 'Bulletin' },
   },  {
-    id: '254',
+    id: '253',
     icon: logo,
     name: { zh: '臺大校訊', en: 'NTU Newsletter' },
     url: { zh: 'https://sec.ntu.edu.tw/epaper/', en: 'http://ntuhighlights.ntu.edu.tw/' },
@@ -2119,7 +2117,7 @@ export const services: ServiceItem[] = [
     subcategory: { zh: '消息公告', en: 'Bulletin' },
     category: { zh: '消息公告', en: 'Bulletin' },
   },  {
-    id: '255',
+    id: '254',
     icon: NTUcalendar,
     name: { zh: '臺大行事曆', en: 'NTU Calendar' },
     url: { zh: 'https://www.aca.ntu.edu.tw/w/aca/calendar', en: 'https://www.aca.ntu.edu.tw/w/acaEN/Calendar' },
@@ -2127,7 +2125,7 @@ export const services: ServiceItem[] = [
     subcategory: { zh: '消息公告', en: 'Bulletin' },
     category: { zh: '消息公告', en: 'Bulletin' },
   },  {
-    id: '256',
+    id: '255',
     icon: logo,
     name: { zh: '臺大演講網', en: 'NTU Lecture Portal' },
     url: { zh: 'https://speech.ntu.edu.tw/', en: 'https://speech.ntu.edu.tw/' },
@@ -2135,7 +2133,7 @@ export const services: ServiceItem[] = [
     subcategory: { zh: '消息公告', en: 'Bulletin' },
     category: { zh: '消息公告', en: 'Bulletin' },
   },  {
-    id: '257',
+    id: '256',
     icon: logo,
     name: { zh: '法規與紀錄', en: 'Laws, Regulations and Records' },
     url: { zh: 'https://sec.ntu.edu.tw/News_n_846_sms_9757.html', en: 'https://sec.ntu.edu.tw/en/News_n_1879_sms_10796.html' },
@@ -2143,7 +2141,7 @@ export const services: ServiceItem[] = [
     subcategory: { zh: '消息公告', en: 'Bulletin' },
     category: { zh: '消息公告', en: 'Bulletin' },
   },  {
-    id: '258',
+    id: '257',
     icon: logo,
     name: { zh: '校內徵才公告', en: 'On-Campus Recruitment Announcements' },
     url: { zh: 'https://ann.cc.ntu.edu.tw/index.asp?catalog=%BCx%A4~', en: 'https://ann.cc.ntu.edu.tw/index.asp?catalog=%BCx%A4~' },
@@ -2151,7 +2149,7 @@ export const services: ServiceItem[] = [
     subcategory: { zh: '消息公告', en: 'Bulletin' },
     category: { zh: '消息公告', en: 'Bulletin' },
   },  {
-    id: '259',
+    id: '258',
     icon: logo,
     name: { zh: '臺大電子報', en: 'NTU E-Newsletter' },
     url: { zh: 'https://epaper.ntu.edu.tw/', en: 'https://epaper.ntu.edu.tw/' },
@@ -2159,7 +2157,7 @@ export const services: ServiceItem[] = [
     subcategory: { zh: '消息公告', en: 'Bulletin' },
     category: { zh: '消息公告', en: 'Bulletin' },
   },  {
-    id: '260',
+    id: '259',
     icon: logo,
     name: { zh: '教職員工文康活動公告', en: 'Faculty & Staff Recreational Activity Announcements' },
     url: { zh: 'https://ntufastea.ntu.edu.tw/', en: 'https://ntufastea.ntu.edu.tw/' },
@@ -2167,7 +2165,7 @@ export const services: ServiceItem[] = [
     subcategory: { zh: '消息公告', en: 'Bulletin' },
     category: { zh: '消息公告', en: 'Bulletin' },
   },  {
-    id: '261',
+    id: '260',
     icon: logo,
     name: { zh: '捐款與致謝辦法', en: 'Donation and Acknowledgment Guidelines' },
     url: { zh: 'https://giving.ntu.edu.tw/Upload/Files/Acknowledgements.pdf', en: 'https://giving.ntu.edu.tw/Upload/Files/Acknowledgements.pdf' },
@@ -2175,7 +2173,7 @@ export const services: ServiceItem[] = [
     subcategory: { zh: '消息公告', en: 'Bulletin' },
     category: { zh: '消息公告', en: 'Bulletin' },
   },  {
-    id: '262',
+    id: '261',
     icon: logo,
     name: { zh: '滿意度問卷調查', en: 'Satisfaction Survey' },
     url: { zh: 'https://my.ntu.edu.tw/questionnaire/Login.aspx', en: 'https://my.ntu.edu.tw/questionnaire/Login.aspx' },
@@ -2183,7 +2181,7 @@ export const services: ServiceItem[] = [
     subcategory: { zh: '意見交流', en: 'Opinions' },
     category: { zh: '意見交流', en: 'Opinions' },
   },  {
-    id: '263',
+    id: '262',
     icon: logo,
     name: { zh: '教職員投票', en: 'Vote' },
     url: { zh: 'https://my.ntu.edu.tw/vote/', en: 'https://my.ntu.edu.tw/vote/' },
@@ -2191,7 +2189,7 @@ export const services: ServiceItem[] = [
     subcategory: { zh: '意見交流', en: 'Opinions' },
     category: { zh: '意見交流', en: 'Opinions' },
   },  {
-    id: '264',
+    id: '263',
     icon: logo,
     name: { zh: '校務建言', en: 'NTU Suggestion System' },
     url: { zh: 'https://my.ntu.edu.tw/suggest/index.asp', en: 'https://my.ntu.edu.tw/suggest/english/index.asp' },
@@ -2199,7 +2197,7 @@ export const services: ServiceItem[] = [
     subcategory: { zh: '意見交流', en: 'Opinions' },
     category: { zh: '意見交流', en: 'Opinions' },
   },  {
-    id: '265',
+    id: '264',
     icon: logo,
     name: { zh: '行政興革意見信箱', en: 'Email Your Comments on Administrative Improvements' },
     url: { zh: 'mailto:secretariat@ntu.edu.tw', en: 'mailto:secretariat@ntu.edu.tw' },
@@ -2207,7 +2205,7 @@ export const services: ServiceItem[] = [
     subcategory: { zh: '意見交流', en: 'Opinions' },
     category: { zh: '意見交流', en: 'Opinions' },
   },  {
-    id: '266',
+    id: '265',
     icon: logo,
     name: { zh: '校務會議提案討論區', en: 'University Meeting Proposal Discussion Forum' },
     url: { zh: 'https://mis.cc.ntu.edu.tw/aca3_meeting/asp/login_sso.asp', en: 'https://mis.cc.ntu.edu.tw/aca3_meeting/asp/login_sso.asp' },
