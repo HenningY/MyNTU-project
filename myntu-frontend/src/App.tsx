@@ -250,6 +250,7 @@ function App() {
     const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
     return prefersDark ? 'dark' : 'light'
   })
+  const [logoColor, setLogoColor] = useState<'light' | 'dark'>('light')
   // Placeholder hot IDs after renumbering; adjust as you like
   const hotIds: string[] = ['77','78','11','20','28','85','187','12','10','207','254']
   // const hotSet = new Set(hotIds)
@@ -293,7 +294,8 @@ function App() {
       try {
         const currentView = view
         const url = buildPath(currentView, nextLang)
-        window.history.replaceState({ view: currentView, lang: nextLang }, '', url)
+        window.history.replaceState({ view: currentView, lang: nextLang }, '', url);
+        (window as any)?.scrollTo?.({ top: 0, behavior: 'smooth' });
       } catch {
         // ignore
       }
@@ -504,10 +506,12 @@ function App() {
         if (prefersDark) {
           root.classList.add('dark')
           root.setAttribute('data-theme', 'dark')
+          setLogoColor('dark')
           meta.content = '#141414'
         } else {
           root.classList.remove('dark')
           root.setAttribute('data-theme', 'light')
+          setLogoColor('light')
           meta.content = '#ffffff'
         }
       } catch {
@@ -645,7 +649,7 @@ function App() {
   return (
       <div>
       <nav className="mx-auto max-w-screen-2xl fixed inset-x-0 top-0 z-[80] h-14 flex items-center bg-transparent">
-        <div className={`mx-5 mt-8 rounded-lg border ${isMobile ? (menuOpen ? 'border-transparent' : 'border-[var(--nav-border)]') : (hasScrolled ? (menuOpen ? 'border-transparent' : 'border-[var(--nav-border)]') : 'border-transparent')} transition-all duration-300 flex h-13 w-full items-center justify-between px-2 bg-[var(--nav-bg)] backdrop-blur-xs max-[900px]:px-1.5 max-[900px]:mt-3 max-[900px]:mx-3 max-[900px]:h-12 max-[600px]:mt-1`}>
+        <div className={`mx-5 mt-4 rounded-lg border ${isMobile ? (menuOpen ? 'border-transparent' : 'border-[var(--nav-border)]') : (hasScrolled ? (menuOpen ? 'border-transparent' : 'border-[var(--nav-border)]') : 'border-transparent')} transition-all duration-300 flex h-13 w-full items-center justify-between px-2 bg-[var(--nav-bg)] backdrop-blur-xs max-[900px]:px-1.5 max-[900px]:mt-3 max-[900px]:mx-3 max-[900px]:h-12 max-[600px]:mt-1`}>
           <a className="inline-flex items-center gap-2 font-bold text-lg text-[var(--text-color)]" href="#home" aria-label="logo" onClick={(e) => { 
             e.preventDefault();
             setIsSearching(false);
@@ -658,7 +662,7 @@ function App() {
             setSpinLogo(true);
             window.setTimeout(() => setSpinLogo(false), 650);
           }}>
-            <img src={theme === 'dark' ? logo_night : logo} alt="logo" className={`h-9 w-9 rounded-md max-[900px]:h-9 max-[900px]:w-9 ${spinLogo ? 'spin-once' : ''}`} />
+            <img src={theme === 'dark' || (theme === 'system' && logoColor === 'dark') ? logo_night : logo} alt="logo" className={`h-9 w-9 rounded-md max-[900px]:h-9 max-[900px]:w-9 ${spinLogo ? 'spin-once' : ''}`} />
             {/* {t.logo} */}
           </a>
           <div className="flex items-center gap-2">
@@ -681,7 +685,7 @@ function App() {
                     <button
                       key={item.key}
                       type="button"
-                      className="font-medium text-base text-[var(--text-color)] cursor-pointer hover:bg-[var(--title-hover-color)] rounded-md px-3 py-1"
+                      className="font-medium text-base text-[var(--text-color)] cursor-pointer hover:bg-[var(--title-hover-color)] rounded-md px-2.5 py-1"
                       onClick={() => { 
                         setSelectedCategory(null);
                         setIsSearching(false);
@@ -703,7 +707,7 @@ function App() {
                   <a
                     key={item.key}
                     href={item.href}
-                    className="font-medium text-base text-[var(--text-color)] cursor-pointer hover:bg-[var(--title-hover-color)] rounded-md px-3 py-1"
+                    className="font-medium text-base text-[var(--text-color)] cursor-pointer hover:bg-[var(--title-hover-color)] rounded-md px-2.5 py-1"
                     target="_blank"
                     rel="noreferrer noopener"
                   >
@@ -885,7 +889,7 @@ function App() {
                 <button
                   key={name}
                   type="button"
-                  className={`border px-3 py-1 text-base font-base shadow-xs cursor-pointer transition-colors ${isMobile ? 'flex-none whitespace-nowrap rounded-lg' : 'rounded-full max-[600px]:text-sm max-[600px]:px-2.5'} ${
+                  className={`border px-3 py-1 text-base font-base cursor-pointer bg-[var(--body-bg)] shadow-xs max-[600px]:shadow-none transition-colors ${isMobile ? 'flex-none whitespace-nowrap rounded-lg' : 'rounded-full max-[600px]:text-sm max-[600px]:px-2.5'} ${
                     selectedCategory === name
                       ? 'border-[var(--border-blue)] bg-[var(--bg-blue)] text-[var(--border-blue)]'
                       : 'border-[var(--border)] bg-[var(--body-bg)] text-[var(--text-color)] hover:bg-[var(--title-hover-color)]'
@@ -899,7 +903,7 @@ function App() {
             </div>
             <div className={`pointer-events-none absolute inset-y-0 left-0 z-[1] w-6 bg-gradient-to-r from-[var(--body-bg)] to-transparent ${isMobile ? 'block' : 'hidden'}`} />
             <div className={`pointer-events-none absolute inset-y-0 right-0 z-[1] w-6 bg-gradient-to-l from-[var(--body-bg)] to-transparent ${isMobile ? 'block' : 'hidden'}`} />
-      </div>
+          </div>
           {!isMobile && (
             <form
               className="mx-auto mt-6 w-full px-3 max-w-3xl h-14 mb-16 max-[900px]:h-12"
@@ -907,7 +911,7 @@ function App() {
               role="search"
               aria-label="site search"
             >
-              <label className="relative flex items-center gap-3 rounded-[14px] max-[600px]:rounded-[10px] h-full border border-[var(--nav-border)] bg-[var(--title-hover-color)] px-1 py-2 inset-shadow-sm">
+              <label className="relative flex items-center gap-3 rounded-full h-full border border-[var(--nav-border)] bg-[var(--title-hover-color)] px-2.5 py-2 max-[600px]:px-1.5 inset-shadow-sm hover:bg-[var(--search-hover)] focus-within:bg-[var(--search-hover)]">
                 <input
                   type="search"
                   placeholder={t.search}
@@ -926,7 +930,7 @@ function App() {
                       <line x1="18" y1="6" x2="6" y2="18" />
                       <line x1="6" y1="6" x2="18" y2="18" />
                     </svg>
-        </button>
+                  </button>
                 ) : null}
               </label>
             </form>

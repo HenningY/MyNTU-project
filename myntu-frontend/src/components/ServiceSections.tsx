@@ -39,8 +39,10 @@ function ServiceCard({ item, lang }: { item: ServiceItem; lang: Lang }) {
         <div className="text-left">
           <div className="flex items-center gap-1 flex-wrap">
             <div className="text-lg line-clamp-2 leading-tight font-medium text-[var(--text-color)] max-[1200px]:text-[17px] mr-2">{localizedName}</div>
-            <div className="text-xs leading-tight font-medium text-[var(--text-500)] max-[1200px]:text-[12px] border border-[var(--nav-border)] rounded-md px-1.5 py-0.5">{courseText1}</div>
-            <div className="text-xs leading-tight font-medium text-[var(--text-500)] max-[1200px]:text-[12px] border border-[var(--nav-border)] rounded-md px-1.5 py-0.5">{courseText2}</div>
+            <div className="flex items-center gap-1">
+              <div className="text-xs leading-tight font-medium text-[var(--text-500)] bg-[var(--body-bg)] max-[1200px]:text-[12px] border border-[var(--nav-border)] rounded-md px-1 py-0.5">{courseText1}</div>
+              <div className="text-xs leading-tight font-medium text-[var(--text-500)] bg-[var(--body-bg)] max-[1200px]:text-[12px] border border-[var(--nav-border)] rounded-md px-1 py-0.5">{courseText2}</div>
+            </div>
           </div>
           <div className="text-sm line-clamp-2 leading-tight mt-1 font-light text-[var(--text-500)] max-[1200px]:text-xs max-[1200px]:mt-0">{localizedDesc}</div>
         </div>
