@@ -696,9 +696,9 @@ function App() {
                     >
                       <span className="relative inline-blocks">
                         {item.label}
-                        {item.key === 'about' && (
+                        {/* {item.key === 'about' && (
                           <span className="absolute top-[-4px] right-[-8px] inline-block h-1.5 w-1.5 rounded-full bg-[var(--bg-red)] shadow-[0_0_5px_rgba(210,0,0,1)]" />
-                        )}
+                        )} */}
                       </span>
                     </button>
                   )
@@ -793,9 +793,9 @@ function App() {
                     >
                       <span className="relative inline-flex items-center">
                         {item.label}
-                        {item.key === 'about' && (
+                        {/* {item.key === 'about' && (
                           <span className="absolute top-[-2px] right-[-10px] inline-block h-1.5 w-1.5 rounded-full bg-[var(--bg-red)] shadow-[0_0_5px_rgba(210,0,0,1)]" />
-                        )}
+                        )} */}
                       </span>
                     </button>
                   )
