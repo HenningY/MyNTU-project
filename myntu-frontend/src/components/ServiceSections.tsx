@@ -23,8 +23,8 @@ function ServiceCard({ item, lang }: { item: ServiceItem; lang: Lang }) {
   const localizedDesc = lang === 'zh' ? item.description.zh : item.description.en
   const href = typeof item.url === 'string' ? item.url : (lang === 'zh' ? item.url.zh : item.url.en)
   // course icon
-  const courseText1 = lang === 'zh' ? '一階 1/19-1/21' : '1st phase 1/19-1/21'
-  const courseText2 = lang === 'zh' ? '二階 1/26-1/27' : '2nd phase 1/26-1/27'
+  // const courseText1 = lang === 'zh' ? '一階 1/19-1/21' : '1st phase 1/19-1/21'
+  // const courseText2 = lang === 'zh' ? '二階 1/26-1/27' : '2nd phase 1/26-1/27'
   // if (item.id === '28' || item.id === '29' || item.id === '83' || item.id === '84') {
   //   return (
   //     <a
