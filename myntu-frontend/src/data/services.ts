@@ -88,6 +88,8 @@ import exceldownload from './exceldownload.png'
 import NTUSpace from './NTUSpace.png'
 import WirelessNetwork from './WirelessNetwork.png'
 import VPN from './VPN.png'
+import adsl from './adsl.png'
+import AppforOralThesis from './AppforOralThesis.png'
 
 
 
@@ -470,7 +472,7 @@ export const services: ServiceItem[] = [
     category: { zh: '學生專區', en: 'Students' },
   },  {
     id: '48',
-    icon: logo,
+    icon: AppforOralThesis,
     name: { zh: '碩博士學位考試申請', en: 'Online Application System for the Oral Thesis/Dissertation Defenses' },
     url: { zh: 'https://gra103.aca.ntu.edu.tw/degree/index_main.asp', en: 'https://gra103.aca.ntu.edu.tw/degree/index_main_en.asp' },
     description: { zh: '碩、博士班學生申請學位考試系統(含學位考試申請及已通過學位考試論文未繳交者)', en: 'For online application for Thesis/Dissertation Defense (including those who have passed the defense but have not yet submitted their thesis)' },
@@ -2014,7 +2016,7 @@ export const services: ServiceItem[] = [
     category: { zh: '校園資源', en: 'Resource' },
   },  {
     id: '241',
-    icon: logo,
+    icon: adsl,
     name: { zh: 'ADSL 校園網路到府服務', en: 'ADSL Application' },
     url: { zh: 'https://ccnet.ntu.edu.tw/ADSL/', en: 'https://www.cc.ntu.edu.tw/english/services/serv_n07.asp' },
     description: { zh: '提供校園網路到府服務', en: 'Offering services related to ADSL' },

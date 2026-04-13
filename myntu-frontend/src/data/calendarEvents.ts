@@ -461,6 +461,196 @@ export const calendarEvents: CalendarEvent[] = [
     date: '2026/06/29',
     title: { zh: '應屆畢業生補考開始(至6月30日止)', en: 'Make-up Exams for Graduating Students Begin (Through June 30)' },
   },
+  {
+    date: '2026/08/03',
+    title: { zh: '第一學期學生(不含分發入學錄取之大一新生)繳交學雜費開始(繳交至9月4日止；碩士班及博士班新生繳交至8月18日止)', en: 'Payment of Tuition and Fees begins for the 1st Semester (Excluding freshmen admitted via examination-based placement) (Ends Sep. 4; deadline for new graduate students is Aug. 18)' },
+  },
+  {
+    date: '2026/08/03',
+    title: { zh: '公告115學年度第一學期全校課程', en: 'Announcement of University-wide Course Listings for AY 2026 1st Semester' },
+  },
+  {
+    date: '2026/08/03',
+    title: { zh: '學士班新生、轉學生及碩、博士班生網路申請抵免學分開始(至8月11日中午12時截止)', en: 'Online Application for Credit Waivers begins for Undergraduate Freshmen, Transfer Students, and Graduate Students (Ends Aug. 11 at 12:00 PM)' },
+  },
+  {
+    date: '2026/08/06',
+    title: { zh: '學士班新生(含僑生、國際學位生)網路線上註冊開始(至9月4日止)', en: 'Online Registration begins for Undergraduate Freshmen (incl. Overseas Chinese and International Degree Students) (Ends Sep. 4)' },
+  },
+  {
+    date: '2026/08/06',
+    title: { zh: '碩、博士班新生(含僑生、陸生)網路線上註冊開始(至8月18日止)', en: 'Online Registration begins for new Graduate Students (incl. Overseas Chinese and Mainland Chinese Students) (Ends Aug. 18)' },
+  },
+  {
+    date: '2026/08/06',
+    title: { zh: '碩、博士班新生(國際學位生)網路線上註冊開始(至9月4日止)', en: 'Online Registration begins for new Graduate Students (International Degree Students) (Ends Sep. 4)' },
+  },
+  {
+    date: '2026/08/011',
+    title: { zh: '僑生、國際學生華語文及英文能力測驗', en: 'Chinese and English Proficiency Tests for Overseas Chinese and International Students' },
+  },
+  {
+    date: '2026/08/16',
+    title: { zh: '新生季第一階段開始(至8月19日止)', en: 'Phase I of Freshman Orientation Season begins (Ends Aug. 19)' },
+  },
+  {
+    date: '2026/08/17',
+    title: { zh: '學士班轉學生網路線上註冊開始(至8月27日截止)', en: 'Online Registration begins for Undergraduate Transfer Students (Ends Aug. 27)' },
+  },
+  {
+    date: '2026/08/17',
+    title: { zh: '學士班分發入學新生網路申請抵免學分開始(至8月20日中午12時截止)', en: 'Online Application for Credit Waivers begins for Undergraduate Freshmen admitted via examination-based placement (Ends Aug. 20 at 12:00 PM)' },
+  },
+  {
+    date: '2026/08/17',
+    title: { zh: '分發入學錄取之大一新生繳交學雜費開始(繳交至8月31日止)', en: 'Payment of Tuition and Fees begins for Freshmen admitted via examination-based placement (Ends Aug. 31)' },
+  },
+  {
+    date: '2026/08/18',
+    title: { zh: '初選第一階開始(至8月20日截止)', en: 'Phase I of Course Pre-selection (Ends Aug. 20)' },
+  },
+  {
+    date: '2026/08/19',
+    title: { zh: '新進教師研習營(至8月21日止)', en: 'New Faculty Orientation Workshop (Ends Aug. 21)' },
+  },
+  {
+    date: '2026/08/25',
+    title: { zh: '初選第二階開始(至8月26日截止)', en: 'Phase II of Course Pre-selection (Ends Aug. 26)' },
+  },
+  {
+    date: '2026/08/25',
+    title: { zh: '第二學期碩、博士班學生學位論文繳交截止', en: 'Deadline for Graduate Students to Submit Thesis/Dissertation for the 2nd Semester' },
+  },
+  {
+    date: '2026/08/27',
+    title: { zh: '115年度基礎學科免修認證考試(至8月28日)', en: '2026 Proficiency Exam for Waiver of Foundational Courses (Ends Aug. 28)' },
+  },
+  {
+    date: '2026/08/28',
+    title: { zh: '學士班新生健檢(至9月3日止，健檢辦理院系請參照新生入學服務網)', en: 'Health Examination for Undergraduate Freshmen (Ends Sep. 3; please refer to the Freshman Orientation Website for the schedule by department)' },
+  },
+  {
+    date: '2026/09/02',
+    title: { zh: '新生季第二階段開始(至9月3日止)', en: 'Phase II of Freshman Orientation Season begins (Ends Sep. 3)' },
+  },
+  {
+    date: '2026/09/04',
+    title: { zh: '教師補交114學年第二學期成績截止', en: 'Deadline for Faculty to Submit Make-up Grades for AY 2025 2nd Semester' },
+  },
+  {
+    date: '2026/09/05',
+    title: { zh: '國際學生華語課程分班測驗', en: 'Chinese Language Placement Test for International Students' },
+  },
+  {
+    date: '2026/09/06',
+    title: { zh: '新生開學典禮', en: 'Opening Ceremony for Freshmen' },
+  },
+  {
+    date: '2026/09/07',
+    title: { zh: '碩、博士班生學位考試申請開始(至11月30日截止)', en: 'Application for Degree Examination begins for Graduate Students (Ends Nov. 30)' },
+  },
+  {
+    date: '2026/09/07',
+    title: { zh: '網路加退選課程開始', en: 'Online Course Add/Drop Period begins' },
+  },
+  {
+    date: '2026/09/07',
+    title: { zh: '補考開始(至9月8日止，限已核准期末考試請假者參加補考)', en: 'Make-up Exams begin (Ends Sep. 8; restricted to students with approved absence from final exams)' },
+  },
+  {
+    date: '2026/09/07',
+    title: { zh: '115學年度第一學期上課開始', en: 'AY 2026 1st Semester Classes Begin' },
+  },
+  {
+    date: '2026/09/11',
+    title: { zh: '大三學生擬參加116學年度碩士班甄試排名提前畢業申請截止', en: 'Deadline for Juniors to apply for early graduation for the purpose of AY 2027 Master’s Program Admission by Ranking' },
+  },
+  {
+    date: '2026/09/12',
+    title: { zh: '114學年度第二學期探索學分申請截止', en: 'Deadline for AY 2025 2nd Semester Exploratory Credit applications' },
+  },
+  {
+    date: '2026/09/12',
+    title: { zh: '社團聯展', en: 'Student Club Expo' },
+  },
+  {
+    date: '2026/09/19',
+    title: { zh: '網路退選課程截止', en: 'Online Course Drop Period ends' },
+  },
+  {
+    date: '2026/09/21',
+    title: { zh: '網路加選課程截止', en: 'Online Course Add Period ends' },
+  },
+  {
+    date: '2026/09/23',
+    title: { zh: '停修申請開始(至12月11日截止)', en: 'Application Period for Course Withdrawal begins (Ends Dec. 11)' },
+  },
+  {
+    date: '2026/09/23',
+    title: { zh: '網路確認選課結果開始(上午10時至9月24日截止)', en: 'Online Confirmation of Course Selection Results begins (10:00 AM; Ends Sep. 24)' },
+  },
+  {
+    date: '2026/09/25',
+    title: { zh: '中秋節(放假日)', en: 'Mid-Autumn Festival (Public Holiday)' },
+    dayoff: true,
+  },
+  {
+    date: '2026/09/28',
+    title: { zh: '教師節(放假日)', en: 'Teachers’ Day (Public Holiday)' },
+    dayoff: true,
+  },
+  {
+    date: '2026/10/05',
+    title: { zh: '第一次進階英語網路申請免修開始(至10月8日截止，日期暫定以公告為準)', en: '1st Online Application for Advanced English Course Waiver Begins (Ends Oct. 8; Dates are tentative and subject to official announcement)' },
+  },
+  {
+    date: '2026/10/09',
+    title: { zh: '國慶日遇例假日補假', en: 'National Day Observed' },
+    dayoff: true,
+  },
+  {
+    date: '2026/10/10',
+    title: { zh: '國慶日(放假日)', en: 'National Day (Public Holiday)' },
+    dayoff: true,
+  },
+  {
+    date: '2026/10/12',
+    title: { zh: '第二階段學分費等各項費用繳費開始(至10月23日止)', en: 'Phase II Payment of Credit Fees and Other Charges Begins (Ends Oct. 23)' },
+  },
+  {
+    date: '2026/10/16',
+    title: { zh: '第一學期第一次教務會議', en: '1st Academic Affairs Meeting of the 1st Semester' },
+  },
+  {
+    date: '2026/10/16',
+    title: { zh: '休、退學學生退2/3學雜費截止', en: 'Deadline for 2/3 Refund of Tuition and Fees for Students Taking Leave of Absence or Withdrawing' },
+  },
+  {
+    date: '2026/10/17',
+    title: { zh: '全校運動會游泳賽', en: 'University Sports Meet - Swimming Competition' },
+  },
+  {
+    date: '2026/10/17',
+    title: { zh: '第一學期第一次校務會議', en: '1st University Council Meeting of the 1st Semester' },
+  },
+  {
+    date: '2026/10/19',
+    title: { zh: '期中教學意見調查開始(至11月2日止)', en: 'Mid-term Course Feedback Survey Begins (Ends Nov. 2)' },
+  },
+  {
+    date: '2026/10/25',
+    title: { zh: '臺灣光復暨金門古寧頭大捷紀念日(放假日)', en: 'Taiwan Retrocession Day and Kinmen Battle of Guningtou Victory Commemoration (Public Holiday)' },
+    dayoff: true,
+  },
+  {
+    date: '2026/10/26',
+    title: { zh: '臺灣光復暨金門古寧頭大捷紀念日遇例假日補假', en: 'Taiwan Retrocession Day and Kinmen Battle of Guningtou Victory Commemoration Observed' },
+    dayoff: true,
+  },
+  {
+    date: '2026/10/26',
+    title: { zh: '期中考試開始(至10月30日止)，若教師另有訂定其他日期者，從其規定', en: 'Mid-term Examinations Begin (Ends Oct. 30), or as scheduled by instructors' },
+  },
 ]
 
 

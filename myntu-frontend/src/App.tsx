@@ -252,10 +252,13 @@ function App() {
   })
   const [logoColor, setLogoColor] = useState<'light' | 'dark'>('light')
   // Placeholder hot IDs after renumbering; adjust as you like
-  const hotIds: string[] = ['77','78','11','20','28','85','187','12','10','207','254']
+  const hotIds: string[] = ['77','78','11','20','4','52','187','12','10','207','48']
+  // 網路選課：'28'
+  // 選課結果查詢：'85'
+  
   // const hotSet = new Set(hotIds)
   // Recent added IDs (configurable)
-  const recentIds: string[] = []
+  const recentIds: string[] = ['49', '50']
 
   const [hasScrolled, setHasScrolled] = useState<boolean>(false)
   // const [isSmallScreen, setIsSmallScreen] = useState<boolean>(() => (typeof window !== 'undefined' ? window.innerWidth < 600 : false))
