@@ -15,72 +15,85 @@ import { synonymsGroupsZh, synonymsGroupsEn } from './data/searchSynonyms'
 // const ABOUT_IMAGES: string[] = Object.values(aboutImageModules).map((mod: any) => mod.default ?? mod)
 
 // snowfall effect
-// interface Flake {
-//   id: number
-//   left: number
-//   delay: number
-//   duration: number
-//   size: number
-//   rotateDuration: number
-//   clockwise: boolean
-//   drift: number
-// }
+interface Flake {
+  id: number
+  left: number
+  delay: number
+  duration: number
+  size: number
+  rotateDuration: number
+  clockwise: boolean
+  drift: number
+}
 
-// function Snowfall() {
-//   const flakesRef = useRef<Flake[]>([])
-//   const width = typeof window !== 'undefined' ? window.innerWidth : 0
-//   if (flakesRef.current.length === 0) {
-//     const count = width > 600 ? width/35 : 20
-//     const basesize = width > 600 ? 6 : 5
-//     flakesRef.current = Array.from({ length: count }, (_, i) => ({
-//       id: i,
-//       left: Math.random() * 100,           // 0–100% 寬度隨機位置
-//       delay: Math.random() * -20,          // 負的 delay 讓一載入就有不同進度的雪花
-//       duration: 2 + Math.random() * 3,     // 6–12 秒落下一次
-//       size: basesize + Math.random() * 3,         // 雪花基礎尺寸
-//       rotateDuration: 10 + Math.random() * 4, // 4–8 秒轉一圈
-//       clockwise: Math.random() < 0.5,        // 隨機順時針 / 逆時針
-//       drift: (Math.random() < 0.5 ? -1 : 1) * (10 + Math.random() * 25), // 每片雪花的水平位移，左下或右下
-//     }))
-//   }
+function Snowfall() {
+  const flakesRef = useRef<Flake[]>([])
+  const width = typeof window !== 'undefined' ? window.innerWidth : 0
+  if (flakesRef.current.length === 0) {
+    const count = width > 600 ? width/35 : 20
+    const basesize = width > 600 ? 6 : 5
+    flakesRef.current = Array.from({ length: count }, (_, i) => ({
+      id: i,
+      left: Math.random() * 100,
+      delay: Math.random() * -20,
+      duration: 2 + Math.random() * 3,
+      size: basesize + Math.random() * 3,
+      rotateDuration: 10 + Math.random() * 4,
+      clockwise: Math.random() < 0.5,
+      drift: (Math.random() < 0.5 ? -1 : 1) * (10 + Math.random() * 25),
+    }))
+  }
 
-//   const flakes = flakesRef.current
+  const flakes = flakesRef.current
 
-//   return (
-//     <div className="pointer-events-none fixed inset-0 max-[900px]:z-[20] z-[120] overflow-hidden">
-//       {flakes.map((flake) => (
-//         <div
-//           key={flake.id}
-//           className="snowflake"
-//           style={{
-//             left: `${flake.left}%`,
-//             width: `${flake.size}px`,
-//             height: `${flake.size}px`,
-//             animationDuration: `${flake.duration}s`,
-//             animationDelay: `${flake.delay}s`,
-//             ['--snow-drift' as any]: `${flake.drift}px`,
-//           }}
-//         >
-//           <div
-//             className={
-//               flake.clockwise
-//                 ? 'snowflake-inner snowflake-inner--cw'
-//                 : 'snowflake-inner snowflake-inner--ccw'
-//             }
-//             style={{
-//               animationDuration: `${flake.rotateDuration}s`,
-//             }}
-//           >
-//             <span className="snowflake-arm snowflake-arm--v" />
-//             <span className="snowflake-arm snowflake-arm--d1" />
-//             <span className="snowflake-arm snowflake-arm--d2" />
-//           </div>
-//         </div>
-//       ))}
-//     </div>
-//   )
-// }
+  return (
+    <div className="pointer-events-none fixed inset-0 max-[900px]:z-[20] z-[120] overflow-hidden">
+      {flakes.map((flake) => (
+        <div
+          key={flake.id}
+          className="snowflake"
+          style={{
+            left: `${flake.left}%`,
+            width: `${flake.size}px`,
+            height: `${flake.size}px`,
+            animationDuration: `${flake.duration}s`,
+            animationDelay: `${flake.delay}s`,
+            ['--snow-drift' as any]: `${flake.drift}px`,
+          }}
+        >
+          <div
+            className={
+              flake.clockwise
+                ? 'snowflake-inner snowflake-inner--cw'
+                : 'snowflake-inner snowflake-inner--ccw'
+            }
+            style={{
+              animationDuration: `${flake.rotateDuration}s`,
+            }}
+          >
+            <span className="snowflake-arm snowflake-arm--v" />
+            <span className="snowflake-arm snowflake-arm--d1" />
+            <span className="snowflake-arm snowflake-arm--d2" />
+          </div>
+        </div>
+      ))}
+    </div>
+  )
+}
 // snowfall effect end
+
+function isInDatePeriod(start: string, end: string, now = new Date()): boolean {
+  const toNum = (s: string) => {
+    const [m, d] = s.split('/').map(Number)
+    return m * 100 + d
+  }
+  const today = toNum(`${String(now.getMonth() + 1).padStart(2, '0')}/${String(now.getDate()).padStart(2, '0')}`)
+  const startNum = toNum(start)
+  const endNum = toNum(end)
+  return startNum <= endNum
+    ? today >= startNum && today <= endNum
+    : today >= startNum || today <= endNum
+}
 
 type Lang = 'zh' | 'en'
 type View = 'home' | 'calendar' | 'about'
@@ -251,13 +264,28 @@ function App() {
     return prefersDark ? 'dark' : 'light'
   })
   const [logoColor, setLogoColor] = useState<'light' | 'dark'>('light')
-  // Placeholder hot IDs after renumbering; adjust as you like
-  const hotIds: string[] = ['77','78','11','20','4','52','187','12','10','207','48']
-  // 網路選課：'28'
-  // 選課結果查詢：'85'
-  
-  // const hotSet = new Set(hotIds)
-  // Recent added IDs (configurable)
+  // 網路選課：'28' / 選課結果查詢：'85'
+  const hotIdsByPeriod: { start: string; end: string; ids: string[] }[] = [
+    { start: '03/16', end: '07/31', ids: ['77','78','11','20','4','52','187','12','10','207','48','71'] },
+    { start: '08/01', end: '10/05', ids: ['77','78','11','20','28','85','187','12','10','207'] },
+    { start: '10/06', end: '01/20', ids: ['77','78','11','20','4','52','187','12','10','207'] },
+    { start: '01/21', end: '03/15', ids: ['77','78','11','20','28','85','187','12','10','207'] },
+  ]
+  const hotIdsDefault: string[] = ['77','78','11','20','4','52','187','12','10','207','48','71']
+
+  const hotIds: string[] = (() => {
+    for (const period of hotIdsByPeriod) {
+      if (isInDatePeriod(period.start, period.end)) return period.ids
+    }
+    return hotIdsDefault
+  })()
+
+  // 雪花特效開啟區間（可加多段；跨年用 start > end，例如 12/01 ~ 01/15）
+  const snowfallPeriods: { start: string; end: string }[] = [
+    { start: '12/01', end: '01/15' },
+  ]
+  const showSnowfall = snowfallPeriods.some((p) => isInDatePeriod(p.start, p.end))
+
   const recentIds: string[] = ['49', '50']
 
   const [hasScrolled, setHasScrolled] = useState<boolean>(false)
@@ -878,10 +906,8 @@ function App() {
         if (view === 'about' || path.startsWith('/about')) return <AboutPage lang={lang} />
         if (view === 'calendar' || path.startsWith('/calendar')) return <Calendar lang={lang} />
         return (
-      // snowfall effect start
-      // <>
-      // <Snowfall />
-      // {/* snowfall effect end */}
+      <>
+      {showSnowfall && <Snowfall />}
       <header className="relative flex flex-col min-h-screen items-center pt-32 bg-[var(--body-bg)] text-center max-[900px]:pt-30 max-[600px]:pt-25">
         <div className="mx-auto px-6 w-full max-[600px]:mx-0 max-[600px]:px-1.5">
           <h1 className="m-0 text-[36px] font-medium font-sans leading-tight text-[var(--text-color)] max-[900px]:text-[32px] max-[600px]:text-[24px]">{t.title}</h1>
@@ -956,9 +982,7 @@ function App() {
           
         </div>
       </header>
-      // {/* snowfall effect start */}
-      // </>
-      // snowfall effect end
+      </>
         )
       })()}
       <footer className="mx-auto w-full max-w-screen-2xl mt-30 px-10 pt-10 pb-8 text-sm text-[var(--footer-text)] max-[600px]:px-5 max-[600px]:pb-5 max-[600px]:mt-20 max-[600px]:pt-5">

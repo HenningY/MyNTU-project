@@ -651,6 +651,182 @@ export const calendarEvents: CalendarEvent[] = [
     date: '2026/10/26',
     title: { zh: '期中考試開始(至10月30日止)，若教師另有訂定其他日期者，從其規定', en: 'Mid-term Examinations Begin (Ends Oct. 30), or as scheduled by instructors' },
   },
+  {
+    date: '2026/11/02',
+    title: { zh: '學士班第一學期應屆畢業生自行修讀輔系並取得輔系資格畢業申請截止', en: 'Deadline for graduating undergraduates to apply for graduation with a self-pursued minor qualification (1st semester)' },
+  },
+  {
+    date: '2026/11/02',
+    title: { zh: '學士班第一學期應屆畢業生符合跨域專長資格畢業申請截止', en: 'Deadline for graduating undergraduates to apply for graduation with an interdisciplinary specialization (1st semester)' },
+  },
+  {
+    date: '2026/11/02',
+    title: { zh: '學士班第一學期應屆畢業生符合學士榮譽學程畢業申請截止', en: 'Deadline for graduating undergraduates to apply for graduation with the Bachelor’s Honors Program (1st semester)' },
+  },
+  {
+    date: '2026/11/14',
+    title: { zh: '校慶社團特展', en: 'Anniversary Student Club Special Exhibition' },
+  },
+  {
+    date: '2026/11/15',
+    title: { zh: '本校校慶', en: 'University Anniversary' },
+  },
+  {
+    date: '2026/11/20',
+    title: { zh: '全校運動會(至11月21日止，停課不停班)', en: 'University-wide Sports Meet (until November 21; classes suspended, offices open)' },
+  },
+  {
+    date: '2026/11/20',
+    title: { zh: '休、退學學生退1/3學雜費截止', en: 'Deadline for 1/3 tuition refund for students who withdraw or take leave of absence' },
+  },
+  {
+    date: '2026/12/07',
+    title: { zh: '期末教學意見調查開始(至12月18日止)', en: 'Start of Final Teaching Feedback Survey (until December 18)' },
+  },
+  {
+    date: '2026/12/11',
+    title: { zh: '停修申請截止(至下午5時)', en: 'Deadline for course withdrawal applications (until 5:00 PM)' },
+  },
+  {
+    date: '2026/12/18',
+    title: { zh: '115學年度第一學期上課結束', en: 'End of classes for the 1st semester, Academic Year 115' },
+  },
+  {
+    date: '2026/12/18',
+    title: { zh: '第一學期第二次教務會議', en: 'Second Academic Affairs Meeting of the 1st semester' },
+  },
+  {
+    date: '2026/12/18',
+    title: { zh: '休學申請截止', en: 'Deadline for leave of absence applications' },
+  },
+  {
+    date: '2026/12/19',
+    title: { zh: '第一學期第二次校務會議', en: 'Second University Affairs Meeting of the 1st semester' },
+  },
+  {
+    date: '2026/12/21',
+    title: { zh: '期末考試開始(原則至12月25日止，得延長至上課結束後之彈性週辦理)，若教師另有訂定其他日期者，從其規定', en: 'Final Examinations begin (generally until December 25, may extend into the flexible week after classes end; subject to instructors’ announced schedules if different)' },
+  },
+  {
+    date: '2026/12/25',
+    title: { zh: '行憲紀念日(放假日)', en: 'Constitution Day (Holiday)' },
+    dayoff: true,
+  },
+  {
+    date: '2026/12/28',
+    title: { zh: '受國定假日影響，教師得於本週彈性安排補課及考試(至12月31日止)', en: 'Instructors may flexibly arrange make-up classes and exams this week due to national holidays (until December 31)' },
+  },
+  {
+    date: '2026/12/28',
+    title: { zh: '學士班第一學期應屆畢業生放棄修讀輔系、雙主修資格畢業申請截止', en: 'Deadline for graduating undergraduate students to withdraw from minor or double-major programs (1st semester)' },
+  },
+  {
+    date: '2026/12/28',
+    title: { zh: '學士班第一學期應屆畢業生延長修業年限申請截止', en: 'Deadline for applications by graduating undergraduate students to extend study period (1st semester)' },
+  },
+  {
+    date: '2026/12/28',
+    title: { zh: '寒假開始(至116年2月19日止)', en: 'Winter Break begins (until February 19, Academic Year 116)' },
+  },
+  {
+    date: '2027/01/04',
+    title: { zh: '教師繳交學期成績截止日', en: 'Deadline for instructors to submit semester grades' },
+  },
+  {
+    date: '2027/01/04',
+    title: { zh: '公告115學年度第二學期全校課程', en: 'Announcement of university-wide courses for the 2nd semester, Academic Year 115' },
+  },
+  {
+    date: '2027/01/12',
+    title: { zh: '初選第一階開始(至1月14日截止)', en: 'First phase of preliminary course selection begins (until January 14)' },
+  },
+  {
+    date: '2027/01/19',
+    title: { zh: '初選第二階開始(至1月20日截止)', en: 'Second phase of preliminary course selection begins (until January 20)' },
+  },
+  {
+    date: '2027/01/30',
+    title: { zh: '116學年度碩士班入學筆試(至1月31日)', en: 'Written entrance examination for Master’s Program, Academic Year 116 (until January 31)' },
+  },
+  {
+    date: '2027/02/03',
+    title: { zh: '寒休(僅公務人員、校聘人員及技工友調整放假，不含計畫約聘僱人員)(暫定)', en: 'Winter administrative leave (adjusted holidays for civil servants, university-hired staff, and technicians only; project contract staff not included) (Tentative)' },
+  },
+  {
+    date: '2027/02/04',
+    title: { zh: '小年夜(放假日)', en: 'Lunar New Year’s Eve (Holiday)' },
+    dayoff: true,
+  },
+  {
+    date: '2027/02/05',
+    title: { zh: '除夕(放假日)', en: 'Lunar New Year’s Eve (Holiday)' },
+    dayoff: true,
+  },
+  {
+    date: '2027/02/06',
+    title: { zh: '年初一放假(春節開始，至2月8日止)', en: 'Lunar New Year Day (Spring Festival begins, until February 8)' },
+    dayoff: true,
+  },
+  {
+    date: '2027/02/07',
+    title: { zh: '年初二放假', en: 'Lunar New Year – Second Day (Holiday)' },
+    dayoff: true,
+  },
+  {
+    date: '2027/02/08',
+    title: { zh: '年初三放假', en: 'Lunar New Year – Third Day (Holiday)' },
+    dayoff: true,
+  },
+  {
+    date: '2027/02/09',
+    title: { zh: '年初一遇例假日補假', en: 'Substitute holiday for Lunar New Year Day coinciding with a regular holiday' },
+    dayoff: true,
+  },
+  {
+    date: '2027/02/10',
+    title: { zh: '年初二遇例假日補假', en: 'Substitute holiday for Lunar New Year – Second Day coinciding with a regular holiday' },
+    dayoff: true,
+  },
+  {
+    date: '2027/02/11',
+    title: { zh: '寒休(僅公務人員、校聘人員及技工友調整放假，不含計畫約聘僱人員)(暫定)', en: 'Winter administrative leave (adjusted holidays for civil servants, university-hired staff, and technicians only; project contract staff not included) (Tentative)' },
+  },
+  {
+    date: '2027/02/15',
+    title: { zh: '國際學生迎新週(至2月20日止)', en: 'International Student Orientation Week (until February 20)' },
+  },
+  {
+    date: '2027/02/19',
+    title: { zh: '教師補交115學年第一學期成績截止', en: 'Deadline for instructors to submit grade corrections for 1st semester, Academic Year 115' },
+  },
+  {
+    date: '2027/02/20',
+    title: { zh: '國際學生華語課程分班測驗', en: 'Placement Test for International Students’ Chinese Language Courses' },
+  },
+  {
+    date: '2027/02/22',
+    title: { zh: '第一學期碩、博士班生學位論文繳交截止日', en: 'Deadline for submission of Master’s and Doctoral theses (1st semester)' },
+  },
+  {
+    date: '2027/02/22',
+    title: { zh: '第二學期碩、博士班生學位考試申請開始(至5月3日截止)', en: 'Start of Master’s and Doctoral degree examination applications for the 2nd semester (until May 3)' },
+  },
+  {
+    date: '2027/02/22',
+    title: { zh: '網路加退選課程開始', en: 'Online course add/drop begins' },
+  },
+  {
+    date: '2027/02/22',
+    title: { zh: '補考開始(至2月23日止，限已核准期末考試請假者參加補考）', en: 'Start of make-up examinations (until February 23; for students with approved absences from final exams only)' },
+  },
+  {
+    date: '2027/02/22',
+    title: { zh: '115學年度第二學期上課開始', en: 'Start of classes for the 2nd semester, Academic Year 115' },
+  },
+  {
+    date: '2027/02/27',
+    title: { zh: '115學年度第一學期探索學分申請截止', en: 'Deadline for Exploratory Credit applications, 1st semester of Academic Year 115' },
+  },
 ]
 
 
